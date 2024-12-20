@@ -189,6 +189,7 @@ function closeModal() {
   modal.style.display = 'none';
 }
 
+
 // Function to load and parse the regions CSV
 function loadRegionData(callback) {
   Papa.parse('coordinates/Azerbaijani Region Coordinates.csv', {
@@ -256,7 +257,7 @@ function populateRegions(regionData) {
 
 // Modified loadImageData to integrate updateCityDistrict properly
 function loadImageData(regionData) {
-  Papa.parse('coordinates/updated_file3.csv', {
+  Papa.parse('coordinates/wildfireDataset.csv', {
     download: true,
     header: true,
     complete: function (results) {
@@ -298,6 +299,8 @@ function loadImageData(regionData) {
     },
   });
 }
+
+
 
 // Adjust loadRegionData to call the updated loadImageData
 loadRegionData(regionData => {

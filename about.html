@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wildfire Satellite Image Viewer</title>
+    <link rel="stylesheet" href="./about.css">
 </head>
+
 <body>
-    <h1 style="margin: 5%; padding: 5%; text-align: center;">We, ADA students - Ahmad, Turgay, Gunel, Sahil - are working on a project which is about a Wildfire Detection.</h1>
-    
+    <header>
+        <h1>About us</h1>
+        <button id="download-folder" class="download-btn">Download</button> <!-- download button will be in bottom -->
+    </header>
 
+    <div class="adaLogoDiv">
+        <img class="adaLogo" src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adalogonew.png" alt="">
+    </div>
 
+    <div class="aboutTextDiv">
+        <p class="aboutText">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut est dolore ad commodi illum voluptates beatae? Ab eius, et esse, aut ipsa dolorem vitae corporis, fugiat repellat quae sunt. Dignissimos laboriosam dolorem explicabo porro, officiis consequuntur culpa ipsam eius eaque minus, doloremque voluptatem soluta veniam repellat tempora ullam obcaecati exercitationem fuga quos beatae accusamus nostrum provident. Quaerat debitis quisquam non culpa in quasi et odio inventore aliquid necessitatibus commodi molestias eveniet magni, porro, quis provident doloribus itaque eaque eius suscipit placeat possimus, corporis praesentium minima? Voluptatem iure quasi sapiente iusto vitae minus voluptates cumque ipsum eaque quaerat, exercitationem repellat molestiae.
+        </p>
+    </div>
 
+    <script>
+        // Function to trigger folder download
+        function downloadFolder() {
+            const zipFileName = 'WildfireDataset.zip'; // Name of the file
+            const zipFileUrl = 'WildfireDataset.zip'; // Path to the ZIP file on the server
 
+            const link = document.createElement('a');
+            link.href = zipFileUrl;
+            link.download = zipFileName; // This sets the file name for download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
 
-
-    <script src="script.js"></script>
+        // Event listener for the download button
+        document.getElementById('download-folder').addEventListener('click', downloadFolder);
+    </script>
 </body>
+
 </html>
