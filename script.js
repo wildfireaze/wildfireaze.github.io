@@ -5,6 +5,18 @@ let filterRegion = 'all';
 let filterDateRange = { start: null, end: null }; // Date range filter
 let filterSatellite = 'all';
 let filterInstrument = 'all';
+let currentPage = 1
+
+function incrementPage(){
+  currentPage += 1
+  loadRegionData(regionData => {
+    loadImageData(regionData);    // SCROLL DETECTOR FOR GET THE DATA
+  });
+}
+
+const loadMore = document.getElementById("loadMore")
+
+loadMore.addEventListener("click", incrementPage)
 
 // Function to apply filters and sorting
 function applyFiltersAndSorting(images) {
@@ -282,17 +294,25 @@ function loadImageData(regionData) {
         district: null, // Placeholder for dynamic assignment
       }));
 
-      // Update images with city and district data
-      updateCityDistrict(images, regionData);
+      const pageSize = 30
 
-      populateSatelliteAndInstrument(images)
+      const totalPages = Math.floor(images.length / pageSize)
+
+      const visibleItems = images.slice(0,currentPage * pageSize)
+
+      console.log(visibleItems, totalPages)
+
+      // Update images with city and district data
+      updateCityDistrict(visibleItems, regionData);
+
+      populateSatelliteAndInstrument(visibleItems)
 
       // Populate city filter options from regionData
       populateRegions(regionData);
 
       // Store original images and display them
-      originalImages = images;
-      displayImages(images);
+      originalImages = visibleItems;
+      displayImages(visibleItems);
     },
     error: function (error) {
       console.error("Error loading images CSV:", error);
