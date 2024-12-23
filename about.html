@@ -11,7 +11,7 @@
 <body>
     <header>
         <h1>About us</h1>
-        <button id="download-folder" class="download-btn">Download</button> <!-- download button --> 
+        <button><a class="aForDownload" href="https://github.com/wildfireaze/wildfireaze.github.io/raw/refs/heads/main/WildfireDataset.zip?download=">Download</a></button> <!-- download button --> 
     </header>
 
     <div class="adaLogoDiv">
@@ -28,23 +28,6 @@
         <!-- To have an access to the dataset, users can benefit from the link in the header which directs them to the Kaggle.  -->
     </div>
 
-    <script>
-        // Function to trigger folder download
-        function downloadFolder() {
-            const zipFileName = 'WildfireDataset.zip'; // Name of the file
-            const zipFileUrl = 'WildfireDataset.zip'; // Path to the ZIP file on the server
-
-            const link = document.createElement('a');
-            link.href = zipFileUrl;
-            link.download = zipFileName; // This sets the file name for download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        // Event listener for the download button
-        document.getElementById('download-folder').addEventListener('click', downloadFolder);
-    </script>
 </body>
 
 </html>
