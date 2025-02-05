@@ -10,7 +10,7 @@
 <body>
   <header>
     <h1>Wildfire Satellite Image Viewer</h1>
-    <button><a class="aboutUs" href="./about.html">About us</a></button>
+    <a class="aboutUs" href="./about.html">About us</a>
   </header>
 
   <div class="container">
@@ -40,12 +40,16 @@
       <select id="filter-instrument">
         <option value="all">All</option>
       </select>
+
+      <a id="reset-filters" href="./index.html">Reset</a>
     </div>
 
     <!-- Main Content -->
     <main class="main-content">
       <div class="image-gallery" id="image-gallery"></div>
-      <button id="loadMore">Load More</button>
+      <div class="load-more-div">
+        <button id="loadMore">Load More</button>
+      </div>
     </main>
 
     <!-- Modal for Details and Map -->

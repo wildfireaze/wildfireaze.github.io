@@ -1,49 +1,181 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif; /* Updated font for modern aesthetics */
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: #f0f2f5; /* Subtle background color */
+    color: #333; /* General text color */
+    line-height: 1.6;
 }
 
+/* Header Styles */
 header {
     text-align: center;
     background-color: #333;
     color: white;
-    padding: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
 }
 
 .aForDownload {
-    text-decoration: none;
-    color: #333;
-    font-size: 1rem;
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.7rem 1.5rem;
+    background-color: #ff6600;
+    color: white;
+    font-size: 1.1rem;
     font-weight: 600;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+.aForDownload:hover {
+    background-color: #e55a00;
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #444;
+    padding: 0.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar a:hover {
+    color: #ff6600;
+    transform: translateY(-2px); /* Subtle upward movement */
+}
+
+/* Section Styles */
+section {
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 900px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #444;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ff6600; /* Decorative underline */
+    display: inline-block;
+}
+
+section p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #555;
+    margin: 1rem 0;
+}
+
+/* ADA Logo Styles */
 .adaLogoDiv {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 2rem auto;
 }
 
-.adaLogo{
-    padding: 3rem;
+.adaLogo {
     height: 150px;
+    max-width: 100%;
+    padding: 1rem;
+    transition: transform 0.3s ease;
 }
 
-.aboutTextDiv{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    padding: 5rem;
+.adaLogo:hover {
+    transform: scale(1.05);
 }
 
-.aboutText{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
+/* Footer Styles */
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 1rem;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Button Styles for Improved UX */
+button {
+    padding: 0.7rem 1.5rem;
+    background-color: #ff6600;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #e55a00;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    section {
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    section p {
+        font-size: 1rem;
+    }
+
+    footer {
+        font-size: 0.9rem;
+    }
 }

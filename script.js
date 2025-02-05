@@ -321,7 +321,6 @@ function loadImageData(regionData) {
 }
 
 
-
 // Adjust loadRegionData to call the updated loadImageData
 loadRegionData(regionData => {
   loadImageData(regionData);

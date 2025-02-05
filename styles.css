@@ -13,12 +13,26 @@ header {
   padding: 1rem;
 }
 
-.aboutUs{
-  text-decoration: none;
-  color: #333;
-  font-size: 1rem;
+
+.aboutUs {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  background-color: #ff6600;
+  color: white;
+  font-size: 1.1rem;
   font-weight: 600;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
+.aboutUs:hover {
+  background-color: #e55a00;
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+
 
 .container {
   padding: 1rem;
@@ -27,20 +41,50 @@ header {
 /* Filter Section Styles */
 .filters {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1000;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
   gap: 1rem;
-  margin: 1rem 0;
 }
+
 
 .filters label {
   font-size: 1rem;
-  margin-right: 0.5rem;
+  margin-left: 2.5rem;
 }
 
 .filters select, .filters input[type="date"] {
   padding: 0.5rem;
   font-size: 1rem;
 }
+
+
+#reset-filters {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  text-decoration: none;
+  background-color: #ff6600;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  margin-left: 2.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#reset-filters:hover {
+  background-color: #e55a00;
+  transform: scale(1.05);
+}
+
 
 /* Image Gallery Styles */
 .image-gallery {
@@ -148,4 +192,27 @@ header {
   background-color: #f9f9f9; /* Light background for text blocks */
   border-radius: 5px; /* Rounded corners for detail blocks */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+.load-more-div{
+  display: flex;
+  justify-content: center;
+}
+
+#loadMore {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  background-color: #ff6600;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-style: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#loadMore:hover {
+  background-color: #e55a00;
 }
