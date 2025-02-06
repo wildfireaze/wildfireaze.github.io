@@ -15,8 +15,31 @@ function incrementPage(){
 }
 
 const loadMore = document.getElementById("loadMore")
+// Get the button
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
 loadMore.addEventListener("click", incrementPage)
+
+
+// Get the modal element
+const modal = document.getElementById("image-modal");
+
+// Open the modal function
+function openModal(imageSrc, mapSrc, details) {
+    document.getElementById("modal-image").src = imageSrc;
+    document.getElementById("map-frame").src = mapSrc;
+    document.getElementById("modal-info").innerHTML = details;
+    modal.style.display = "flex"; // Show modal
+}
+
+// Close the modal when clicking on the dark background
+modal.addEventListener("click", function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none"; // Hide modal
+    }
+});
+
+
 
 // Function to apply filters and sorting
 function applyFiltersAndSorting(images) {
@@ -85,6 +108,25 @@ document.getElementById('filter-instrument').addEventListener('change', (e) => {
   filterInstrument = e.target.value;
   applyFiltersAndSorting(originalImages);
 });
+
+
+
+
+// Show or hide the button when scrolling
+window.onscroll = function() {
+    if (document.documentElement.scrollTop > 300) {
+        scrollToTopBtn.style.display = "block";
+    } else {
+        scrollToTopBtn.style.display = "none";
+    }
+};
+
+// Smooth scrolling to top
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+
 
 // Function to populate region filter options
 function populateRegions(images) {
@@ -176,9 +218,9 @@ function showImageDetails(image) {
         <p><strong>Brightness:</strong> ${image.brightness}</p>
         <p><strong>Scan:</strong> ${image.scan}</p>
         <p><strong>Track:</strong> ${image.track}</p>
-      </div>
-      <div>
         <p><strong>Acquisition Date:</strong> ${image.acq_date}</p>
+        </div>
+        <div>
         <p><strong>Acquisition Time:</strong> ${image.acq_time}</p>
         <p><strong>Satellite:</strong> ${image.satellite}</p>
         <p><strong>Instrument:</strong> ${image.instrument}</p>

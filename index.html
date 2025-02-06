@@ -10,7 +10,7 @@
 <body>
   <header>
     <h1>Wildfire Satellite Image Viewer</h1>
-    <a class="aboutUs" href="./about.html">About us</a>
+    <a class="aboutUs" href="./about.html">About</a>
   </header>
 
   <div class="container">
@@ -55,7 +55,7 @@
     <!-- Modal for Details and Map -->
     <div id="image-modal" class="modal">
       <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
+        <!-- <span class="close" onclick="closeModal()">&times;</span> -->
         <div class="modal-top">
           <div class="modal-image-container">
             <img id="modal-image" src="" alt="Detailed View">
@@ -73,6 +73,8 @@
       </div>
     </div>
   </div>
+
+  <button id="scrollToTopBtn" onclick="scrollToTop()">↑</button>
 
   <script src="script.js"></script>
 </body>
