@@ -288,6 +288,20 @@ header {
   }
 }
 
+footer {
+  text-align: center;
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 1rem;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+  margin: 0;
+}
+
 /* Fade-in Animation */
 @keyframes fadeIn {
   from {
