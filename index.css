@@ -32,9 +32,31 @@ header {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+.az-index {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 2rem;
+  border: #e55a00;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+
 .aboutUs:hover {
   background-color: #e55a00;
   transform: scale(1.05);
+}
+
+.az-index:hover {
+  transform: scale(1.55);
 }
 
 /* Main Container */
@@ -138,16 +160,25 @@ header {
 
 .modal-content {
   position: fixed;
+  /* or absolute, but fixed keeps it in place on scroll */
   z-index: 1500;
-  transform: translateX(50%);
   background: white;
-  width: 80%;
-  max-width: 900px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Moves the element left 50% and up 50% */
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   animation: fadeIn 0.3s ease-in-out;
+  /* Optional: set a max width/height so it doesn’t overflow the screen */
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* or auto, if needed */
 }
+
 
 .modal-top {
   display: flex;
@@ -174,24 +205,25 @@ header {
   transition: transform 0.3s ease;
 }
 
-.modal-image-container img:hover {
-  transform: scale(1.05);
-}
+
 
 /* Modal Map */
 /* Modal Map Container */
 .modal-map-container {
-  flex: 1; /* Take equal space in the flex container */
+  flex: 1;
+  /* Take equal space in the flex container */
   padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto; /* Set a fixed height for the container */
+  height: auto;
+  /* Set a fixed height for the container */
 }
 
 .modal-map-container iframe {
   width: 100%;
-  height: 100%; /* Fill the container */
+  height: 100%;
+  /* Fill the container */
   border-radius: 8px;
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -201,9 +233,9 @@ header {
 /* Modal Details */
 .modal-details {
   padding: 20px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #444;
-  line-height: 1.6;
+  line-height: 1;
 }
 
 /* Load More Button */
@@ -258,33 +290,56 @@ header {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+
+  header {
+    position: relative; /* Allows absolute positioning of child elements */
+    padding-top: 3rem;  /* Adds space for the .az-index element above the header text */
+  }
+  
+  .az-index {
+    position: absolute;
+    top: 5%;            /* Align to the very top of the header */
+    left: 50%;         /* Move to the horizontal center */
+    transform: translateX(-50%); /* Center exactly by offsetting half its width */
+    margin: 0;         /* Remove any margins */
+    border:#ff6600;      /* Remove border if desired on mobile */
+    height: 2rem;
+    width: 2rem;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+  }
+
   .modal-top {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .modal-image-container img {
-      max-width: 100%;
+    max-width: 100%;
   }
 
   .modal-map-container iframe {
-      width: 100%;
+    width: 100%;
   }
 
+
   .filters {
-      flex-direction: column;
-      gap: 0.5rem;
+    position: static;
+    top: auto;
   }
+
+
 
   .filters label,
   .filters select,
   .filters input {
-      width: 100%;
-      text-align: center;
+    width: 100%;
+    text-align: center;
   }
 
   .image-gallery {
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
 }
 
@@ -305,11 +360,12 @@ footer p {
 /* Fade-in Animation */
 @keyframes fadeIn {
   from {
-      opacity: 0;
-      transform: scale(0.9);
+    opacity: 0;
+    transform: scale(0.9);
   }
+
   to {
-      opacity: 1;
-      transform: scale(1);
+    opacity: 1;
+    transform: scale(1);
   }
 }

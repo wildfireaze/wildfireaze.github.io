@@ -1,0 +1,368 @@
+/* General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* About Us Button */
+.aboutUs {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.7rem 1.5rem;
+    background-color: #ff6600;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.en-index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    border: #e55a00;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+
+.aboutUs:hover {
+    background-color: #e55a00;
+    transform: scale(1.05);
+}
+
+.en-index:hover {
+    transform: scale(1.55);
+}
+
+/* Main Container */
+.container {
+    padding: 1.5rem;
+}
+
+/* Filter Section */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 1rem;
+}
+
+.filters label {
+    font-size: 1rem;
+}
+
+.filters select,
+.filters input[type="date"] {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Reset Filters Button */
+#reset-filters {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    background-color: #ff6600;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#reset-filters:hover {
+    background-color: #e55a00;
+    transform: scale(1.05);
+}
+
+/* Image Gallery */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.image-item {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.image-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.image-item .info {
+    padding: 0.7rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #555;
+}
+
+.image-item:hover {
+    transform: scale(1.05);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal-content {
+    position: fixed;
+    /* or absolute, but fixed keeps it in place on scroll */
+    z-index: 1500;
+    background: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Moves the element left 50% and up 50% */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+    /* Optional: set a max width/height so it doesn’t overflow the screen */
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* or auto, if needed */
+}
+
+
+.modal-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px;
+    background: #f8f8f8;
+    border-bottom: 2px solid #ff6600;
+}
+
+/* Modal Image */
+.modal-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.modal-image-container img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+
+
+/* Modal Map */
+/* Modal Map Container */
+.modal-map-container {
+    flex: 1;
+    /* Take equal space in the flex container */
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    /* Set a fixed height for the container */
+}
+
+.modal-map-container iframe {
+    width: 100%;
+    height: 100%;
+    /* Fill the container */
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Modal Details */
+.modal-details {
+    padding: 20px;
+    font-size: 1rem;
+    color: #444;
+    line-height: 1;
+}
+
+/* Load More Button */
+.load-more-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+#loadMore {
+    padding: 0.7rem 1.5rem;
+    background-color: #ff6600;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#loadMore:hover {
+    background-color: #e55a00;
+    transform: scale(1.05);
+}
+
+/* Scroll to Top Button */
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s, visibility 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #e55a00;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        position: relative; /* Allows absolute positioning of child elements */
+        padding-top: 3rem;  /* Adds space for the .az-index element above the header text */
+      }
+      
+      .en-index {
+        position: absolute;
+        top: 5%;            /* Align to the very top of the header */
+        left: 50%;         /* Move to the horizontal center */
+        transform: translateX(-50%); /* Center exactly by offsetting half its width */
+        margin: 0;         /* Remove any margins */
+        border:#ff6600;      /* Remove border if desired on mobile */
+        height: 2rem;
+        width: 2rem;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 5px;
+      }
+
+    .modal-top {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .modal-image-container img {
+        max-width: 100%;
+    }
+
+    .modal-map-container iframe {
+        width: 100%;
+    }
+
+
+    .filters {
+        position: static;
+        top: auto;
+    }
+
+    .filters label,
+    .filters select,
+    .filters input {
+        width: 100%;
+        text-align: center;
+    }
+
+    .image-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 1rem;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

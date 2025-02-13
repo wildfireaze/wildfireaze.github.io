@@ -194,7 +194,6 @@ button:hover {
         padding: 1rem;
     }
 
-
     .navbar {
         position: static;
         top: auto;
@@ -204,8 +203,10 @@ button:hover {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
-    }
 
+    }
+    
+    
     section {
         padding: 1.5rem;
         scroll-margin-top:760px;

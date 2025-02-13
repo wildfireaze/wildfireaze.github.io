@@ -1,5 +1,5 @@
 // GLOBAL VARIABLES
-const placeholderImage = 'https://via.placeholder.com/200?text=Image+Not+Found'; // Placeholder for missing images
+const placeholderImage = 'https://via.placeholder.com/200?text=Şəkil+tapılmadı'; // Placeholder for missing images
 let originalImages = [];         // Stores the original image list
 let currentFilteredImages = [];  // Stores the currently filtered (or full) image list
 let sortDirection = 'ascending'; // Ascending or descending sort
@@ -183,7 +183,7 @@ function populateRegionsFromImages(images) {
   const regions = Array.from(regionSet).sort();
   
   const regionFilter = document.getElementById('filter-region');
-  regionFilter.innerHTML = '<option value="all">All</option>';
+  regionFilter.innerHTML = '<option value="all">Hamısı</option>';
   
   regions.forEach(region => {
     const option = document.createElement('option');
@@ -201,8 +201,8 @@ function populateSatelliteAndInstrument(images) {
   const instrumentFilter = document.getElementById('filter-instrument');
 
   // Clear existing options
-  satelliteFilter.innerHTML = '<option value="all">All</option>';
-  instrumentFilter.innerHTML = '<option value="all">All</option>';
+  satelliteFilter.innerHTML = '<option value="all">Hamısı</option>';
+  instrumentFilter.innerHTML = '<option value="all">Hamısı</option>';
 
   satelliteSet.forEach(satellite => {
     const option = document.createElement('option');
@@ -227,7 +227,7 @@ function displayImages(imageList) {
   gallery.innerHTML = '';
 
   if (!imageList.length) {
-    gallery.innerHTML = '<p>No images available to display.</p>';
+    gallery.innerHTML = '<p>Göstəriləcək şəkillər yoxdur.</p>';
     return;
   }
 
@@ -265,24 +265,24 @@ function showImageDetails(image) {
   modalInfo.innerHTML = `
     <div style="display: flex; flex-direction: row; justify-content: space-between;">
       <div>
-        <p><strong>Description:</strong> ${image.description}</p>
-        <p><strong>Coordinates:</strong> (${image.latitude}, ${image.longitude})</p>
-        <p><strong>City:</strong> ${image.city}</p>
-        <p><strong>District:</strong> ${image.district}</p>
-        <p><strong>Brightness:</strong> ${image.brightness}</p>
-        <p><strong>Scan:</strong> ${image.scan}</p>
-        <p><strong>Track:</strong> ${image.track}</p>
-        <p><strong>Acquisition Date:</strong> ${image.acq_date}</p>
+        <p><strong>Təsvir:</strong> ${image.description}</p>
+        <p><strong>Koordinatlar:</strong> (${image.latitude}, ${image.longitude})</p>
+        <p><strong>Şəhər:</strong> ${image.city}</p>
+        <p><strong>Rayon:</strong> ${image.district}</p>
+        <p><strong>Parlaqlıq:</strong> ${image.brightness}</p>
+        <p><strong>Skan:</strong> ${image.scan}</p>
+        <p><strong>İzləmə:</strong> ${image.track}</p>
+        <p><strong>Alınma tarixi:</strong> ${image.acq_date}</p>
       </div>
       <div>
-        <p><strong>Acquisition Time:</strong> ${image.acq_time}</p>
-        <p><strong>Satellite:</strong> ${image.satellite}</p>
-        <p><strong>Instrument:</strong> ${image.instrument}</p>
-        <p><strong>Confidence:</strong> ${image.confidence}</p>
-        <p><strong>Version:</strong> ${image.version}</p>
-        <p><strong>Bright T31:</strong> ${image.bright_t31}</p>
+        <p><strong>Alınma vaxtı:</strong> ${image.acq_time}</p>
+        <p><strong>Peyk:</strong> ${image.satellite}</p>
+        <p><strong>Alət:</strong> ${image.instrument}</p>
+        <p><strong>Etibarlılıq:</strong> ${image.confidence}</p>
+        <p><strong>Versiya:</strong> ${image.version}</p>
+        <p><strong>Parlaq T31:</strong> ${image.bright_t31}</p>
         <p><strong>FRP:</strong> ${image.frp}</p>
-        <p><strong>Day/Night:</strong> ${image.daynight}</p>
+        <p><strong>Gündüz/Gecə:</strong> ${image.daynight}</p>
       </div>
     </div>
   `;
@@ -308,7 +308,7 @@ function loadRegionData(callback) {
       callback(regionData);
     },
     error: function (error) {
-      console.error("Error loading regions CSV:", error);
+      console.error("Region CSV yüklənərkən xəta:", error);
     },
   });
 }
@@ -344,7 +344,7 @@ function populateRegions(regionData) {
   const citySet = new Set(regionData.map(region => region.City).filter(Boolean));
   const regionFilter = document.getElementById('filter-region');
   
-  regionFilter.innerHTML = '<option value="all">All</option>';
+  regionFilter.innerHTML = '<option value="all">Hamısı</option>';
   citySet.forEach(city => {
     const option = document.createElement('option');
     option.value = city;
@@ -362,7 +362,7 @@ function loadImageData(regionData) {
         latitude: parseFloat(row.LATITUDE),
         longitude: parseFloat(row.LONGITUDE),
         src: row.PHOTO_URL ? row.PHOTO_URL.trim() : placeholderImage,
-        description: `Image from coordinates (${row.LATITUDE}, ${row.LONGITUDE})`,
+        description: `Koordinatlardan şəkil (${row.LATITUDE}, ${row.LONGITUDE})`,
         brightness: row.brightness,
         scan: row.scan,
         track: row.track,
@@ -417,11 +417,10 @@ function loadImageData(regionData) {
       toggleLoadMoreButton();
     },
     error: function (error) {
-      console.error("Error loading images CSV:", error);
+      console.error("Şəkillərin CSV faylını yükləyərkən xəta:", error);
     },
   });
 }
-
 
 // Finally, load region data, then load images
 loadRegionData(regionData => {
