@@ -7,6 +7,7 @@ let filterRegion = 'all';
 let filterDateRange = { start: null, end: null }; // Date range filter
 let filterSatellite = 'all';
 let filterInstrument = 'all';
+let currentModalImageData = null;
 let currentPage = 1;
 const pageSize = 10;            // Number of images per page
 
@@ -175,6 +176,119 @@ document.getElementById('filter-instrument').addEventListener('change', (e) => {
   applyFiltersAndSorting(originalImages);
 });
 
+
+
+// New: Download both image and info as a ZIP
+document.getElementById("downloadBothBtn").addEventListener("click", async () => {
+  // Get the region name from current image data (or use "Unknown")
+  let regionName = currentModalImageData && currentModalImageData.city ? currentModalImageData.city : "Unknown";
+  let imageFilename = `imageFrom${regionName}.jpg`;
+  let infoFilename = `infoFrom${regionName}.txt`;
+
+  // Get the text from the modal info section
+  const modalInfo = document.getElementById("modal-info");
+  const infoText = modalInfo.innerText || modalInfo.textContent;
+
+  // Create a new zip instance
+  const zip = new JSZip();
+
+  try {
+    // Fetch the image as a blob
+    const response = await fetch(currentModalImageData.src);
+    if (!response.ok) throw new Error("Network response was not ok");
+    const imageBlob = await response.blob();
+    // Add the image blob to the zip
+    zip.file(imageFilename, imageBlob);
+  } catch (error) {
+    console.error("Error fetching image:", error);
+    // Optionally add a placeholder message if image fetch fails
+    zip.file(imageFilename, "Image could not be fetched.");
+  }
+
+  // Add the info text to the zip
+  zip.file(infoFilename, infoText);
+
+  // Generate the zip file and trigger its download
+  zip.generateAsync({ type: "blob" }).then((content) => {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(content);
+    a.download = `downloadedDataFrom${regionName}.zip`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+  });
+});
+
+
+
+document.getElementById("downloadFilteredBtn").addEventListener("click", async () => {
+  const zip = new JSZip();
+  const images = currentFilteredImages; // the filtered images array
+
+  if (!images.length) {
+    alert("No images available for download.");
+    return;
+  }
+
+  // Process each image and its info
+  const promises = images.map(async (image, index) => {
+    // Use the city as region name or default to "Unknown"
+    const regionName = image.city ? image.city : "Unknown";
+    // Build unique file names for the image and its info
+    const imageFileName = `imageFrom(${regionName})_${index + 1}.jpg`;
+    const infoFileName = `infoFrom(${regionName})_${index + 1}.txt`;
+
+    // Construct the info text using image properties
+    const infoText = [
+      `Description: ${image.description}\n`,
+      `Coordinates: ${image.latitude}, ${image.longitude}\n`,
+      `City: ${image.city}\n`,
+      `District: ${image.district}\n`,
+      `Brightness: ${image.brightness}\n`,
+      `Scan: ${image.scan}\n`,
+      `Track: ${image.track}\n`,
+      `Acquisition Date: ${image.acq_date}\n`,
+      `Acquisition Time: ${image.acq_time}\n`,
+      `Satellite: ${image.satellite}\n`,
+      `Instrument: ${image.instrument}\n`,
+      `Confidence: ${image.confidence}\n`,
+      `Version: ${image.version}\n`,
+      `Bright T31: ${image.bright_t31}\n`,
+      `FRP: ${image.frp}\n`,
+      `Day/Night: ${image.daynight}\n`
+    ].join("\n");
+
+    try {
+      const response = await fetch(image.src);
+      if (!response.ok) {
+        throw new Error("Image fetch failed");
+      }
+      const blob = await response.blob();
+      zip.file(imageFileName, blob);
+    } catch (error) {
+      console.error(`Error fetching image ${image.src}:`, error);
+      // Add a text file noting the failure instead of an image
+      zip.file(imageFileName, "Image could not be fetched.");
+    }
+    zip.file(infoFileName, infoText);
+  });
+
+  // Wait for all image fetches and file additions to complete
+  await Promise.all(promises);
+
+  // Generate the zip file and trigger its download
+  zip.generateAsync({ type: "blob" }).then((content) => {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(content);
+    a.download = "filtered_download.zip";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+  });
+});
+
 /* ---------------------------------------
    POPULATE FILTER DROPDOWNS
 ---------------------------------------- */
@@ -262,11 +376,17 @@ function showImageDetails(image) {
 
   modal.style.display = 'block';
   modalImage.src = image.src;
+  // Indicate that the image is clickable
+  modalImage.style.cursor = "pointer";
+  // Add click event to open the image in a new tab
+  modalImage.onclick = () => window.open(image.src, '_blank');
+  currentModalImageData = image;
+
   modalInfo.innerHTML = `
     <div style="display: flex; flex-direction: row; justify-content: space-between;">
       <div>
         <p><strong>Description:</strong> ${image.description}</p>
-        <p><strong>Coordinates:</strong> (${image.latitude}, ${image.longitude})</p>
+        <p><strong>Coordinates:</strong> ${image.latitude}, ${image.longitude}</p>
         <p><strong>City:</strong> ${image.city}</p>
         <p><strong>District:</strong> ${image.district}</p>
         <p><strong>Brightness:</strong> ${image.brightness}</p>
@@ -362,7 +482,7 @@ function loadImageData(regionData) {
         latitude: parseFloat(row.LATITUDE),
         longitude: parseFloat(row.LONGITUDE),
         src: row.PHOTO_URL ? row.PHOTO_URL.trim() : placeholderImage,
-        description: `Image from coordinates (${row.LATITUDE}, ${row.LONGITUDE})`,
+        description: `Image from coordinates ${row.LATITUDE}, ${row.LONGITUDE}`,
         brightness: row.brightness,
         scan: row.scan,
         track: row.track,

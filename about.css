@@ -135,23 +135,7 @@ footer p {
     margin: 0;
 }
 
-/* Button Styles for Improved UX */
-button {
-    padding: 0.7rem 1.5rem;
-    background-color: #ff6600;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
 
-button:hover {
-    background-color: #e55a00;
-    transform: scale(1.05);
-}
 
 .divForDownload {
     display: flex;
@@ -161,25 +145,26 @@ button:hover {
 
 
 /* Scroll to Top Button Styles */
-#scrollToTopBtn {
-    display: none; /* Hidden initially */
+#scrollToTopBtn{
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 50px;
     height: 50px;
+    width: 50px;
+    font-size: 24px;
     background-color: #ff6600;
     color: white;
     border: none;
     border-radius: 50%;
-    font-size: 24px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: opacity 0.3s, visibility 0.3s;
-    line-height: 50px;
-    text-align: center;
-    padding: 0;
+    display: flex;           
+    justify-content: center;
+    align-items: center;
 }
+  
+  
 
 #scrollToTopBtn:hover {
     background-color: #e55a00;

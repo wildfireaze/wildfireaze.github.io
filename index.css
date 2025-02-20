@@ -134,11 +134,12 @@ header {
   border-radius: 8px 8px 0 0;
 }
 
+
 .image-item .info {
   padding: 0.7rem;
   text-align: center;
   font-size: 1rem;
-  color: #555;
+  color: black;
 }
 
 .image-item:hover {
@@ -205,6 +206,42 @@ header {
   transition: transform 0.3s ease;
 }
 
+.modal-image-container img:hover {
+  transform: scale(1.02);
+}
+
+.modal-download-btn {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background-color: #ff6600;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-download-both-btn {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background-color: #ff6600;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-download-btn:hover {
+  background-color: #e55a00;
+  transform: scale(1.05);
+}
 
 
 /* Modal Map */
@@ -233,6 +270,7 @@ header {
 /* Modal Details */
 .modal-details {
   padding: 20px;
+  padding-top: 0px;
   font-size: 1rem;
   color: #444;
   line-height: 1;
@@ -270,6 +308,7 @@ header {
   right: 20px;
   width: 50px;
   height: 50px;
+  font-size: 24px;
   background-color: #ff6600;
   color: white;
   border: none;
@@ -342,6 +381,7 @@ header {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
 }
+
 
 footer {
   text-align: center;
