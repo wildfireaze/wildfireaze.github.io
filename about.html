@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
     <link rel="stylesheet" href="about.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -30,12 +32,14 @@
     </nav>
 
 
-        <!-- ADA Logo Section -->
-        <div class="adaLogoDiv">
-            <a href="https://www.ada.edu.az/en" target="_blank" rel="noopener">
-                <img class="adaLogo" src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adalogonew.png" alt="ADA University Logo">            
-            </a>
-        </div>
+    <!-- ADA Logo Section -->
+    <div class="adaLogoDiv">
+        <a href="https://www.ada.edu.az/en" target="_blank" rel="noopener">
+            <img class="adaLogo" src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adalogonew.png"
+                alt="ADA University Logo">
+        </a>
+    </div>
+
 
 
     <!-- About Dataset Section -->
@@ -44,18 +48,78 @@
         <p>
             The dataset contains wildfire images collected from satellite sources and includes metadata such as
             acquisition dates, regions, satellite names, and instruments used. This dataset is essential for wildfire
-            analysis and research in Azerbaijan.
+            analysis and research in Azerbaijan. Since such a project had never been done in Azerbaijan before, creating
+            a database was challenging and had to be done from scratch.
+            Firstly the team contacted related organizations from Azerbaijan to gather any data that might contribute to
+            the project however there were no results.
+            Later the team requested NASA FIRMS fire alerts from multiple satellite instruments to get geospatial data
+            for detecting fire events. NASA sent csv
+            Sentinel-2 satellite imagery corresponding to fire alerts was extracted, with the QA band applied for cloud
+            masking and RGB bands used to display the final image.
+            The processing pipeline was optimized to handle over 10,700 fire alerts concurrently. Finally, images were
+            manually labeled based on visible fire plumes and smoke patterns to provide ground truth data for future
+            model training and validation.
+            The dataset contains 582 images which are 512x512. Acquisition Date, by which satellite the photo is taken,
+            location, and other information can be found inside the dataset. The dataset has images
+            that contains same fire from different angles and timelines.
         </p>
+
+        <!-- Adding Images -->
+        <div class="image-container">
+            <img src="Photos/39.3387_46.5278_77.png" alt="Wildfire Image" class="dataset-image">
+            <img src="PhotoFile4Wildfire/38.91668_48.57358_n.png" alt="Wildfire Image" class="dataset-image">
+        </div>
+
+        <!-- Text below the images -->
+        <div class="image-text">
+            <p>Example images from dataset.</p>
+        </div>
+
         <p>
-            It can be downloaded as a .zip file that includes one folder with images and a CSV file containing
+            The dataset can be downloaded as a .zip file that includes one folder with images and a CSV file containing
             comprehensive metadata about the collected images.
         </p>
         <div class="divForDownload">
-            <a class="aForDownload" href="https://github.com/wildfireaze/wildfireaze.github.io/raw/refs/heads/main/WildfireDataset.zip?download=">
-                Dataset <i class="fa-solid fa-circle-down"></i>
+            <a class="aForDownload"
+                href="https://github.com/wildfireaze/wildfireaze.github.io/raw/refs/heads/main/WildfireDataset.zip?download=">
+                Download Dataset
             </a>
         </div>
     </section>
+
+    <style>
+        /* Container for images */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            /* Center images horizontally */
+            gap: 50px;
+            /* Space between images */
+            margin-bottom: 20px;
+            /* Add space below the images for the text */
+        }
+
+        /* Image styling */
+        .dataset-image {
+            width: 1000%;
+            /* Adjust the width to fit images side by side */
+            max-width: 400px;
+            /* Limit image width */
+            height: auto;
+        }
+
+        /* Text below the images */
+        .image-text {
+            text-align: center;
+            margin-top: 20px;
+            /* Add margin to push text down below the images */
+        }
+
+        .image-text p {
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
 
     <!-- About Team Section -->
     <section id="about-team">
@@ -67,7 +131,12 @@
         </p>
         <p>
             The team specializes in software development, data visualization, and project management, contributing their
-            unique skills to deliver this impactful solution.
+            unique skills to deliver this impactful solution. Till now, Ahmad was involved in visualization of the
+            database on website,
+            Gunel did the data processing part, working with data given by NASA and turning it into usable data. Sahil
+            worked on synthetic wildfire
+            image creation with phyton for compensating lack of data and website design. Turgay mainly worked on
+            creation of model for wildfire detection from satiliste image.
         </p>
     </section>
 
@@ -93,17 +162,24 @@
             For inquiries or collaborations, feel free to contact us:
         </p>
         <ul>
-            <li>Email: <a href="mailto:wildfireaze@ada.edu.az">wildfireaze@ada.edu.az</a></li>
-            <li>Phone: +994 50 123 45 67</li>
+            <li>Email: <a href="sdpproject2025@gmail.com">sdpproject2025@gmail.com</a></li>
+            <li>Phone: +994 55 930 94 64</li>
             <li>Address: ADA University, Baku, Azerbaijan</li>
         </ul>
         <p>
-            Follow us on social media for updates and news:
+            Github Repository of the project: <a
+                href="https://github.com/gunelaliyevaa/wildfire-detection-using-satellite-imagery.git">Github</a>
+
+        </p>
+        <p>
+            LinkedIn:
+
         </p>
         <ul>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">LinkedIn</a></li>
+            <li><a href="https://az.linkedin.com/in/ahmad-huseynli">Ahmad Huseynli</a> </li>
+            <li><a href="www.linkedin.com/in/gunel-aliyevaa">Gunel Aliyeva</a> </li>
+            <li><a href="https://www.linkedin.com/in/sahil-qulizad%C9%99">Sahil Qulizade</a> </li>
+            <li><a href="https://www.linkedin.com/in/turqay-f%C9%99rhadl%C4%B1-ba420830b/">Turgay Farhadli</a> </li>
         </ul>
     </section>
 
@@ -111,19 +187,32 @@
     <section id="terms">
         <h2>Terms and Services</h2>
         <p>
-            By accessing and using this website, you agree to the following terms:
+            MIT License
+            <br></br>
+            Copyright (c) 2025
+            Ahmad Huseynli, Sahil Gulizada, Gunel Aliyeva, Turgay Farhadli
+        <br></br>
+            Permission is hereby granted, free of charge, to any person obtaining a copy
+            of this software and associated documentation files (the "Software"), to deal
+            in the Software without restriction, including without limitation the rights
+            to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+            copies of the Software, and to permit persons to whom the Software is
+            furnished to do so, subject to the following conditions:
+            <br></br>
+
+            The above copyright notice and this permission notice shall be included
+            in all copies or substantial portions of the Software.
+            <br></br>
+
+            THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+            OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+            FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+            AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+            LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+            OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+            THE SOFTWARE.
+
         </p>
-        <ul>
-            <li>The dataset provided on this platform is for educational and research purposes only.</li>
-            <li>
-                Proper attribution is required when using the dataset for any publications or projects. Please cite the
-                authors and ADA University as the source.
-            </li>
-            <li>
-                We do not guarantee the accuracy or completeness of the data and shall not be held liable for any
-                damages resulting from its use.
-            </li>
-        </ul>
     </section>
 
     <button id="scrollToTopBtn" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></button>
@@ -136,8 +225,8 @@
     </footer>
 
 
-       <!-- Download Confirmation Modal -->
-       <div id="downloadModal" class="modal">
+    <!-- Download Confirmation Modal -->
+    <div id="downloadModal" class="modal">
         <div class="modal-content">
             <h2>Download Dataset</h2>
             <p>Do you agree with the <a id="termsLink" class="aForDownload" href="#terms">Terms and Conditions</a>?</p>

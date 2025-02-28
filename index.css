@@ -451,6 +451,7 @@ button:disabled {
 #confirmDownload:disabled,
 #closeDownloadModal:disabled {
   background-color: gray !important;
+  cursor: not-allowed !important;
 }
 
 /* Hover effects for active buttons */
