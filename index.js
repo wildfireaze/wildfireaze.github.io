@@ -15,7 +15,7 @@ const pageSize = 10;            // Number of images per page
 const loadMore = document.getElementById("loadMore");
 const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
-// MODAL ELEMENT
+// MODAL ELEMENT for image details
 const modal = document.getElementById("image-modal");
 
 /* ---------------------------------------
@@ -23,16 +23,13 @@ const modal = document.getElementById("image-modal");
 ---------------------------------------- */
 function incrementPage() {
   currentPage += 1;
-  // Display the newly extended slice of filtered images
   displayImages(currentFilteredImages.slice(0, currentPage * pageSize));
   toggleLoadMoreButton();
 }
 
-// Attach the event listener to the button (only once!)
 loadMore.addEventListener("click", incrementPage);
 
 function toggleLoadMoreButton() {
-  // If there are more images left to show, display the button
   if (currentFilteredImages.length > currentPage * pageSize) {
     loadMore.style.display = 'block';
   } else {
@@ -40,7 +37,6 @@ function toggleLoadMoreButton() {
   }
 }
 
-// Show or hide the "scroll to top" button when scrolling
 window.onscroll = function() {
   if (document.documentElement.scrollTop > 300) {
     scrollToTopBtn.style.display = "block";
@@ -54,7 +50,7 @@ function scrollToTop() {
 }
 
 /* ---------------------------------------
-   MODAL FUNCTIONS
+   MODAL FUNCTIONS FOR IMAGE DETAILS
 ---------------------------------------- */
 function openModal(imageSrc, mapSrc, details) {
   document.getElementById("modal-image").src = imageSrc;
@@ -63,7 +59,6 @@ function openModal(imageSrc, mapSrc, details) {
   modal.style.display = "flex"; // Show modal
 }
 
-// Close the modal when clicking on the dark background
 modal.addEventListener("click", function(event) {
   if (event.target === modal) {
     modal.style.display = "none"; // Hide modal
@@ -134,18 +129,13 @@ function applyFiltersAndSorting(images) {
     return sortDirection === 'ascending' ? dateA - dateB : dateB - dateA;
   });
 
-  // Reset pagination and update the global filtered images variable
+  // Reset pagination and update filtered images
   currentPage = 1;
   currentFilteredImages = filteredImages;
-
-  // Display only the items for the first page
   displayImages(currentFilteredImages.slice(0, currentPage * pageSize));
-
-  // Toggle the "Load More" button visibility based on data availability
   toggleLoadMoreButton();
 }
 
-// Add event listeners for filters and sorting
 document.getElementById('sort-direction').addEventListener('change', (e) => {
   sortDirection = e.target.value;
   applyFiltersAndSorting(originalImages);
@@ -176,39 +166,30 @@ document.getElementById('filter-instrument').addEventListener('change', (e) => {
   applyFiltersAndSorting(originalImages);
 });
 
-
-
-// New: Download both image and info as a ZIP
-document.getElementById("downloadBothBtn").addEventListener("click", async () => {
-  // Get the region name from current image data (or use "Unknown")
+/* ---------------------------------------
+   DOWNLOAD FUNCTIONS
+---------------------------------------- */
+async function handleDownloadBoth() {
   let regionName = currentModalImageData && currentModalImageData.city ? currentModalImageData.city : "Unknown";
   let imageFilename = `imageFrom${regionName}.jpg`;
   let infoFilename = `infoFrom${regionName}.txt`;
 
-  // Get the text from the modal info section
   const modalInfo = document.getElementById("modal-info");
   const infoText = modalInfo.innerText || modalInfo.textContent;
-
-  // Create a new zip instance
   const zip = new JSZip();
 
   try {
-    // Fetch the image as a blob
     const response = await fetch(currentModalImageData.src);
     if (!response.ok) throw new Error("Network response was not ok");
     const imageBlob = await response.blob();
-    // Add the image blob to the zip
     zip.file(imageFilename, imageBlob);
   } catch (error) {
     console.error("Error fetching image:", error);
-    // Optionally add a placeholder message if image fetch fails
     zip.file(imageFilename, "Image could not be fetched.");
   }
 
-  // Add the info text to the zip
   zip.file(infoFilename, infoText);
 
-  // Generate the zip file and trigger its download
   zip.generateAsync({ type: "blob" }).then((content) => {
     const a = document.createElement("a");
     a.href = URL.createObjectURL(content);
@@ -218,28 +199,22 @@ document.getElementById("downloadBothBtn").addEventListener("click", async () =>
     document.body.removeChild(a);
     URL.revokeObjectURL(a.href);
   });
-});
+}
 
-
-
-document.getElementById("downloadFilteredBtn").addEventListener("click", async () => {
+async function handleDownloadFiltered() {
   const zip = new JSZip();
-  const images = currentFilteredImages; // the filtered images array
+  const images = currentFilteredImages;
 
   if (!images.length) {
     alert("No images available for download.");
     return;
   }
 
-  // Process each image and its info
   const promises = images.map(async (image, index) => {
-    // Use the city as region name or default to "Unknown"
     const regionName = image.city ? image.city : "Unknown";
-    // Build unique file names for the image and its info
     const imageFileName = `imageFrom(${regionName})_${index + 1}.jpg`;
     const infoFileName = `infoFrom(${regionName})_${index + 1}.txt`;
 
-    // Construct the info text using image properties
     const infoText = [
       `Description: ${image.description}\n`,
       `Coordinates: ${image.latitude}, ${image.longitude}\n`,
@@ -261,23 +236,18 @@ document.getElementById("downloadFilteredBtn").addEventListener("click", async (
 
     try {
       const response = await fetch(image.src);
-      if (!response.ok) {
-        throw new Error("Image fetch failed");
-      }
+      if (!response.ok) throw new Error("Image fetch failed");
       const blob = await response.blob();
       zip.file(imageFileName, blob);
     } catch (error) {
       console.error(`Error fetching image ${image.src}:`, error);
-      // Add a text file noting the failure instead of an image
       zip.file(imageFileName, "Image could not be fetched.");
     }
     zip.file(infoFileName, infoText);
   });
 
-  // Wait for all image fetches and file additions to complete
   await Promise.all(promises);
 
-  // Generate the zip file and trigger its download
   zip.generateAsync({ type: "blob" }).then((content) => {
     const a = document.createElement("a");
     a.href = URL.createObjectURL(content);
@@ -286,6 +256,67 @@ document.getElementById("downloadFilteredBtn").addEventListener("click", async (
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(a.href);
+  });
+}
+
+/* ---------------------------------------
+   DOWNLOAD CONFIRMATION MODAL
+---------------------------------------- */
+// This block attaches event listeners for both download buttons so that
+// the confirmation modal appears before any download action.
+document.addEventListener("DOMContentLoaded", function () {
+  // Make sure these IDs match your HTML
+  const downloadModal = document.getElementById("modal-download-conf");
+  const downloadBothBtn = document.getElementById("downloadBothBtn");
+  const downloadFilteredBtn = document.getElementById("downloadFilteredBtn");
+  const confirmDownloadButton = document.getElementById("confirmDownload");
+  const agreeCheckbox = document.getElementById("agreeCheckbox");
+  const closeModalButton = document.getElementById("closeDownloadModal");
+  const termsLink = document.getElementById("termsLink");
+
+  let currentDownloadType = ""; // "both" or "filtered"
+
+  downloadBothBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    currentDownloadType = "both";
+    agreeCheckbox.checked = false;
+    confirmDownloadButton.disabled = true;
+    downloadModal.style.display = "block";
+  });
+
+  downloadFilteredBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    currentDownloadType = "filtered";
+    agreeCheckbox.checked = false;
+    confirmDownloadButton.disabled = true;
+    downloadModal.style.display = "block";
+  });
+
+  agreeCheckbox.addEventListener("change", function () {
+    confirmDownloadButton.disabled = !this.checked;
+  });
+
+  confirmDownloadButton.addEventListener("click", function () {
+    downloadModal.style.display = "none";
+    if (currentDownloadType === "both") {
+      handleDownloadBoth();
+    } else if (currentDownloadType === "filtered") {
+      handleDownloadFiltered();
+    }
+  });
+
+  closeModalButton.addEventListener("click", function () {
+    downloadModal.style.display = "none";
+  });
+
+  window.addEventListener("click", function (event) {
+    if (event.target === downloadModal) {
+      downloadModal.style.display = "none";
+    }
+  });
+
+  termsLink.addEventListener("click", function () {
+    downloadModal.style.display = "none";
   });
 });
 
@@ -314,7 +345,6 @@ function populateSatelliteAndInstrument(images) {
   const satelliteFilter = document.getElementById('filter-satellite');
   const instrumentFilter = document.getElementById('filter-instrument');
 
-  // Clear existing options
   satelliteFilter.innerHTML = '<option value="all">All</option>';
   instrumentFilter.innerHTML = '<option value="all">All</option>';
 
@@ -353,7 +383,7 @@ function displayImages(imageList) {
     img.src = image.src || placeholderImage;
     img.alt = image.description;
     img.onerror = () => {
-      img.src = placeholderImage; // Use placeholder for missing images
+      img.src = placeholderImage;
       console.warn(`Image failed to load: ${image.src}`);
     };
     img.onclick = () => showImageDetails(image);
@@ -376,9 +406,7 @@ function showImageDetails(image) {
 
   modal.style.display = 'block';
   modalImage.src = image.src;
-  // Indicate that the image is clickable
   modalImage.style.cursor = "pointer";
-  // Add click event to open the image in a new tab
   modalImage.onclick = () => window.open(image.src, '_blank');
   currentModalImageData = image;
 
@@ -459,7 +487,6 @@ function updateCityDistrict(images, regionData) {
   });
 }
 
-// Populate region filter if needed
 function populateRegions(regionData) {
   const citySet = new Set(regionData.map(region => region.City).filter(Boolean));
   const regionFilter = document.getElementById('filter-region');
@@ -486,7 +513,7 @@ function loadImageData(regionData) {
         brightness: row.brightness,
         scan: row.scan,
         track: row.track,
-        acq_date: row.acq_date, // Already in YYYY-MM-DD format
+        acq_date: row.acq_date,
         acq_time: row.acq_time,
         satellite: row.satellite,
         instrument: row.instrument,
@@ -495,26 +522,17 @@ function loadImageData(regionData) {
         bright_t31: row.bright_t31,
         frp: row.frp,
         daynight: row.daynight,
-        city: null,     // Will be updated below
-        district: null, // Will be updated below
+        city: null,
+        district: null,
       }));
 
-      // Update city and district info for all images using the region coordinates
       updateCityDistrict(images, regionData);
-
-      // Store full dataset in originalImages and initialize currentFilteredImages
       originalImages = images;
       currentFilteredImages = images;
-
-      // Populate the filter dropdowns
       populateSatelliteAndInstrument(images);
       populateRegionsFromImages(images);
 
-      // Setup date range limits
-      const acqDates = images
-        .map(image => image.acq_date)
-        .filter(Boolean)
-        .sort();
+      const acqDates = images.map(image => image.acq_date).filter(Boolean).sort();
       const minDate = acqDates[0];
       const maxDate = acqDates[acqDates.length - 1];
 
@@ -526,13 +544,11 @@ function loadImageData(regionData) {
       dateRangeEndInput.min = minDate;
       dateRangeEndInput.max = maxDate;
 
-      // Set the input values and update our filterDateRange object
       dateRangeStartInput.value = minDate;
       dateRangeEndInput.value = maxDate;
       filterDateRange.start = minDate;
       filterDateRange.end = maxDate;
 
-      // Display the first page of images
       displayImages(images.slice(0, currentPage * pageSize));
       toggleLoadMoreButton();
     },
@@ -542,8 +558,7 @@ function loadImageData(regionData) {
   });
 }
 
-
-// Finally, load region data, then load images
+// Finally, load region data then images
 loadRegionData(regionData => {
   loadImageData(regionData);
 });
