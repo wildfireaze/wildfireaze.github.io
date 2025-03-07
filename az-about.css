@@ -28,10 +28,11 @@ header h1 {
     padding: 0.7rem 1.5rem;
     background-color: #ff6600;
     color: white;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
     border-radius: 5px;
+    border-style: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -135,58 +136,36 @@ footer p {
     margin: 0;
 }
 
-/* Button Styles for Improved UX */
-button {
-    padding: 0.7rem 1.5rem;
-    background-color: #ff6600;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-button:hover {
-    background-color: #e55a00;
-    transform: scale(1.05);
-}
-
+/* Download Container */
 .divForDownload {
     display: flex;
     justify-content: end;
-
 }
-
 
 /* Scroll to Top Button Styles */
 #scrollToTopBtn {
-    display: none; /* Hidden initially */
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 50px;
     height: 50px;
+    width: 50px;
+    font-size: 24px;
     background-color: #ff6600;
     color: white;
     border: none;
     border-radius: 50%;
-    font-size: 24px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: opacity 0.3s, visibility 0.3s;
-    line-height: 50px;
-    text-align: center;
-    padding: 0;
+    display: flex;           
+    justify-content: center;
+    align-items: center;
 }
 
 #scrollToTopBtn:hover {
     background-color: #e55a00;
     transform: scale(1.05);
 }
-
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -197,19 +176,17 @@ button:hover {
     .navbar {
         position: static;
         top: auto;
-      }
+    }
 
     .navbar ul {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
-
     }
-    
-    
+
     section {
         padding: 1.5rem;
-        scroll-margin-top:760px;
+        scroll-margin-top: 760px;
         margin: 1rem auto;
     }
 
@@ -225,3 +202,84 @@ button:hover {
         font-size: 0.9rem;
     }
 }
+
+/* Modal Styling */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  }
+  
+  /* Modal Content Styling */
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto; /* Centering the modal */
+    padding: 20px;
+    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Checkbox Styling */
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  /* Disabled Button Styling */
+  button:disabled {
+    background-color: gray !important;
+    cursor: not-allowed !important;
+  }
+  
+  /* Button Styling for Confirm & Close Buttons */
+  #confirmDownload, #closeDownloadModal {
+    margin: 10px;
+    background-color: #ff6600 !important;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: 400 !important;
+    cursor: pointer;
+    border-style: none;
+}
+
+#closeModal{
+    font-weight: 400 !important;
+}
+
+/* Disabled state for buttons */
+#confirmDownload:disabled,
+#closeDownloadModal:disabled {
+    background-color: gray !important;
+    transform: none !important;
+}
+
+/* Hover Effects for Active Buttons */
+#confirmDownload:hover:not(:disabled),
+#closeDownloadModal:hover:not(:disabled) {
+    background-color: #e55a00;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Link Styling Inside Modal */
+.modal-content a.aForDownload {
+    padding: 4px 7px;
+    width: auto;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 400 !important;
+    background-color: transparent;
+    color: #ff6600;
+    border-style: none !important;
+}
+
+.modal-content a.aForDownload:hover {
+    text-decoration: underline;
+  }
+  

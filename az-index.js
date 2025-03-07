@@ -1,37 +1,35 @@
-// GLOBAL VARIABLES
-const placeholderImage = 'https://via.placeholder.com/200?text=Şəkil+tapılmadı'; // Placeholder for missing images
-let originalImages = [];         // Stores the original image list
-let currentFilteredImages = [];  // Stores the currently filtered (or full) image list
-let sortDirection = 'ascending'; // Ascending or descending sort
+// QLOBAL DƏYİŞƏNLƏR
+const placeholderImage = 'https://via.placeholder.com/200?text=Şəkil+Tapılmadı'; // Tapılmayan şəkillər üçün yer tutucu
+let originalImages = [];         // Əsas şəkil siyahısını saxlayır
+let currentFilteredImages = [];  // Hazırda filtrələnmiş (və ya tam) şəkil siyahısını saxlayır
+let sortDirection = 'ascending'; // Artan və ya azalan sıralama
 let filterRegion = 'all';
-let filterDateRange = { start: null, end: null }; // Date range filter
+let filterDateRange = { start: null, end: null }; // Tarix aralığı üzrə filtr
 let filterSatellite = 'all';
 let filterInstrument = 'all';
+let currentModalImageData = null;
 let currentPage = 1;
-const pageSize = 10;            // Number of images per page
+const pageSize = 10;            // Səhifədəki şəkil sayı
 
-// BUTTON ELEMENTS
+// DÜYMƏLƏR
 const loadMore = document.getElementById("loadMore");
 const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
-// MODAL ELEMENT
+// Şəkil təfərrüatları üçün modal element
 const modal = document.getElementById("image-modal");
 
 /* ---------------------------------------
-   LOAD MORE & SCROLL-TO-TOP FUNCTIONALITY
+   DAHA ÇOX YÜKLƏ & YUXARIYA SKROL ET FUNKSİYALILIYI
 ---------------------------------------- */
 function incrementPage() {
   currentPage += 1;
-  // Display the newly extended slice of filtered images
   displayImages(currentFilteredImages.slice(0, currentPage * pageSize));
   toggleLoadMoreButton();
 }
 
-// Attach the event listener to the button (only once!)
 loadMore.addEventListener("click", incrementPage);
 
 function toggleLoadMoreButton() {
-  // If there are more images left to show, display the button
   if (currentFilteredImages.length > currentPage * pageSize) {
     loadMore.style.display = 'block';
   } else {
@@ -39,7 +37,6 @@ function toggleLoadMoreButton() {
   }
 }
 
-// Show or hide the "scroll to top" button when scrolling
 window.onscroll = function() {
   if (document.documentElement.scrollTop > 300) {
     scrollToTopBtn.style.display = "block";
@@ -53,19 +50,18 @@ function scrollToTop() {
 }
 
 /* ---------------------------------------
-   MODAL FUNCTIONS
+   ŞƏKİL TƏFƏRRÜATLARI ÜÇÜN MODAL FUNKSİYALAR
 ---------------------------------------- */
 function openModal(imageSrc, mapSrc, details) {
   document.getElementById("modal-image").src = imageSrc;
   document.getElementById("map-frame").src = mapSrc;
   document.getElementById("modal-info").innerHTML = details;
-  modal.style.display = "flex"; // Show modal
+  modal.style.display = "flex"; // modalu göstər
 }
 
-// Close the modal when clicking on the dark background
 modal.addEventListener("click", function(event) {
   if (event.target === modal) {
-    modal.style.display = "none"; // Hide modal
+    modal.style.display = "none"; // modalu gizlət
   }
 });
 
@@ -74,7 +70,7 @@ function closeModal() {
 }
 
 /* ---------------------------------------
-   FORMAT DATE UTILITY
+   TARİXİ FORMATLAMA FUNKSİYASI
 ---------------------------------------- */
 function formatDate(date) {
   const d = new Date(date);
@@ -89,19 +85,19 @@ function formatDate(date) {
 }
 
 /* ---------------------------------------
-   FILTERS AND SORTING
+   FİLTRLƏR VƏ SIRALAMA
 ---------------------------------------- */
 function applyFiltersAndSorting(images) {
   let filteredImages = [...images];
 
-  // Filter by region
+  // Bölgəyə görə filtr et
   if (filterRegion !== 'all') {
     filteredImages = filteredImages.filter(
       image => image.city === filterRegion || image.district === filterRegion
     );
   }
 
-  // Filter by date range
+  // Tarix aralığına görə filtr et
   if (filterDateRange.start && filterDateRange.end) {
     filteredImages = filteredImages.filter(image => {
       const imageDate = new Date(image.acq_date);
@@ -112,39 +108,34 @@ function applyFiltersAndSorting(images) {
     });
   }
 
-  // Filter by satellite
+  // Peykə görə filtr et
   if (filterSatellite !== 'all') {
     filteredImages = filteredImages.filter(
       image => image.satellite === filterSatellite
     );
   }
 
-  // Filter by instrument
+  // Alətə görə filtr et
   if (filterInstrument !== 'all') {
     filteredImages = filteredImages.filter(
       image => image.instrument === filterInstrument
     );
   }
 
-  // Sort by acquisition date
+  // Alınma tarixinə görə sırala
   filteredImages.sort((a, b) => {
     const dateA = new Date(a.acq_date);
     const dateB = new Date(b.acq_date);
     return sortDirection === 'ascending' ? dateA - dateB : dateB - dateA;
   });
 
-  // Reset pagination and update the global filtered images variable
+  // Səhifələməni sıfırla və filtrələnmiş şəkilləri yenilə
   currentPage = 1;
   currentFilteredImages = filteredImages;
-
-  // Display only the items for the first page
   displayImages(currentFilteredImages.slice(0, currentPage * pageSize));
-
-  // Toggle the "Load More" button visibility based on data availability
   toggleLoadMoreButton();
 }
 
-// Add event listeners for filters and sorting
 document.getElementById('sort-direction').addEventListener('change', (e) => {
   sortDirection = e.target.value;
   applyFiltersAndSorting(originalImages);
@@ -176,7 +167,160 @@ document.getElementById('filter-instrument').addEventListener('change', (e) => {
 });
 
 /* ---------------------------------------
-   POPULATE FILTER DROPDOWNS
+   YÜKLƏMƏ FUNKSİYALARI
+---------------------------------------- */
+async function handleDownloadBoth() {
+  let regionName = currentModalImageData && currentModalImageData.city ? currentModalImageData.city : "Naməlum";
+  let imageFilename = `imageFrom${regionName}.jpg`;
+  let infoFilename = `infoFrom${regionName}.txt`;
+
+  const modalInfo = document.getElementById("modal-info");
+  const infoText = modalInfo.innerText || modalInfo.textContent;
+  const zip = new JSZip();
+
+  try {
+    const response = await fetch(currentModalImageData.src);
+    if (!response.ok) throw new Error("Şəbəkə cavabı düzgün deyildi");
+    const imageBlob = await response.blob();
+    zip.file(imageFilename, imageBlob);
+  } catch (error) {
+    console.error("Şəkil yüklənərkən xəta:", error);
+    zip.file(imageFilename, "Şəkil gətirilə bilmədi.");
+  }
+
+  zip.file(infoFilename, infoText);
+
+  zip.generateAsync({ type: "blob" }).then((content) => {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(content);
+    a.download = `downloadedDataFrom${regionName}.zip`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+  });
+}
+
+async function handleDownloadFiltered() {
+  const zip = new JSZip();
+  const images = currentFilteredImages;
+
+  if (!images.length) {
+    alert("Yükləmək üçün heç bir şəkil mövcud deyil.");
+    return;
+  }
+
+  const promises = images.map(async (image, index) => {
+    const regionName = image.city ? image.city : "Naməlum";
+    const imageFileName = `imageFrom(${regionName})_${index + 1}.jpg`;
+    const infoFileName = `infoFrom(${regionName})_${index + 1}.txt`;
+
+    const infoText = [
+      `Təsvir: ${image.description}\n`,
+      `Koordinatlar: ${image.latitude}, ${image.longitude}\n`,
+      `Şəhər: ${image.city}\n`,
+      `Rayon: ${image.district}\n`,
+      `Parlaqlıq: ${image.brightness}\n`,
+      `Scan: ${image.scan}\n`,
+      `Track: ${image.track}\n`,
+      `Alınma tarixi: ${image.acq_date}\n`,
+      `Alınma vaxtı: ${image.acq_time}\n`,
+      `Peyk: ${image.satellite}\n`,
+      `Alət: ${image.instrument}\n`,
+      `Etibar: ${image.confidence}\n`,
+      `Versiya: ${image.version}\n`,
+      `Bright T31: ${image.bright_t31}\n`,
+      `FRP: ${image.frp}\n`,
+      `Gündüz/Gecə: ${image.daynight}\n`
+    ].join("\n");
+
+    try {
+      const response = await fetch(image.src);
+      if (!response.ok) throw new Error("Şəkil gətirilməsi uğursuz oldu");
+      const blob = await response.blob();
+      zip.file(imageFileName, blob);
+    } catch (error) {
+      console.error(`Şəkil gətirərkən xəta ${image.src}:`, error);
+      zip.file(imageFileName, "Şəkil gətirilə bilmədi.");
+    }
+    zip.file(infoFileName, infoText);
+  });
+
+  await Promise.all(promises);
+
+  zip.generateAsync({ type: "blob" }).then((content) => {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(content);
+    a.download = "filtered_download.zip";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+  });
+}
+
+/* ---------------------------------------
+   YÜKLƏMƏ TƏSDİQ MODALI
+---------------------------------------- */
+// Bu blok, hər iki yükləmə düyməsi üçün hadisə dinləyicilərini əlavə edir ki, hər hansı yükləmə əməliyyatından əvvəl təsdiq modalı görünsün.
+document.addEventListener("DOMContentLoaded", function () {
+  // HTML-dəki ID-lərin uyğun gəldiyinə əmin olun
+  const downloadModal = document.getElementById("modal-download-conf");
+  const downloadBothBtn = document.getElementById("downloadBothBtn");
+  const downloadFilteredBtn = document.getElementById("downloadFilteredBtn");
+  const confirmDownloadButton = document.getElementById("confirmDownload");
+  const agreeCheckbox = document.getElementById("agreeCheckbox");
+  const closeModalButton = document.getElementById("closeDownloadModal");
+  const termsLink = document.getElementById("termsLink");
+
+  let currentDownloadType = ""; // "both" or "filtered"
+
+  downloadBothBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    currentDownloadType = "both";
+    agreeCheckbox.checked = false;
+    confirmDownloadButton.disabled = true;
+    downloadModal.style.display = "block";
+  });
+
+  downloadFilteredBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    currentDownloadType = "filtered";
+    agreeCheckbox.checked = false;
+    confirmDownloadButton.disabled = true;
+    downloadModal.style.display = "block";
+  });
+
+  agreeCheckbox.addEventListener("change", function () {
+    confirmDownloadButton.disabled = !this.checked;
+  });
+
+  confirmDownloadButton.addEventListener("click", function () {
+    downloadModal.style.display = "none";
+    if (currentDownloadType === "both") {
+      handleDownloadBoth();
+    } else if (currentDownloadType === "filtered") {
+      handleDownloadFiltered();
+    }
+  });
+
+  closeModalButton.addEventListener("click", function () {
+    downloadModal.style.display = "none";
+  });
+
+  window.addEventListener("click", function (event) {
+    if (event.target === downloadModal) {
+      downloadModal.style.display = "none";
+    }
+  });
+
+  termsLink.addEventListener("click", function () {
+    downloadModal.style.display = "none";
+  });
+});
+
+/* ---------------------------------------
+   FİLTR DÜŞƏNBƏLƏRİNİN DOLDURULMASI
 ---------------------------------------- */
 function populateRegionsFromImages(images) {
   const regionSet = new Set(images.map(image => image.city).filter(Boolean));
@@ -200,7 +344,6 @@ function populateSatelliteAndInstrument(images) {
   const satelliteFilter = document.getElementById('filter-satellite');
   const instrumentFilter = document.getElementById('filter-instrument');
 
-  // Clear existing options
   satelliteFilter.innerHTML = '<option value="all">Hamısı</option>';
   instrumentFilter.innerHTML = '<option value="all">Hamısı</option>';
 
@@ -220,14 +363,14 @@ function populateSatelliteAndInstrument(images) {
 }
 
 /* ---------------------------------------
-   DISPLAY IMAGES
+   ŞƏKİLLƏRİN GÖSTƏRİLMƏSİ
 ---------------------------------------- */
 function displayImages(imageList) {
   const gallery = document.getElementById('image-gallery');
   gallery.innerHTML = '';
 
   if (!imageList.length) {
-    gallery.innerHTML = '<p>Göstəriləcək şəkillər yoxdur.</p>';
+    gallery.innerHTML = '<p>Göstəriləcək heç bir şəkil mövcud deyil.</p>';
     return;
   }
 
@@ -239,8 +382,8 @@ function displayImages(imageList) {
     img.src = image.src || placeholderImage;
     img.alt = image.description;
     img.onerror = () => {
-      img.src = placeholderImage; // Use placeholder for missing images
-      console.warn(`Image failed to load: ${image.src}`);
+      img.src = placeholderImage;
+      console.warn(`Şəkil yüklənə bilmədi: ${image.src}`);
     };
     img.onclick = () => showImageDetails(image);
 
@@ -262,25 +405,29 @@ function showImageDetails(image) {
 
   modal.style.display = 'block';
   modalImage.src = image.src;
+  modalImage.style.cursor = "pointer";
+  modalImage.onclick = () => window.open(image.src, '_blank');
+  currentModalImageData = image;
+
   modalInfo.innerHTML = `
     <div style="display: flex; flex-direction: row; justify-content: space-between;">
       <div>
         <p><strong>Təsvir:</strong> ${image.description}</p>
-        <p><strong>Koordinatlar:</strong> (${image.latitude}, ${image.longitude})</p>
+        <p><strong>Koordinatlar:</strong> ${image.latitude}, ${image.longitude}</p>
         <p><strong>Şəhər:</strong> ${image.city}</p>
         <p><strong>Rayon:</strong> ${image.district}</p>
         <p><strong>Parlaqlıq:</strong> ${image.brightness}</p>
-        <p><strong>Skan:</strong> ${image.scan}</p>
-        <p><strong>İzləmə:</strong> ${image.track}</p>
+        <p><strong>Scan:</strong> ${image.scan}</p>
+        <p><strong>Track:</strong> ${image.track}</p>
         <p><strong>Alınma tarixi:</strong> ${image.acq_date}</p>
       </div>
       <div>
         <p><strong>Alınma vaxtı:</strong> ${image.acq_time}</p>
         <p><strong>Peyk:</strong> ${image.satellite}</p>
         <p><strong>Alət:</strong> ${image.instrument}</p>
-        <p><strong>Etibarlılıq:</strong> ${image.confidence}</p>
+        <p><strong>Etibar:</strong> ${image.confidence}</p>
         <p><strong>Versiya:</strong> ${image.version}</p>
-        <p><strong>Parlaq T31:</strong> ${image.bright_t31}</p>
+        <p><strong>Bright T31:</strong> ${image.bright_t31}</p>
         <p><strong>FRP:</strong> ${image.frp}</p>
         <p><strong>Gündüz/Gecə:</strong> ${image.daynight}</p>
       </div>
@@ -292,7 +439,7 @@ function showImageDetails(image) {
 }
 
 /* ---------------------------------------
-   CSV LOADING AND SETUP
+   CSV YÜKLƏMƏ VƏ QURAŞDIRMA
 ---------------------------------------- */
 function loadRegionData(callback) {
   Papa.parse('coordinates/Azerbaijani Region Coordinates.csv', {
@@ -308,7 +455,7 @@ function loadRegionData(callback) {
       callback(regionData);
     },
     error: function (error) {
-      console.error("Region CSV yüklənərkən xəta:", error);
+      console.error("Regions CSV yüklənərkən xəta:", error);
     },
   });
 }
@@ -330,16 +477,15 @@ function updateCityDistrict(images, regionData) {
     });
 
     if (closestRegion) {
-      image.city = closestRegion.City || "Unknown";
-      image.district = closestRegion.District || "Unknown";
+      image.city = closestRegion.City || "Naməlum";
+      image.district = closestRegion.District || "Naməlum";
     } else {
-      image.city = "Unknown";
-      image.district = "Unknown";
+      image.city = "Naməlum";
+      image.district = "Naməlum";
     }
   });
 }
 
-// Populate region filter if needed
 function populateRegions(regionData) {
   const citySet = new Set(regionData.map(region => region.City).filter(Boolean));
   const regionFilter = document.getElementById('filter-region');
@@ -362,11 +508,11 @@ function loadImageData(regionData) {
         latitude: parseFloat(row.LATITUDE),
         longitude: parseFloat(row.LONGITUDE),
         src: row.PHOTO_URL ? row.PHOTO_URL.trim() : placeholderImage,
-        description: `Koordinatlardan şəkil (${row.LATITUDE}, ${row.LONGITUDE})`,
+        description: `Koordinatlardan şəkil ${row.LATITUDE}, ${row.LONGITUDE}`,
         brightness: row.brightness,
         scan: row.scan,
         track: row.track,
-        acq_date: row.acq_date, // Already in YYYY-MM-DD format
+        acq_date: row.acq_date,
         acq_time: row.acq_time,
         satellite: row.satellite,
         instrument: row.instrument,
@@ -375,26 +521,17 @@ function loadImageData(regionData) {
         bright_t31: row.bright_t31,
         frp: row.frp,
         daynight: row.daynight,
-        city: null,     // Will be updated below
-        district: null, // Will be updated below
+        city: null,
+        district: null,
       }));
 
-      // Update city and district info for all images using the region coordinates
       updateCityDistrict(images, regionData);
-
-      // Store full dataset in originalImages and initialize currentFilteredImages
       originalImages = images;
       currentFilteredImages = images;
-
-      // Populate the filter dropdowns
       populateSatelliteAndInstrument(images);
       populateRegionsFromImages(images);
 
-      // Setup date range limits
-      const acqDates = images
-        .map(image => image.acq_date)
-        .filter(Boolean)
-        .sort();
+      const acqDates = images.map(image => image.acq_date).filter(Boolean).sort();
       const minDate = acqDates[0];
       const maxDate = acqDates[acqDates.length - 1];
 
@@ -406,23 +543,21 @@ function loadImageData(regionData) {
       dateRangeEndInput.min = minDate;
       dateRangeEndInput.max = maxDate;
 
-      // Set the input values and update our filterDateRange object
       dateRangeStartInput.value = minDate;
       dateRangeEndInput.value = maxDate;
       filterDateRange.start = minDate;
       filterDateRange.end = maxDate;
 
-      // Display the first page of images
       displayImages(images.slice(0, currentPage * pageSize));
       toggleLoadMoreButton();
     },
     error: function (error) {
-      console.error("Şəkillərin CSV faylını yükləyərkən xəta:", error);
+      console.error("Şəkillər CSV yüklənərkən xəta:", error);
     },
   });
 }
 
-// Finally, load region data, then load images
+// Nəhayət, əvvəl region məlumatlarını, sonra şəkilləri yüklə
 loadRegionData(regionData => {
   loadImageData(regionData);
 });

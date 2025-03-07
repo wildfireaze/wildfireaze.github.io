@@ -6,21 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haqqında</title>
     <link rel="stylesheet" href="az-about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <!-- Header Section -->
     <header>
-        <h1>Meşə Yanğınları Peyk Görüntüləyicisi Haqqında</h1>
+        <h1>Wildfire Satellite Image Viewer haqqında</h1>
         <a class="aForDownload" href="./az-index.html">
-            Ana Səhifə
+            Əsas səhifə
         </a>
     </header>
 
     <!-- Navigation Bar -->
     <nav class="navbar">
         <ul>
-            <li><a href="#about-dataset">Verilənlər Bazası</a></li>
+            <li><a href="#about-dataset">Məlumat dəsti</a></li>
             <li><a href="#about-team">Komanda</a></li>
             <li><a href="#about-project">Layihə</a></li>
             <li><a href="#contact">Əlaqə</a></li>
@@ -31,34 +34,87 @@
     <!-- ADA Logo Section -->
     <div class="adaLogoDiv">
         <a href="https://www.ada.edu.az/en" target="_blank" rel="noopener">
-            <img class="adaLogo" src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adalogonew.png" alt="ADA Universiteti Loqosu">            
+            <img class="adaLogo" src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adalogonew.png"
+                alt="ADA University Logo">
         </a>
     </div>
 
     <!-- About Dataset Section -->
     <section id="about-dataset">
-        <h2>Verilənlər Bazası</h2>
+        <h2>Məlumat dəsti</h2>
         <p>
-            Verilənlər Bazası, peyk mənbələrindən toplanan meşə yanğını şəkillərini ehtiva edir və əldə edilmə tarixləri, regionlar, peyk adları və istifadə olunan alətlər kimi meta məlumatları daxildir. Bu Data dəsti, Azərbaycanda meşə yanğını təhlili və araşdırmaları üçün vacibdir.
+            Bu məlumat dəstində peyk mənbələrindən toplanmış meşə yanğını şəkilləri yer alır və alınma tarixləri, bölgələr, peyk adları və istifadə olunan alətlər kimi metaverilər daxildir. Bu məlumat dəsti Azərbaycanda meşə yanğını təhlili və tədqiqatları üçün vacibdir. Azərbaycanda bu cür layihə əvvəllər həyata keçirilmədiyi üçün, verilənlər bazasının yaradılması çətin idi və sıfırdan edilməli oldu.
+            Əvvəlcə, komanda layihəyə töhfə verə biləcək hər hansı məlumatı toplamaq məqsədilə Azərbaycandakı əlaqədar təşkilatlarla əlaqə saxladı, lakin nəticə əldə olunmadı.
+            Daha sonra, komanda yanğın hadisələrini aşkar etmək üçün coğrafi məlumat əldə etmək məqsədilə bir neçə peyk alətindən NASA FIRMS yanğın xəbərdarlıqlarını tələb etdi. NASA csv formatında məlumat göndərdi.
+            Sentinel-2 peyk şəkilləri, yanğın xəbərdarlıqları ilə uyğun olaraq çıxarıldı; bulud maskalama üçün QA band tətbiq edildi və yekun şəkli göstərmək üçün RGB bantlardan istifadə edildi.
+            Emal prosesi eyni anda 10,700-dən çox yanğın xəbərdarlığını idarə etmək üçün optimallaşdırıldı. Nəhayət, gələcək model öyrədilməsi və təsdiqi üçün yerli doğru məlumat təmin etmək məqsədilə, şəkillər əl ilə görünən yanğın sütunları və tüstü naxışlarına əsaslanaraq etiketləndi.
+            Məlumat dəstində 582 şəkil (ölçüləri 512x512) var. Şəkilin hansı peykdən çəkildiyi, alınma tarixi, yerləşdiyi yer və digər məlumatlar məlumat dəstində tapıla bilər. Məlumat dəstində eyni yanğının müxtəlif bucaqlardan və zaman aralıqlarında çəkilmiş şəkilləri mövcuddur.
         </p>
+
+        <!-- Adding Images -->
+        <div class="image-container">
+            <img src="PhotoFile4Wildfire/39.3387_46.5278_77.png" alt="Meşə yanğını şəkli" class="dataset-image">
+            <img src="PhotoFile4Wildfire/38.91668_48.57358_n.png" alt="Meşə yanğını şəkli" class="dataset-image">
+        </div>
+
+        <!-- Text below the images -->
+        <div class="image-text">
+            <p>Məlumat dəstindən nümunə şəkillər.</p>
+        </div>
+
         <p>
-            Toplanmış şəkillərə aid geniş meta məlumatları ehtiva edən CSV faylı və şəkillərin yerləşdiyi bir qovluğu əhatə edən .zip faylı şəklində yüklənə bilər.
+            Məlumat dəstini, şəkillərin olduğu bir qovluğu və toplanmış şəkillər haqqında ətraflı metaveriləri ehtiva edən CSV faylını özündə birləşdirən .zip faylı kimi yükləmək mümkündür.
         </p>
         <div class="divForDownload">
-            <a class="aForDownload" href="https://github.com/wildfireaze/wildfireaze.github.io/raw/refs/heads/main/WildfireDataset.zip?download=">
-                Verilənlər Bazasını Yüklə
+            <a class="aForDownload"
+                href="https://github.com/wildfireaze/wildfireaze.github.io/raw/refs/heads/main/WildfireDataset.zip?download=">
+                Məlumat dəstini yüklə
             </a>
         </div>
     </section>
+
+    <style>
+        /* Container for images */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            /* Center images horizontally */
+            gap: 50px;
+            /* Space between images */
+            margin-bottom: 20px;
+            /* Add space below the images for the text */
+        }
+
+        /* Image styling */
+        .dataset-image {
+            width: 1000%;
+            /* Adjust the width to fit images side by side */
+            max-width: 400px;
+            /* Limit image width */
+            height: auto;
+        }
+
+        /* Text below the images */
+        .image-text {
+            text-align: center;
+            margin-top: 20px;
+            /* Add margin to push text down below the images */
+        }
+
+        .image-text p {
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
 
     <!-- About Team Section -->
     <section id="about-team">
         <h2>Komanda</h2>
         <p>
-            Bu layihə ADA Universiteti tələbələri – Əhməd Hüseynli, Türqay Fərhadlı, Günel Əliyeva və Sahil Quluzadə tərəfindən hazırlanmışdır. Onların fədakarlığı və komanda işi, Azərbaycanda meşə yanğını vizuallaşdırılmasını və araşdırma qabiliyyətlərini artırmaq üçün bu innovativ platformanın yaradılmasını təmin etdi.
+            Bu layihə ADA University tələbələri: Ahmad Huseynli, Turgay Farhadli, Gunel Aliyeva və Sahil Guluzada tərəfindən hazırlanıb. Onların sədaqəti və komanda işi, Azərbaycanda meşə yanğını vizuallaşdırılması və tədqiqat imkanlarını artırmaq üçün bu innovativ platformanın yaradılmasını təmin etdi.
         </p>
         <p>
-            Komanda proqram təminatının inkişafı, məlumatların vizuallaşdırılması və layihə idarəçiliyi sahəsində ixtisaslaşıb və unikal bacarıqlarını bu təsirli həllin təqdim edilməsi üçün qatıb.
+            Komanda proqram təminatı inkişafı, məlumat vizuallaşdırılması və layihə idarəçiliyi sahəsində ixtisaslaşıb və unikal bacarıqları ilə bu təsirli həllin təqdim olunmasına töhfə verib. İndiyə qədər, Ahmad verilənlər bazasının veb saytda vizuallaşdırılması üzərində çalışıb, Gunel NASA tərəfindən təqdim olunan məlumatları işləyərək onları istifadə oluna biləcək formaya salıb. Sahil, məlumat çatışmazlığını kompensasiya etmək və veb sayt dizaynı üçün Python istifadə edərək sintetik meşə yanğını şəkillərinin yaradılması üzərində çalışıb. Turgay isə əsasən satelital şəkildən meşə yanğını aşkarlanması üçün modelin yaradılması üzərində işləyib.
         </p>
     </section>
 
@@ -66,10 +122,10 @@
     <section id="about-project">
         <h2>Layihə</h2>
         <p>
-            Meşə Yanğınları Peyk Görüntüləyicisi, Azərbaycanda meşə yanğını vizuallaşdırılması üçün alətlərin olmamasını aradan qaldırmağı hədəfləyir. O, istifadəçilərə meşə yanğını şəkillərini region, zaman, peyk növü və digər meyarlar əsasında süzgəcdən keçirmək imkanı verir. Platformanın interaktiv xəritəsi və istifadəçi dostu dizaynı onu tədqiqatçılar, ətraf mühitçilər və siyasətçilər üçün dəyərli mənbəyə çevirir.
+            Wildfire Satellite Image Viewer layihəsinin məqsədi Azərbaycanda meşə yanğını vizuallaşdırması üçün vasitələrin çatışmazlığını aradan qaldırmaqdır. O, istifadəçilərə meşə yanğını şəkillərini bölgə, vaxt, peyk növü və digər kriteriyalar üzrə süzgəcdən keçirmək imkanı yaradır. Platformanın interaktiv xəritəsi və istifadəçi dostu dizaynı onu tədqiqatçılar, ətraf mühit müdafiəçiləri və siyasətçilər üçün dəyərli resurs halına gətirir.
         </p>
         <p>
-            Layihə, meşə yanğını izləmə və məlumatlara çıxışı təmin edən hərtərəfli həll təqdim etmək üçün peyk məlumatlarının təhlilini, müasir veb inkişaf üsullarını və istifadə rahatlığına diqqəti birləşdirir.
+            Layihə, peyk məlumatlarının təhlilini, müasir veb inkişaf texnikalarını və istifadə rahatlığına diqqəti birləşdirərək meşə yanğını monitorinqi və məlumatlara çıxış üçün hərtərəfli həll təqdim edir.
         </p>
     </section>
 
@@ -77,20 +133,131 @@
     <section id="contact">
         <h2>Əlaqə</h2>
         <p>
-            Sorğular və ya əməkdaşlıqlar üçün bizimlə əlaqə saxlamaqdan çəkinməyin:
+            Sorğular və əməkdaşlıqlar üçün bizimlə əlaqə saxlamaqdan çəkinməyin:
+            <style>
+                .contact-list {
+                    list-style: none;
+                    padding: 0;
+                }
+
+                .contact-list li {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 8px;
+                    font-weight: bold;
+                }
+
+                .contact-list a {
+                    text-decoration: none;
+                    color: #0077B5; /* LinkedIn blue */
+                }
+
+                .icon {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                .copy-btn {
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 14px;
+                    color: #0077B5;
+                    padding: 0;
+                }
+            </style>
+            <ul class="contact-list">
+                <li>
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" class="icon" alt="Email">
+                    E-poçt:
+                    <a href="mailto:sdpproject2025@gmail.com" id="email">sdpproject2025@gmail.com</a>
+                    <button class="copy-btn" onclick="copyToClipboard('email')">📋</button>
+                </li>
+                <li>
+                    <img src="https://cdn-icons-png.flaticon.com/512/159/159832.png" class="icon" alt="Phone">
+                    Telefon:
+                    <span id="phone">+994 55 930 94 64</span>
+                    <button class="copy-btn" onclick="copyToClipboard('phone')">📋</button>
+                </li>
+                <li>
+                    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" class="icon" alt="Location">
+                    Ünvan: ADA University, Baku, Azerbaijan
+                </li>
+            </ul>
+            <script>
+                function copyToClipboard(id) {
+                    const text = document.getElementById(id).innerText || document.getElementById(id).textContent;
+                    navigator.clipboard.writeText(text).then(() => {
+                        alert("Kopyalandı: " + text);
+                    }).catch(err => {
+                        console.error("Kopyalama uğursuz oldu: ", err);
+                    });
+                }
+            </script>
+            <a style="color: #ff6600; text-decoration: none; font-weight: bold;"
+               href="https://github.com/gunelaliyevaa/wildfire-detection-using-satellite-imagery.git"
+               target="_blank">
+                <i class="fa-brands fa-github"></i>
+                Layihənin GitHub repositoriyası
+            </a>
         </p>
-        <ul>
-            <li>E-poçt: <a href="mailto:wildfireaze@ada.edu.az">wildfireaze@ada.edu.az</a></li>
-            <li>Telefon: +994 50 123 45 67</li>
-            <li>Ünvan: ADA University, Baku, Azerbaijan</li>
-        </ul>
-        <p>
-            Yeniliklər və xəbərlər üçün bizi sosial mediada izləyin:
-        </p>
-        <ul>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">LinkedIn</a></li>
+        <style>
+            .linkedin-list {
+                list-style: none;
+                padding: 0;
+            }
+
+            .linkedin-list li {
+                display: flex;
+                align-items: center;
+                margin-bottom: 8px;
+            }
+
+            .linkedin-list a {
+                text-decoration: none;
+                color: #0077B5; /* LinkedIn blue */
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .linkedin-icon {
+                width: 20px;
+                height: 20px;
+            }
+        </style>
+        <p>LinkedIn:</p>
+        <ul class="linkedin-list">
+            <li>
+                <a href="https://az.linkedin.com/in/ahmad-huseynli" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                        class="linkedin-icon" alt="LinkedIn">
+                    Ahmad Huseynli
+                </a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/gunel-aliyevaa" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                        class="linkedin-icon" alt="LinkedIn">
+                    Gunel Aliyeva
+                </a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/sahil-qulizad%C9%99" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                        class="linkedin-icon" alt="LinkedIn">
+                    Sahil Qulizade
+                </a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/turqay-f%C9%99rhadl%C4%B1-ba420830b/" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                        class="linkedin-icon" alt="LinkedIn">
+                    Turgay Farhadli
+                </a>
+            </li>
         </ul>
     </section>
 
@@ -98,29 +265,42 @@
     <section id="terms">
         <h2>Şərtlər və Xidmətlər</h2>
         <p>
-            Bu vebsayta daxil olaraq və onu istifadə edərək, aşağıdakı şərtlərlə razılaşırsınız:
+            MIT License
+            <br></br>
+            Copyright (c) 2025
+            Ahmad Huseynli, Sahil Gulizada, Gunel Aliyeva, Turgay Farhadli
+            <br></br>
+            Bu proqram təminatının və əlaqədar sənədlərin (bundan sonra "Software" adlanacaq) bir nüsxəsini əldə edən hər kəsə pulsuz olaraq icazə verilir ki, proqramla məhdudiyyətsiz şəkildə işləsin, onu istifadə etsin, kopyalasın, dəyişdirsin, birləşdirsin, nəşr etsin, yayımını həyata keçirsin, alt-lisenziyalaşdırsın və/və ya sata bilsin və proqram təminatı verildiyi şəxslərə də bunu etməyə icazə versin, aşağıdakı şərtlərə tabe olmaq şərti ilə:
+            <br></br>
+            Yuxarıda qeyd olunan müəllif hüquqları bildirişi və bu icazə bildirişi proqram təminatının bütün nüsxələrinə və ya onun əsas hissələrinə daxil edilməlidir.
+            <br></br>
+            PROQRAM "OLDUĞU KİMİ" TƏQDİM OLUNUR, HƏR HANSI BİR ZƏMANƏT OLMADAN, AÇIQ VƏ YA QİYMƏTLƏNDİRİLMƏYƏN ŞƏKİLDƏ, TİCARƏT, MƏQSƏDƏ UYĞUNLUQ VƏ MÜƏLLİF HÜQUQLARI DAHİL OLMAQLA. HEÇ BİR HALDA YAZARLAR VƏ YA MÜƏLLİF HÜQUQLARI SAHİBİ, KONTRAKT, MÜKAVİMƏ, VƏ YA BAŞQA ŞƏKİLDƏ ORTAQLAŞDIRILAN HƏR HANSI BİR İDDİA, ZƏRƏR VƏ YA MƏSULİYYƏT ÜÇÜN CAVABDEH OLMAYACAQLAR.
         </p>
-        <ul>
-            <li>Bu platformada təqdim olunan data dəsti yalnız təhsil və araşdırma məqsədləri üçün nəzərdə tutulub.</li>
-            <li>
-                Data dəstindən hər hansı nəşr və ya layihələrdə istifadə edərkən düzgün istinad tələb olunur. Xahiş olunur, mənbə olaraq müəllifləri və ADA Universitetini qeyd edin.
-            </li>
-            <li>
-                Məlumatların dəqiqliyinə və tamlığına zəmanət vermirik və onun istifadəsindən yaranan hər hansı zərər üçün məsuliyyət daşımırıq.
-            </li>
-        </ul>
     </section>
 
-    <button id="scrollToTopBtn" onclick="scrollToTop()">↑</button>
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></button>
 
     <!-- Footer Section -->
     <footer>
-        <p>&copy; 2025 Meşə Yanğınları Peyk Görüntüləyicisi.</p>
+        <p>&copy; 2025 Wildfire Satellite Image Viewer.</p>
         <p>ADA University, Baku, Azerbaijan.</p>
     </footer>
 
-    <script src="az-about.js"></script>
+    <!-- Download Confirmation Modal -->
+    <div id="downloadModal" class="modal">
+        <div class="modal-content">
+            <h2>Məlumat dəstini yüklə</h2>
+            <p>Siz <a id="termsLink" class="aForDownload" href="#terms">Şərtlər və Qaydalar</a> ilə razısınızmı?</p>
+            <label>
+                <input type="checkbox" id="agreeCheckbox"> Mən şərtlər və qaydalarla razıyam.
+            </label>
+            <br>
+            <button id="confirmDownload" class="aForDownload" disabled>Təsdiq et və yüklə</button>
+            <button id="closeModal" class="aForDownload">Ləğv et</button>
+        </div>
+    </div>
 
+    <script src="az-about.js"></script>
 </body>
 
 </html>
