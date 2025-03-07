@@ -155,34 +155,136 @@
         </p>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>
-            For inquiries or collaborations, feel free to contact us:
-        </p>
-        <ul>
-            <li>Email: <a href="sdpproject2025@gmail.com">sdpproject2025@gmail.com</a></li>
-            <li>Phone: +994 55 930 94 64</li>
-            <li>Address: ADA University, Baku, Azerbaijan</li>
-        </ul>
-        <p>
-             <a
-             style="color: #ff6600;"
-            href="https://github.com/gunelaliyevaa/wildfire-detection-using-satellite-imagery.git"><i class="fa-brands fa-github"></i></a>
-
-        </p>
-        <p>
-            LinkedIn:
-
-        </p>
-        <ul>
-            <li><a href="https://az.linkedin.com/in/ahmad-huseynli">Ahmad Huseynli</a> </li>
-            <li><a href="https://www.linkedin.com/in/gunel-aliyevaa">Gunel Aliyeva</a> </li>
-            <li><a href="https://www.linkedin.com/in/sahil-qulizad%C9%99">Sahil Qulizade</a> </li>
-            <li><a href="https://www.linkedin.com/in/turqay-f%C9%99rhadl%C4%B1-ba420830b/">Turgay Farhadli</a> </li>
-        </ul>
-    </section>
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>
+                For inquiries or collaborations, feel free to contact us:
+                <style>
+                    .contact-list {
+                        list-style: none;
+                        padding: 0;
+                    }
+                
+                    .contact-list li {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        margin-bottom: 8px;
+                        font-weight: bold;
+                    }
+                
+                    .contact-list a {
+                        text-decoration: none;
+                        color: #0077B5; /* LinkedIn blue */
+                    }
+                
+                    .icon {
+                        width: 20px;
+                        height: 20px;
+                    }
+                
+                    .copy-btn {
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        font-size: 14px;
+                        color: #0077B5;
+                        padding: 0;
+                    }
+                </style>
+                
+                <ul class="contact-list">
+                    <li>
+                        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" class="icon" alt="Email">
+                        Email: 
+                        <a href="mailto:sdpproject2025@gmail.com" id="email">sdpproject2025@gmail.com</a>
+                        <button class="copy-btn" onclick="copyToClipboard('email')">📋</button>
+                    </li>
+                    <li>
+                        <img src="https://cdn-icons-png.flaticon.com/512/159/159832.png" class="icon" alt="Phone">
+                        Phone: 
+                        <span id="phone">+994 55 930 94 64</span>
+                        <button class="copy-btn" onclick="copyToClipboard('phone')">📋</button>
+                    </li>
+                    <li>
+                        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" class="icon" alt="Location">
+                        Address: ADA University, Baku, Azerbaijan
+                    </li>
+                </ul>
+                
+                <script>
+                    function copyToClipboard(id) {
+                        const text = document.getElementById(id).innerText || document.getElementById(id).textContent;
+                        navigator.clipboard.writeText(text).then(() => {
+                            alert("Copied: " + text);
+                        }).catch(err => {
+                            console.error("Failed to copy: ", err);
+                        });
+                    }
+                </script>
+                
+                <a style="color: #ff6600; text-decoration: none; font-weight: bold;" 
+                   href="https://github.com/gunelaliyevaa/wildfire-detection-using-satellite-imagery.git" 
+                   target="_blank">
+                    <i class="fa-brands fa-github"></i> 
+                    GitHub repository of the project
+                </a>
+            </p>
+            <style>
+                .linkedin-list {
+                    list-style: none;
+                    padding: 0;
+                }
+            
+                .linkedin-list li {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 8px;
+                }
+            
+                .linkedin-list a {
+                    text-decoration: none;
+                    color: #0077B5; /* LinkedIn blue */
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+            
+                .linkedin-icon {
+                    width: 20px;
+                    height: 20px;
+                }
+            </style>
+            
+            <p>LinkedIn:</p>
+            <ul class="linkedin-list">
+                <li>
+                    <a href="https://az.linkedin.com/in/ahmad-huseynli" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" class="linkedin-icon" alt="LinkedIn"> 
+                        Ahmad Huseynli
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/gunel-aliyevaa" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" class="linkedin-icon" alt="LinkedIn"> 
+                        Gunel Aliyeva
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/sahil-qulizad%C9%99" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" class="linkedin-icon" alt="LinkedIn"> 
+                        Sahil Qulizade
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/turqay-f%C9%99rhadl%C4%B1-ba420830b/" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" class="linkedin-icon" alt="LinkedIn"> 
+                        Turgay Farhadli
+                    </a>
+                </li>
+            </ul>
 
     <!-- Terms and Services Section -->
     <section id="terms">
