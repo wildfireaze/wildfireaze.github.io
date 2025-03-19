@@ -2,6 +2,7 @@
     "title": "Wildfire Satellite Image Viewer",
     "about": "About",
     "sortLabel": "Sort by Acquisition Date:",
+    "imageFromCoordinates": "Coordinates {{lat}}, {{lon}}",
     "regionLabel": "Region:",
     "dateRangeLabel": "Date Range:",
     "satelliteLabel": "Satellite:",

@@ -52,16 +52,56 @@ function scrollToTop() {
 /* ---------------------------------------
    MODAL FUNCTIONS FOR IMAGE DETAILS
 ---------------------------------------- */
+// This function updates the modal content using i18next translation keys.
+// It splits the 16 rows into 2 columns of 8 rows each.
+function updateModalTranslation() {
+  if (currentModalImageData && currentModalImageData.details) {
+    const details = currentModalImageData.details;
+    const column1 = `
+      <p><strong>${i18next.t("modal.imageDetails.description")}</strong> ${details.description}</p>
+      <p><strong>${i18next.t("modal.imageDetails.coordinates")}</strong> ${details.coordinates}</p>
+      <p><strong>${i18next.t("modal.imageDetails.city")}</strong> ${details.city}</p>
+      <p><strong>${i18next.t("modal.imageDetails.district")}</strong> ${details.district}</p>
+      <p><strong>${i18next.t("modal.imageDetails.brightness")}</strong> ${details.brightness}</p>
+      <p><strong>${i18next.t("modal.imageDetails.scan")}</strong> ${details.scan}</p>
+      <p><strong>${i18next.t("modal.imageDetails.track")}</strong> ${details.track}</p>
+      <p><strong>${i18next.t("modal.imageDetails.acquisitionDate")}</strong> ${details.acquisitionDate}</p>
+    `;
+    const column2 = `
+      <p><strong>${i18next.t("modal.imageDetails.acquisitionTime")}</strong> ${details.acquisitionTime}</p>
+      <p><strong>${i18next.t("modal.imageDetails.satellite")}</strong> ${details.satellite}</p>
+      <p><strong>${i18next.t("modal.imageDetails.instrument")}</strong> ${details.instrument}</p>
+      <p><strong>${i18next.t("modal.imageDetails.confidence")}</strong> ${details.confidence}</p>
+      <p><strong>${i18next.t("modal.imageDetails.version")}</strong> ${details.version}</p>
+      <p><strong>${i18next.t("modal.imageDetails.brightT31")}</strong> ${details.brightT31}</p>
+      <p><strong>${i18next.t("modal.imageDetails.frp")}</strong> ${details.frp}</p>
+      <p><strong>${i18next.t("modal.imageDetails.dayNight")}</strong> ${details.dayNight}</p>
+    `;
+    document.getElementById("modal-info").innerHTML = `
+      <div style="display: flex; flex-direction: row; justify-content: space-between;">
+        <div style="flex: 1; padding-right: 10px;">
+          ${column1}
+        </div>
+        <div style="flex: 1; padding-left: 10px;">
+          ${column2}
+        </div>
+      </div>
+    `;
+  }
+}
+
+// Open modal with translated content; store current modal data for later updates.
 function openModal(imageSrc, mapSrc, details) {
   document.getElementById("modal-image").src = imageSrc;
   document.getElementById("map-frame").src = mapSrc;
-  document.getElementById("modal-info").innerHTML = details;
-  modal.style.display = "flex"; // Show modal
+  currentModalImageData = { imageSrc, mapSrc, details };
+  updateModalTranslation();
+  document.getElementById("image-modal").style.display = "flex";
 }
 
 modal.addEventListener("click", function(event) {
   if (event.target === modal) {
-    modal.style.display = "none"; // Hide modal
+    modal.style.display = "none"; // Hide modal when clicking outside its content
   }
 });
 
@@ -170,7 +210,7 @@ document.getElementById('filter-instrument').addEventListener('change', (e) => {
    DOWNLOAD FUNCTIONS
 ---------------------------------------- */
 async function handleDownloadBoth() {
-  let regionName = currentModalImageData && currentModalImageData.city ? currentModalImageData.city : "Unknown";
+  let regionName = currentModalImageData && currentModalImageData.details.city ? currentModalImageData.details.city : "Unknown";
   let imageFilename = `imageFrom${regionName}.jpg`;
   let infoFilename = `infoFrom${regionName}.txt`;
 
@@ -179,7 +219,7 @@ async function handleDownloadBoth() {
   const zip = new JSZip();
 
   try {
-    const response = await fetch(currentModalImageData.src);
+    const response = await fetch(currentModalImageData.imageSrc);
     if (!response.ok) throw new Error("Network response was not ok");
     const imageBlob = await response.blob();
     zip.file(imageFilename, imageBlob);
@@ -216,7 +256,7 @@ async function handleDownloadFiltered() {
     const infoFileName = `infoFrom(${regionName})_${index + 1}.txt`;
 
     const infoText = [
-      `Description: ${image.description}\n`,
+      `Description: ${i18next.t("imageFromCoordinates", { lat: image.latitude, lon: image.longitude })}\n`,
       `Coordinates: ${image.latitude}, ${image.longitude}\n`,
       `City: ${image.city}\n`,
       `District: ${image.district}\n`,
@@ -262,10 +302,7 @@ async function handleDownloadFiltered() {
 /* ---------------------------------------
    DOWNLOAD CONFIRMATION MODAL
 ---------------------------------------- */
-// This block attaches event listeners for both download buttons so that
-// the confirmation modal appears before any download action.
 document.addEventListener("DOMContentLoaded", function () {
-  // Make sure these IDs match your HTML
   const downloadModal = document.getElementById("modal-download-conf");
   const downloadBothBtn = document.getElementById("downloadBothBtn");
   const downloadFilteredBtn = document.getElementById("downloadFilteredBtn");
@@ -320,22 +357,23 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
-
+/* ---------------------------------------
+   i18next INITIALIZATION AND LANGUAGE SWITCHING
+---------------------------------------- */
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize i18next with browser language detector and XHR backend for loading JSON translation files
+  // Initialize i18next with browser language detector and XHR backend
   i18next
-    .use(i18nextBrowserLanguageDetector) // Detects browser language
-    .use(i18nextXHRBackend) // Allows loading translation files from server
+    .use(i18nextBrowserLanguageDetector)
+    .use(i18nextXHRBackend)
     .init({
-      fallbackLng: "en", // Default to English if language not found
+      fallbackLng: "en",
       debug: true,
       backend: {
-        loadPath: "./locales/{{lng}}.json" // Path to JSON translation files
+        loadPath: "./locales/{{lng}}.json"
       }
     }, function (err, t) {
       if (err) return console.error("i18next Error:", err);
-      updateContent(); // Load translations once i18next is initialized
+      updateContent();
     });
 
   const languageSelect = document.getElementById("language-select");
@@ -372,49 +410,17 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("confirmDownload").textContent = i18next.t("modal.download.confirmButton");
     document.getElementById("closeDownloadModal").textContent = i18next.t("modal.download.cancelButton");
 
-    // Update Modal Translations for Image Details
+    // Update Modal Translations for Image Details if modal is open
     updateModalTranslation();
   }
 
-  let currentModalImageData = {};
-
-  // Function to open the modal with translated content
-  function openModal(imageSrc, mapSrc, details) {
-    document.getElementById("modal-image").src = imageSrc;
-    document.getElementById("map-frame").src = mapSrc;
-
-    // Save current modal data for language switch updates
-    currentModalImageData = { imageSrc, mapSrc, details };
-
-    // Apply translations to modal details
-    document.getElementById("modal-info").innerHTML = `
-      <p><strong>${i18next.t("modal.imageDetails.description")}</strong> ${details.description}</p>
-      <p><strong>${i18next.t("modal.imageDetails.coordinates")}</strong> ${details.coordinates}</p>
-      <p><strong>${i18next.t("modal.imageDetails.city")}</strong> ${details.city}</p>
-      <p><strong>${i18next.t("modal.imageDetails.district")}</strong> ${details.district}</p>
-      <p><strong>${i18next.t("modal.imageDetails.brightness")}</strong> ${details.brightness}</p>
-      <p><strong>${i18next.t("modal.imageDetails.scan")}</strong> ${details.scan}</p>
-      <p><strong>${i18next.t("modal.imageDetails.track")}</strong> ${details.track}</p>
-      <p><strong>${i18next.t("modal.imageDetails.acquisitionDate")}</strong> ${details.acquisitionDate}</p>
-      <p><strong>${i18next.t("modal.imageDetails.acquisitionTime")}</strong> ${details.acquisitionTime}</p>
-      <p><strong>${i18next.t("modal.imageDetails.satellite")}</strong> ${details.satellite}</p>
-      <p><strong>${i18next.t("modal.imageDetails.instrument")}</strong> ${details.instrument}</p>
-      <p><strong>${i18next.t("modal.imageDetails.confidence")}</strong> ${details.confidence}</p>
-      <p><strong>${i18next.t("modal.imageDetails.version")}</strong> ${details.version}</p>
-      <p><strong>${i18next.t("modal.imageDetails.brightT31")}</strong> ${details.brightT31}</p>
-      <p><strong>${i18next.t("modal.imageDetails.frp")}</strong> ${details.frp}</p>
-      <p><strong>${i18next.t("modal.imageDetails.dayNight")}</strong> ${details.dayNight}</p>
-    `;
-
-    document.getElementById("modal").style.display = "block";
-  }
-
-  // LISTEN FOR LANGUAGE CHANGE AND UPDATE MODAL
+  // Listen for language change
   languageSelect.addEventListener("change", function () {
     const selectedLang = languageSelect.value;
     i18next.changeLanguage(selectedLang, function () {
       updateContent();
-      if (document.getElementById("modal").style.display === "block") {
+      // If modal is open, update it
+      if (document.getElementById("image-modal").style.display === "flex") {
         openModal(
           currentModalImageData.imageSrc,
           currentModalImageData.mapSrc,
@@ -422,7 +428,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
       }
     });
-    localStorage.setItem("language", selectedLang); // Store preference in localStorage
+    localStorage.setItem("language", selectedLang);
   });
 
   // On page load, set language from localStorage or default
@@ -430,7 +436,7 @@ document.addEventListener("DOMContentLoaded", function () {
   languageSelect.value = savedLanguage;
   i18next.changeLanguage(savedLanguage, function () {
     updateContent();
-    if (document.getElementById("modal").style.display === "block") {
+    if (document.getElementById("image-modal").style.display === "flex") {
       openModal(
         currentModalImageData.imageSrc,
         currentModalImageData.mapSrc,
@@ -439,11 +445,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
-
-
-
-
 
 /* ---------------------------------------
    POPULATE FILTER DROPDOWNS
@@ -506,16 +507,20 @@ function displayImages(imageList) {
 
     const img = document.createElement('img');
     img.src = image.src || placeholderImage;
-    img.alt = image.description;
+    // Compute description dynamically for alt text
+    img.alt = i18next.t("imageFromCoordinates", { lat: image.latitude, lon: image.longitude });
     img.onerror = () => {
       img.src = placeholderImage;
       console.warn(`Image failed to load: ${image.src}`);
     };
+    // When clicked, show details via showImageDetails
     img.onclick = () => showImageDetails(image);
 
     const info = document.createElement('div');
     info.className = 'info';
-    info.textContent = `${image.description} - ${image.city} (${image.district})`;
+    // Compute description dynamically so it uses the current language
+    const desc = i18next.t("imageFromCoordinates", { lat: image.latitude, lon: image.longitude });
+    info.textContent = `${desc} - ${image.city} (${image.district})`;
 
     imageItem.appendChild(img);
     imageItem.appendChild(info);
@@ -524,44 +529,29 @@ function displayImages(imageList) {
 }
 
 function showImageDetails(image) {
-  const modal = document.getElementById('image-modal');
-  const modalImage = document.getElementById('modal-image');
-  const modalInfo = document.getElementById('modal-info');
-  const mapFrame = document.getElementById('map-frame');
-
-  modal.style.display = 'block';
-  modalImage.src = image.src;
-  modalImage.style.cursor = "pointer";
-  modalImage.onclick = () => window.open(image.src, '_blank');
-  currentModalImageData = image;
-
-  modalInfo.innerHTML = `
-    <div style="display: flex; flex-direction: row; justify-content: space-between;">
-      <div>
-        <p><strong>Description:</strong> ${image.description}</p>
-        <p><strong>Coordinates:</strong> ${image.latitude}, ${image.longitude}</p>
-        <p><strong>City:</strong> ${image.city}</p>
-        <p><strong>District:</strong> ${image.district}</p>
-        <p><strong>Brightness:</strong> ${image.brightness}</p>
-        <p><strong>Scan:</strong> ${image.scan}</p>
-        <p><strong>Track:</strong> ${image.track}</p>
-        <p><strong>Acquisition Date:</strong> ${image.acq_date}</p>
-      </div>
-      <div>
-        <p><strong>Acquisition Time:</strong> ${image.acq_time}</p>
-        <p><strong>Satellite:</strong> ${image.satellite}</p>
-        <p><strong>Instrument:</strong> ${image.instrument}</p>
-        <p><strong>Confidence:</strong> ${image.confidence}</p>
-        <p><strong>Version:</strong> ${image.version}</p>
-        <p><strong>Bright T31:</strong> ${image.bright_t31}</p>
-        <p><strong>FRP:</strong> ${image.frp}</p>
-        <p><strong>Day/Night:</strong> ${image.daynight}</p>
-      </div>
-    </div>
-  `;
+  // Build a details object with dynamic description
+  const details = {
+    description: i18next.t("imageFromCoordinates", { lat: image.latitude, lon: image.longitude }),
+    coordinates: `${image.latitude}, ${image.longitude}`,
+    city: image.city,
+    district: image.district,
+    brightness: image.brightness,
+    scan: image.scan,
+    track: image.track,
+    acquisitionDate: image.acq_date,
+    acquisitionTime: image.acq_time,
+    satellite: image.satellite,
+    instrument: image.instrument,
+    confidence: image.confidence,
+    version: image.version,
+    brightT31: image.bright_t31,
+    frp: image.frp,
+    dayNight: image.daynight
+  };
 
   const mapUrl = `https://www.google.com/maps?q=${image.latitude},${image.longitude}&t=k&z=8&output=embed`;
-  mapFrame.src = mapUrl;
+  // Open modal with dynamically generated details
+  openModal(image.src, mapUrl, details);
 }
 
 /* ---------------------------------------
@@ -634,7 +624,7 @@ function loadImageData(regionData) {
         latitude: parseFloat(row.LATITUDE),
         longitude: parseFloat(row.LONGITUDE),
         src: row.PHOTO_URL ? row.PHOTO_URL.trim() : placeholderImage,
-        description: `Image from coordinates ${row.LATITUDE}, ${row.LONGITUDE}`,
+        // Remove static description calculation; we'll compute it on the fly
         brightness: row.brightness,
         scan: row.scan,
         track: row.track,

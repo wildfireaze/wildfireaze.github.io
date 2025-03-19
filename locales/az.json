@@ -2,6 +2,7 @@
     "title": "Meşə Yanğınları Peyk Görüntüləri",
     "about": "Haqqında",
     "sortLabel": "Alınma Tarixinə Görə Sırala:",
+    "imageFromCoordinates": "Koordinatlar {{lat}}, {{lon}}",
     "regionLabel": "Bölgə:",
     "dateRangeLabel": "Tarix Aralığı:",
     "satelliteLabel": "Peyk:",
