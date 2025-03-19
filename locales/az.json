@@ -1,0 +1,93 @@
+{
+    "title": "Meşə Yanğınları Peyk Görüntüləri",
+    "about": "Haqqında",
+    "sortLabel": "Alınma Tarixinə Görə Sırala:",
+    "regionLabel": "Bölgə:",
+    "dateRangeLabel": "Tarix Aralığı:",
+    "satelliteLabel": "Peyk:",
+    "instrumentLabel": "Alət:",
+    "filteredData": "Filtrlənmiş Məlumat",
+    "resetFilters": "Sıfırla",
+    "loadMore": "Daha Çox Yüklə",
+    "downloadDataset": "Məlumat Dəstini Yüklə",
+    "agreeTerms": "Şərtlərlə razısınız?",
+    "agreeCheckbox": "Mən şərtlərlə razıyam.",
+    "confirmDownload": "Təsdiqlə və Yüklə",
+    "cancel": "İmtina et",
+    "ascending": "Artan",
+    "descending": "Azalan",
+    "all": "Hamısı",
+    "modalDownload": "Məlumat Dəstini Yüklə",
+    "termsAndConditions": "Şərtlər və Xidmətlər",
+    "footer": "&copy; 2025 Meşə Yanğınları Peyk Görüntüləri. ADA Universiteti, Bakı, Azərbaycan.",
+  
+    "filters": {
+      "sortByDate": "Alınma Tarixinə Görə Sırala",
+      "selectRegion": "Bölgəni Seçin",
+      "selectDateRange": "Tarix Aralığını Seçin",
+      "startDate": "Başlanğıc Tarixi",
+      "endDate": "Son Tarix",
+      "selectSatellite": "Peyki Seçin",
+      "selectInstrument": "Aləti Seçin",
+      "downloadFilteredData": "Filtrlənmiş Məlumatı Yüklə",
+      "resetFilters": "Filtrləri Sıfırla"
+    },
+  
+    "buttons": {
+      "download": "Yüklə",
+      "reset": "Sıfırla",
+      "loadMore": "Daha Çox Yüklə",
+      "close": "Bağla",
+      "apply": "Tətbiq et",
+      "confirm": "Təsdiqlə",
+      "cancel": "İmtina et",
+      "agree": "Razıyam",
+      "disagree": "Razı deyiləm"
+    },
+  
+    "modal": {
+      "download": {
+        "title": "Məlumat Dəstini Yüklə",
+        "text": "Şərtlərlə razısınız?",
+        "agreeCheckbox": "Mən şərtlərlə razıyam.",
+        "confirmButton": "Təsdiqlə və Yüklə",
+        "cancelButton": "İmtina et"
+      },
+      "imageDetails": {
+        "title": "Şəkil Detalları",
+        "description": "Təsvir:",
+        "coordinates": "Koordinatlar:",
+        "city": "Şəhər:",
+        "district": "Rayon:",
+        "brightness": "Parlaqlıq:",
+        "scan": "Skan:",
+        "track": "İz:",
+        "acquisitionDate": "Alınma Tarixi:",
+        "acquisitionTime": "Alınma Saatı:",
+        "satellite": "Peyk:",
+        "instrument": "Alət:",
+        "confidence": "Ehtimad:",
+        "version": "Versiya:",
+        "brightT31": "Bright T31:",
+        "frp": "FRP:",
+        "dayNight": "Gündüz/Gecə:"
+      }
+    },
+  
+    "tooltips": {
+      "sortByDate": "Yanğın görüntülərini alınma tarixinə görə sırala",
+      "filterByRegion": "Seçilmiş bölgəyə görə görüntüləri filtrlə",
+      "filterBySatellite": "Peyk görüntülərini seçin",
+      "filterByInstrument": "Alət növünə görə filtrlə",
+      "downloadFiltered": "Filtrlənmiş yanğın görüntüləri məlumat dəstini yüklə",
+      "resetFilters": "Seçilmiş filtrləri sil"
+    },
+  
+    "notifications": {
+      "noResults": "Seçilmiş filtrlər üçün heç bir yanğın görüntüsü tapılmadı.",
+      "errorLoading": "Məlumat yüklənərkən xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.",
+      "successDownload": "Məlumat dəsti uğurla yükləndi.",
+      "agreeToTerms": "Yükləmədən əvvəl şərtlərlə razılaşmalısınız."
+    }
+  }
+  

@@ -320,6 +320,131 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Initialize i18next with browser language detector and XHR backend for loading JSON translation files
+  i18next
+    .use(i18nextBrowserLanguageDetector) // Detects browser language
+    .use(i18nextXHRBackend) // Allows loading translation files from server
+    .init({
+      fallbackLng: "en", // Default to English if language not found
+      debug: true,
+      backend: {
+        loadPath: "./locales/{{lng}}.json" // Path to JSON translation files
+      }
+    }, function (err, t) {
+      if (err) return console.error("i18next Error:", err);
+      updateContent(); // Load translations once i18next is initialized
+    });
+
+  const languageSelect = document.getElementById("language-select");
+
+  // Function to update all translatable texts
+  function updateContent() {
+    document.querySelector("h1").textContent = i18next.t("title");
+    document.querySelector(".aboutUs").textContent = i18next.t("about");
+
+    // Filters Section
+    document.querySelector("label[for='sort-direction']").textContent = i18next.t("filters.sortByDate");
+    document.querySelector("label[for='filter-region']").textContent = i18next.t("filters.selectRegion");
+    document.querySelector("label[for='date-range']").textContent = i18next.t("filters.selectDateRange");
+    document.querySelector("label[for='filter-satellite']").textContent = i18next.t("filters.selectSatellite");
+    document.querySelector("label[for='filter-instrument']").textContent = i18next.t("filters.selectInstrument");
+    document.getElementById("downloadFilteredBtn").textContent = i18next.t("filters.downloadFilteredData");
+    document.getElementById("reset-filters").textContent = i18next.t("filters.resetFilters");
+    document.getElementById("loadMore").textContent = i18next.t("buttons.loadMore");
+
+    // Select Option Translations
+    document.querySelector("#sort-direction option[value='ascending']").textContent = i18next.t("ascending");
+    document.querySelector("#sort-direction option[value='descending']").textContent = i18next.t("descending");
+    document.querySelector("#filter-region option[value='all']").textContent = i18next.t("all");
+    document.querySelector("#filter-satellite option[value='all']").textContent = i18next.t("all");
+    document.querySelector("#filter-instrument option[value='all']").textContent = i18next.t("all");
+
+    // Footer
+    document.querySelector("footer p").innerHTML = i18next.t("footer");
+
+    // Modal Translations (Dataset Download)
+    document.querySelector("#modal-download-conf h2").textContent = i18next.t("modal.download.title");
+    document.querySelector("#modal-download-conf p").textContent = i18next.t("modal.download.text");
+    document.querySelector("#modal-download-conf label").textContent = i18next.t("modal.download.agreeCheckbox");
+    document.getElementById("confirmDownload").textContent = i18next.t("modal.download.confirmButton");
+    document.getElementById("closeDownloadModal").textContent = i18next.t("modal.download.cancelButton");
+
+    // Update Modal Translations for Image Details
+    updateModalTranslation();
+  }
+
+  let currentModalImageData = {};
+
+  // Function to open the modal with translated content
+  function openModal(imageSrc, mapSrc, details) {
+    document.getElementById("modal-image").src = imageSrc;
+    document.getElementById("map-frame").src = mapSrc;
+
+    // Save current modal data for language switch updates
+    currentModalImageData = { imageSrc, mapSrc, details };
+
+    // Apply translations to modal details
+    document.getElementById("modal-info").innerHTML = `
+      <p><strong>${i18next.t("modal.imageDetails.description")}</strong> ${details.description}</p>
+      <p><strong>${i18next.t("modal.imageDetails.coordinates")}</strong> ${details.coordinates}</p>
+      <p><strong>${i18next.t("modal.imageDetails.city")}</strong> ${details.city}</p>
+      <p><strong>${i18next.t("modal.imageDetails.district")}</strong> ${details.district}</p>
+      <p><strong>${i18next.t("modal.imageDetails.brightness")}</strong> ${details.brightness}</p>
+      <p><strong>${i18next.t("modal.imageDetails.scan")}</strong> ${details.scan}</p>
+      <p><strong>${i18next.t("modal.imageDetails.track")}</strong> ${details.track}</p>
+      <p><strong>${i18next.t("modal.imageDetails.acquisitionDate")}</strong> ${details.acquisitionDate}</p>
+      <p><strong>${i18next.t("modal.imageDetails.acquisitionTime")}</strong> ${details.acquisitionTime}</p>
+      <p><strong>${i18next.t("modal.imageDetails.satellite")}</strong> ${details.satellite}</p>
+      <p><strong>${i18next.t("modal.imageDetails.instrument")}</strong> ${details.instrument}</p>
+      <p><strong>${i18next.t("modal.imageDetails.confidence")}</strong> ${details.confidence}</p>
+      <p><strong>${i18next.t("modal.imageDetails.version")}</strong> ${details.version}</p>
+      <p><strong>${i18next.t("modal.imageDetails.brightT31")}</strong> ${details.brightT31}</p>
+      <p><strong>${i18next.t("modal.imageDetails.frp")}</strong> ${details.frp}</p>
+      <p><strong>${i18next.t("modal.imageDetails.dayNight")}</strong> ${details.dayNight}</p>
+    `;
+
+    document.getElementById("modal").style.display = "block";
+  }
+
+  // LISTEN FOR LANGUAGE CHANGE AND UPDATE MODAL
+  languageSelect.addEventListener("change", function () {
+    const selectedLang = languageSelect.value;
+    i18next.changeLanguage(selectedLang, function () {
+      updateContent();
+      if (document.getElementById("modal").style.display === "block") {
+        openModal(
+          currentModalImageData.imageSrc,
+          currentModalImageData.mapSrc,
+          currentModalImageData.details
+        );
+      }
+    });
+    localStorage.setItem("language", selectedLang); // Store preference in localStorage
+  });
+
+  // On page load, set language from localStorage or default
+  const savedLanguage = localStorage.getItem("language") || "en";
+  languageSelect.value = savedLanguage;
+  i18next.changeLanguage(savedLanguage, function () {
+    updateContent();
+    if (document.getElementById("modal").style.display === "block") {
+      openModal(
+        currentModalImageData.imageSrc,
+        currentModalImageData.mapSrc,
+        currentModalImageData.details
+      );
+    }
+  });
+});
+
+
+
+
+
+
 /* ---------------------------------------
    POPULATE FILTER DROPDOWNS
 ---------------------------------------- */

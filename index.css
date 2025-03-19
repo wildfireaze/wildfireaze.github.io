@@ -18,6 +18,39 @@ header {
   font-weight: bold;
 }
 
+
+/* Styling for the language select dropdown */
+#language-select {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  padding: 8px 12px;
+  border: 2px;
+  border-radius: 6px;
+  background-color: #ff6600;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+}
+
+
+/* Styling for dropdown options */
+#language-select option {
+  background: white;
+  color: #333;
+  font-size: 16px;
+  padding: 10px;
+}
+
+/* Style for the label */
+label[for="language-select"] {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 8px;
+  color: #333;
+}
+
+
 /* About Us Button */
 .aboutUs {
   display: inline-block;

@@ -1,0 +1,93 @@
+{
+    "title": "Wildfire Satellite Image Viewer",
+    "about": "About",
+    "sortLabel": "Sort by Acquisition Date:",
+    "regionLabel": "Region:",
+    "dateRangeLabel": "Date Range:",
+    "satelliteLabel": "Satellite:",
+    "instrumentLabel": "Instrument:",
+    "filteredData": "Filtered Data",
+    "resetFilters": "Reset",
+    "loadMore": "Load More",
+    "downloadDataset": "Download Dataset",
+    "agreeTerms": "Do you agree with the Terms and Conditions?",
+    "agreeCheckbox": "I agree to the terms and conditions.",
+    "confirmDownload": "Confirm & Download",
+    "cancel": "Cancel",
+    "ascending": "Ascending",
+    "descending": "Descending",
+    "all": "All",
+    "modalDownload": "Download Dataset",
+    "termsAndConditions": "Terms and Conditions",
+    "footer": "&copy; 2025 Wildfire Satellite Image Viewer. ADA University, Baku, Azerbaijan.",
+  
+    "filters": {
+      "sortByDate": "Sort by Acquisition Date",
+      "selectRegion": "Select Region",
+      "selectDateRange": "Select Date Range",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "selectSatellite": "Select Satellite",
+      "selectInstrument": "Select Instrument",
+      "downloadFilteredData": "Download Filtered Data",
+      "resetFilters": "Reset Filters"
+    },
+  
+    "buttons": {
+      "download": "Download",
+      "reset": "Reset",
+      "loadMore": "Load More",
+      "close": "Close",
+      "apply": "Apply",
+      "confirm": "Confirm",
+      "cancel": "Cancel",
+      "agree": "I Agree",
+      "disagree": "I Disagree"
+    },
+  
+    "modal": {
+      "download": {
+        "title": "Download Dataset",
+        "text": "Do you agree with the Terms and Conditions?",
+        "agreeCheckbox": "I agree to the terms and conditions.",
+        "confirmButton": "Confirm & Download",
+        "cancelButton": "Cancel"
+      },
+      "imageDetails": {
+        "title": "Image Details",
+        "description": "Description:",
+        "coordinates": "Coordinates:",
+        "city": "City:",
+        "district": "District:",
+        "brightness": "Brightness:",
+        "scan": "Scan:",
+        "track": "Track:",
+        "acquisitionDate": "Acquisition Date:",
+        "acquisitionTime": "Acquisition Time:",
+        "satellite": "Satellite:",
+        "instrument": "Instrument:",
+        "confidence": "Confidence:",
+        "version": "Version:",
+        "brightT31": "Bright T31:",
+        "frp": "FRP:",
+        "dayNight": "Day/Night:"
+      }
+    },
+  
+    "tooltips": {
+      "sortByDate": "Sort wildfire images by acquisition date",
+      "filterByRegion": "Filter images based on the selected region",
+      "filterBySatellite": "Choose satellite images",
+      "filterByInstrument": "Filter images by instrument type",
+      "downloadFiltered": "Download filtered wildfire image dataset",
+      "resetFilters": "Clear all selected filters"
+    },
+  
+    "notifications": {
+      "noResults": "No wildfire images found for the selected filters.",
+      "errorLoading": "Error loading data. Please try again.",
+      "successDownload": "Dataset download started successfully.",
+      "agreeToTerms": "You must agree to the terms and conditions before downloading."
+    }
+  }
+  

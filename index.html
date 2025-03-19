@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,14 +10,28 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.1/papaparse.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <!-- i18next and related libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/21.6.14/i18next.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-browser-languagedetector/6.1.4/i18nextBrowserLanguageDetector.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-xhr-backend/3.2.2/i18nextXHRBackend.min.js"></script>
 </head>
-
 <body>
   <header>
-    <h1 style="display: flex; justify-content: center;">Wildfire Satellite Image Viewer<a class="az-index"
-        href="./az-index.html">&#x1F1E6;&#x1F1FF;</a></h1>
-    <a class="aboutUs" href="./about.html">About</a>
+    <div>
+      <h1>Wildfire Satellite Image Viewer </h1>
+      <select id="language-select">
+        <option value="en">English</option>
+        <option value="az">Azərbaycanca</option>
+      </select>
+    </div>
+    <!-- <a class="az-index" href="./az-index.html">&#x1F1E6;&#x1F1FF;</a> -->
+    
+    <!-- Language Selection Dropdown -->
 
+    <!-- TERMS CONDITIONS AGREE CHECKBOX IS MISSING -->
+
+    
+    <a class="aboutUs" href="./about.html">About</a>
   </header>
 
   <div class="container">
@@ -61,10 +74,8 @@
     </main>
 
     <!-- Modal for Details and Map -->
-
     <div id="image-modal" class="modal">
       <div class="modal-content">
-        <!-- <span class="close" onclick="closeModal()">&times;</span> -->
         <div class="modal-top">
           <div class="modal-image-container">
             <img id="modal-image" src="" alt="Detailed View">
@@ -79,20 +90,15 @@
         </div>
         <div class="modal-details" id="modal-info"></div>
       </div>
-
     </div>
   </div>
-
 
   <button id="scrollToTopBtn" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></button>
 
   <!-- Footer Section -->
   <footer>
-    <p>&copy; 2025 Wildfire Satellite Image Viewer.</p>
-    <p>ADA University, Baku, Azerbaijan.</p>
+    <p>&copy; 2025 Wildfire Satellite Image Viewer. ADA University, Baku, Azerbaijan.</p>
   </footer>
-
-
 
   <!-- Download Confirmation Modal -->
   <div id="modal-download-conf" class="modal-conf">
@@ -111,10 +117,6 @@
     </div>
   </div>
 
-
-
-
   <script src="index.js"></script>
 </body>
-
 </html>
