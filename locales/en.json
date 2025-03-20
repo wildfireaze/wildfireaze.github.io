@@ -1,94 +1,124 @@
 {
-    "title": "Wildfire Satellite Image Viewer",
-    "about": "About",
-    "sortLabel": "Sort by Acquisition Date:",
-    "imageFromCoordinates": "Coordinates {{lat}}, {{lon}}",
-    "regionLabel": "Region:",
-    "dateRangeLabel": "Date Range:",
-    "satelliteLabel": "Satellite:",
-    "instrumentLabel": "Instrument:",
-    "filteredData": "Filtered Data",
-    "resetFilters": "Reset",
+  "title": "Wildfire Satellite Image Viewer",
+  "about": "About",
+  "sortLabel": "Sort by Acquisition Date:",
+  "imageFromCoordinates": "Coordinates {{lat}}, {{lon}}",
+  "regionLabel": "Region:",
+  "dateRangeLabel": "Date Range:",
+  "satelliteLabel": "Satellite:",
+  "instrumentLabel": "Instrument:",
+  "filteredData": "Filtered Data",
+  "resetFilters": "Reset",
+  "loadMore": "Load More",
+  "downloadDataset": "Download Dataset",
+  "agreeTerms": "Do you agree with the Terms and Conditions?",
+  "agreeCheckbox": "I agree to the terms and conditions.",
+  "confirmDownload": "Confirm & Download",
+  "cancel": "Cancel",
+  "ascending": "Ascending",
+  "descending": "Descending",
+  "all": "All",
+  "modalDownload": "Download Dataset",
+  "termsAndConditions": "Terms and Conditions",
+  "footer": "&copy; 2025 Wildfire Satellite Image Viewer. ADA University, Baku, Azerbaijan.",
+  "filters": {
+    "sortByDate": "Sort by Acquisition Date",
+    "selectRegion": "Select Region",
+    "selectDateRange": "Select Date Range",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "selectSatellite": "Select Satellite",
+    "selectInstrument": "Select Instrument",
+    "downloadFilteredData": "Download Filtered Data",
+    "resetFilters": "Reset Filters"
+  },
+  "buttons": {
+    "download": "Download",
+    "reset": "Reset",
     "loadMore": "Load More",
-    "downloadDataset": "Download Dataset",
-    "agreeTerms": "Do you agree with the Terms and Conditions?",
-    "agreeCheckbox": "I agree to the terms and conditions.",
-    "confirmDownload": "Confirm & Download",
+    "close": "Close",
+    "apply": "Apply",
+    "confirm": "Confirm",
     "cancel": "Cancel",
-    "ascending": "Ascending",
-    "descending": "Descending",
-    "all": "All",
-    "modalDownload": "Download Dataset",
-    "termsAndConditions": "Terms and Conditions",
-    "footer": "&copy; 2025 Wildfire Satellite Image Viewer. ADA University, Baku, Azerbaijan.",
-  
-    "filters": {
-      "sortByDate": "Sort by Acquisition Date",
-      "selectRegion": "Select Region",
-      "selectDateRange": "Select Date Range",
-      "startDate": "Start Date",
-      "endDate": "End Date",
-      "selectSatellite": "Select Satellite",
-      "selectInstrument": "Select Instrument",
-      "downloadFilteredData": "Download Filtered Data",
-      "resetFilters": "Reset Filters"
+    "agree": "I Agree",
+    "disagree": "I Disagree"
+  },
+  "modal": {
+    "download": {
+      "title": "Download Dataset",
+      "text": "Do you agree with the Terms and Conditions?",
+      "agreeCheckbox": "I agree to the terms and conditions.",
+      "confirmButton": "Confirm & Download",
+      "cancelButton": "Cancel"
     },
-  
-    "buttons": {
-      "download": "Download",
-      "reset": "Reset",
-      "loadMore": "Load More",
-      "close": "Close",
-      "apply": "Apply",
-      "confirm": "Confirm",
-      "cancel": "Cancel",
-      "agree": "I Agree",
-      "disagree": "I Disagree"
+    "imageDetails": {
+      "title": "Image Details",
+      "description": "Description:",
+      "coordinates": "Coordinates:",
+      "city": "City:",
+      "district": "District:",
+      "brightness": "Brightness:",
+      "scan": "Scan:",
+      "track": "Track:",
+      "acquisitionDate": "Acquisition Date:",
+      "acquisitionTime": "Acquisition Time:",
+      "satellite": "Satellite:",
+      "instrument": "Instrument:",
+      "confidence": "Confidence:",
+      "version": "Version:",
+      "brightT31": "Bright T31:",
+      "frp": "FRP:",
+      "dayNight": "Day/Night:"
+    }
+  },
+  "tooltips": {
+    "sortByDate": "Sort wildfire images by acquisition date",
+    "filterByRegion": "Filter images based on the selected region",
+    "filterBySatellite": "Choose satellite images",
+    "filterByInstrument": "Filter images by instrument type",
+    "downloadFiltered": "Download filtered wildfire image dataset",
+    "resetFilters": "Clear all selected filters"
+  },
+  "notifications": {
+    "noResults": "No wildfire images found for the selected filters.",
+    "errorLoading": "Error loading data. Please try again.",
+    "successDownload": "Dataset download started successfully.",
+    "agreeToTerms": "You must agree to the terms and conditions before downloading."
+  },
+  "aboutPage": {
+    "header": "About Wildfire Satellite Image Viewer",
+    "homeLink": "Home",
+    "nav": {
+      "dataset": "Dataset",
+      "team": "Team",
+      "project": "Project",
+      "contact": "Contact",
+      "terms": "Terms and Services"
     },
-  
-    "modal": {
-      "download": {
-        "title": "Download Dataset",
-        "text": "Do you agree with the Terms and Conditions?",
-        "agreeCheckbox": "I agree to the terms and conditions.",
-        "confirmButton": "Confirm & Download",
-        "cancelButton": "Cancel"
-      },
-      "imageDetails": {
-        "title": "Image Details",
-        "description": "Description:",
-        "coordinates": "Coordinates:",
-        "city": "City:",
-        "district": "District:",
-        "brightness": "Brightness:",
-        "scan": "Scan:",
-        "track": "Track:",
-        "acquisitionDate": "Acquisition Date:",
-        "acquisitionTime": "Acquisition Time:",
-        "satellite": "Satellite:",
-        "instrument": "Instrument:",
-        "confidence": "Confidence:",
-        "version": "Version:",
-        "brightT31": "Bright T31:",
-        "frp": "FRP:",
-        "dayNight": "Day/Night:"
-      }
+    "dataset": {
+      "h2": "Dataset",
+      "p": "The dataset contains wildfire images collected from satellite sources and includes metadata such as acquisition dates, regions, satellite names, and instruments used. This dataset is essential for wildfire analysis and research in Azerbaijan. Since such a project had never been done in Azerbaijan before, creating a database was challenging and had to be done from scratch. The dataset can be downloaded as a .zip file that includes one folder with images and a CSV file containing comprehensive metadata about the collected images."
     },
-  
-    "tooltips": {
-      "sortByDate": "Sort wildfire images by acquisition date",
-      "filterByRegion": "Filter images based on the selected region",
-      "filterBySatellite": "Choose satellite images",
-      "filterByInstrument": "Filter images by instrument type",
-      "downloadFiltered": "Download filtered wildfire image dataset",
-      "resetFilters": "Clear all selected filters"
+    "team": {
+      "h2": "Team",
+      "p1": "This project was developed by ADA University students: Ahmad Huseynli, Turgay Farhadli, Gunel Aliyeva, and Sahil Guluzada. Their dedication and teamwork ensured the creation of this innovative platform to improve wildfire visualization and research capabilities in Azerbaijan.",
+      "p2": "The team specializes in software development, data visualization, and project management, contributing their unique skills to deliver this impactful solution. Ahmad worked on visualization, Gunel on data processing, Sahil on synthetic wildfire image creation and website design, and Turgay on developing a wildfire detection model from satellite imagery."
     },
-  
-    "notifications": {
-      "noResults": "No wildfire images found for the selected filters.",
-      "errorLoading": "Error loading data. Please try again.",
-      "successDownload": "Dataset download started successfully.",
-      "agreeToTerms": "You must agree to the terms and conditions before downloading."
+    "project": {
+      "h2": "Project",
+      "p": "The Wildfire Satellite Image Viewer aims to address the lack of tools for wildfire visualization in Azerbaijan. It provides users with the ability to filter wildfire images by region, time, satellite type, and other criteria. The platform's interactive map and user-friendly design make it a valuable resource for researchers, environmentalists, and policymakers. The project combines satellite data analysis, modern web development techniques, and a focus on usability to deliver a comprehensive solution for wildfire monitoring and data accessibility."
+    },
+    "contact": {
+      "h2": "Contact",
+      "p": "For inquiries or collaborations, feel free to contact us."
+    },
+    "terms": {
+      "h2": "Terms and Services",
+      "p": "MIT License. Copyright (c) 2025 Ahmad Huseynli, Sahil Guluzada, Gunel Aliyeva, Turgay Farhadli. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+    },
+    "footer": {
+      "p1": "&copy; 2025 Wildfire Satellite Image Viewer.",
+      "p2": "ADA University, Baku, Azerbaijan."
     }
   }
-  
+}

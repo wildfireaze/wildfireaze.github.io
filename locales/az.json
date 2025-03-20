@@ -1,94 +1,124 @@
 {
-    "title": "Meşə Yanğınları Peyk Görüntüləri",
-    "about": "Haqqında",
-    "sortLabel": "Alınma Tarixinə Görə Sırala:",
-    "imageFromCoordinates": "Koordinatlar {{lat}}, {{lon}}",
-    "regionLabel": "Bölgə:",
-    "dateRangeLabel": "Tarix Aralığı:",
-    "satelliteLabel": "Peyk:",
-    "instrumentLabel": "Alət:",
-    "filteredData": "Filtrlənmiş Məlumat",
-    "resetFilters": "Sıfırla",
+  "title": "Meşə Yanğınları Peyk Görüntüləri",
+  "about": "Haqqında",
+  "sortLabel": "Alınma Tarixinə Görə Sırala:",
+  "imageFromCoordinates": "Koordinatlar {{lat}}, {{lon}}",
+  "regionLabel": "Bölgə:",
+  "dateRangeLabel": "Tarix Aralığı:",
+  "satelliteLabel": "Peyk:",
+  "instrumentLabel": "Alət:",
+  "filteredData": "Filtrlənmiş Məlumat",
+  "resetFilters": "Sıfırla",
+  "loadMore": "Daha Çox Yüklə",
+  "downloadDataset": "Məlumat Dəstini Yüklə",
+  "agreeTerms": "Şərtlərlə razısınız?",
+  "agreeCheckbox": "Mən şərtlərlə razıyam.",
+  "confirmDownload": "Təsdiqlə və Yüklə",
+  "cancel": "İmtina et",
+  "ascending": "Artan",
+  "descending": "Azalan",
+  "all": "Hamısı",
+  "modalDownload": "Məlumat Dəstini Yüklə",
+  "termsAndConditions": "Şərtlər və Xidmətlər",
+  "footer": "&copy; 2025 Meşə Yanğınları Peyk Görüntüləri. ADA Universiteti, Bakı, Azərbaycan.",
+  "filters": {
+    "sortByDate": "Alınma Tarixinə Görə Sırala",
+    "selectRegion": "Bölgəni Seçin",
+    "selectDateRange": "Tarix Aralığını Seçin",
+    "startDate": "Başlanğıc Tarixi",
+    "endDate": "Son Tarix",
+    "selectSatellite": "Peyki Seçin",
+    "selectInstrument": "Aləti Seçin",
+    "downloadFilteredData": "Filtrlənmiş Məlumatı Yüklə",
+    "resetFilters": "Filtrləri Sıfırla"
+  },
+  "buttons": {
+    "download": "Yüklə",
+    "reset": "Sıfırla",
     "loadMore": "Daha Çox Yüklə",
-    "downloadDataset": "Məlumat Dəstini Yüklə",
-    "agreeTerms": "Şərtlərlə razısınız?",
-    "agreeCheckbox": "Mən şərtlərlə razıyam.",
-    "confirmDownload": "Təsdiqlə və Yüklə",
+    "close": "Bağla",
+    "apply": "Tətbiq et",
+    "confirm": "Təsdiqlə",
     "cancel": "İmtina et",
-    "ascending": "Artan",
-    "descending": "Azalan",
-    "all": "Hamısı",
-    "modalDownload": "Məlumat Dəstini Yüklə",
-    "termsAndConditions": "Şərtlər və Xidmətlər",
-    "footer": "&copy; 2025 Meşə Yanğınları Peyk Görüntüləri. ADA Universiteti, Bakı, Azərbaycan.",
-  
-    "filters": {
-      "sortByDate": "Alınma Tarixinə Görə Sırala",
-      "selectRegion": "Bölgəni Seçin",
-      "selectDateRange": "Tarix Aralığını Seçin",
-      "startDate": "Başlanğıc Tarixi",
-      "endDate": "Son Tarix",
-      "selectSatellite": "Peyki Seçin",
-      "selectInstrument": "Aləti Seçin",
-      "downloadFilteredData": "Filtrlənmiş Məlumatı Yüklə",
-      "resetFilters": "Filtrləri Sıfırla"
+    "agree": "Razıyam",
+    "disagree": "Razı deyiləm"
+  },
+  "modal": {
+    "download": {
+      "title": "Məlumat Dəstini Yüklə",
+      "text": "Şərtlərlə razısınız?",
+      "agreeCheckbox": "Mən şərtlərlə razıyam.",
+      "confirmButton": "Təsdiqlə və Yüklə",
+      "cancelButton": "İmtina et"
     },
-  
-    "buttons": {
-      "download": "Yüklə",
-      "reset": "Sıfırla",
-      "loadMore": "Daha Çox Yüklə",
-      "close": "Bağla",
-      "apply": "Tətbiq et",
-      "confirm": "Təsdiqlə",
-      "cancel": "İmtina et",
-      "agree": "Razıyam",
-      "disagree": "Razı deyiləm"
+    "imageDetails": {
+      "title": "Şəkil Detalları",
+      "description": "Təsvir:",
+      "coordinates": "Koordinatlar:",
+      "city": "Şəhər:",
+      "district": "Rayon:",
+      "brightness": "Parlaqlıq:",
+      "scan": "Skan:",
+      "track": "İz:",
+      "acquisitionDate": "Alınma Tarixi:",
+      "acquisitionTime": "Alınma Saatı:",
+      "satellite": "Peyk:",
+      "instrument": "Alət:",
+      "confidence": "Ehtimad:",
+      "version": "Versiya:",
+      "brightT31": "Bright T31:",
+      "frp": "FRP:",
+      "dayNight": "Gündüz/Gecə:"
+    }
+  },
+  "tooltips": {
+    "sortByDate": "Yanğın görüntülərini alınma tarixinə görə sırala",
+    "filterByRegion": "Seçilmiş bölgəyə görə görüntüləri filtrlə",
+    "filterBySatellite": "Peyk görüntülərini seçin",
+    "filterByInstrument": "Alət növünə görə filtrlə",
+    "downloadFiltered": "Filtrlənmiş yanğın görüntüləri məlumat dəstini yüklə",
+    "resetFilters": "Seçilmiş filtrləri sil"
+  },
+  "notifications": {
+    "noResults": "Seçilmiş filtrlər üçün heç bir yanğın görüntüsü tapılmadı.",
+    "errorLoading": "Məlumat yüklənərkən xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.",
+    "successDownload": "Məlumat dəsti uğurla yükləndi.",
+    "agreeToTerms": "Yükləmədən əvvəl şərtlərlə razılaşmalısınız."
+  },
+  "aboutPage": {
+    "header": "Meşə Yanğınları Peyk Görüntüləri haqqında",
+    "homeLink": "Ana Səhifə",
+    "nav": {
+      "dataset": "Məlumat Dəsti",
+      "team": "Komanda",
+      "project": "Layihə",
+      "contact": "Əlaqə",
+      "terms": "Şərtlər və Xidmətlər"
     },
-  
-    "modal": {
-      "download": {
-        "title": "Məlumat Dəstini Yüklə",
-        "text": "Şərtlərlə razısınız?",
-        "agreeCheckbox": "Mən şərtlərlə razıyam.",
-        "confirmButton": "Təsdiqlə və Yüklə",
-        "cancelButton": "İmtina et"
-      },
-      "imageDetails": {
-        "title": "Şəkil Detalları",
-        "description": "Təsvir:",
-        "coordinates": "Koordinatlar:",
-        "city": "Şəhər:",
-        "district": "Rayon:",
-        "brightness": "Parlaqlıq:",
-        "scan": "Skan:",
-        "track": "İz:",
-        "acquisitionDate": "Alınma Tarixi:",
-        "acquisitionTime": "Alınma Saatı:",
-        "satellite": "Peyk:",
-        "instrument": "Alət:",
-        "confidence": "Ehtimad:",
-        "version": "Versiya:",
-        "brightT31": "Bright T31:",
-        "frp": "FRP:",
-        "dayNight": "Gündüz/Gecə:"
-      }
+    "dataset": {
+      "h2": "Məlumat Dəsti",
+      "p": "Məlumat dəsti peykdən toplanmış meşə yanğınları şəkillərini və onlara aid metadataları (alınma tarixi, bölgə, peyk adı, istifadə olunan alət və s.) ehtiva edir. Bu dəst meşə yanğınlarının təhlili və Azərbaycanda araşdırma üçün vacibdir. Belə bir layihənin Azərbaycanda əvvəldən həyata keçirilmədiyini nəzərə alaraq, məlumat bazasını sıfırdan yaratmaq çətin oldu. Məlumat dəsti .zip formatında yüklənə bilər və bu faylda şəkillərin olduğu qovluq ilə yanaşı, toplanmış şəkillərin geniş metadatalarını ehtiva edən CSV faylı mövcuddur."
     },
-  
-    "tooltips": {
-      "sortByDate": "Yanğın görüntülərini alınma tarixinə görə sırala",
-      "filterByRegion": "Seçilmiş bölgəyə görə görüntüləri filtrlə",
-      "filterBySatellite": "Peyk görüntülərini seçin",
-      "filterByInstrument": "Alət növünə görə filtrlə",
-      "downloadFiltered": "Filtrlənmiş yanğın görüntüləri məlumat dəstini yüklə",
-      "resetFilters": "Seçilmiş filtrləri sil"
+    "team": {
+      "h2": "Komanda",
+      "p1": "Bu layihə ADA Universitetinin tələbələri – Əhməd Hüseynli, Türqay Fərhadlı, Günel Əliyeva və Sahil Quluzaad tərəfindən hazırlanmışdır. Onların əməkdaşlığı və səyləri meşə yanğınlarının vizuallaşdırılması və araşdırılması üçün bu innovativ platformanın yaradılmasını təmin etdi.",
+      "p2": "Komanda proqram təminatı, məlumat vizuallaşdırılması və layihə idarəçiliyi sahəsində ixtisaslaşmışdır. Əhməd vizuallaşdırma üzərində, Günel məlumatların işlənməsi üzərində, Sahil sintetik meşə yanğını şəkillərinin yaradılması və veb dizayn üzərində, Türqay isə peyk görüntülərindən meşə yanğını aşkarlanması üçün modelin yaradılmasında iştirak edib."
     },
-  
-    "notifications": {
-      "noResults": "Seçilmiş filtrlər üçün heç bir yanğın görüntüsü tapılmadı.",
-      "errorLoading": "Məlumat yüklənərkən xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.",
-      "successDownload": "Məlumat dəsti uğurla yükləndi.",
-      "agreeToTerms": "Yükləmədən əvvəl şərtlərlə razılaşmalısınız."
+    "project": {
+      "h2": "Layihə",
+      "p": "Meşə Yanğınları Peyk Görüntüləri platforması Azərbaycanda meşə yanğınlarının vizuallaşdırılması üçün vasitələrin çatışmazlığını aradan qaldırmağı hədəfləyir. İstifadəçilər bu platforma vasitəsilə meşə yanğını şəkillərini bölgə, zaman, peyk növü və digər meyarlarla süzgəcdən keçirə bilərlər. İnteraktiv xəritə və istifadəsi rahat interfeys platformanı tədqiqatçılar, ətraf mühit mütəxəssisləri və qərar qəbuletmə orqanları üçün dəyərli bir vasitəyə çevirir."
+    },
+    "contact": {
+      "h2": "Əlaqə",
+      "p": "Müraciətlər və əməkdaşlıq üçün bizimlə əlaqə saxlayın."
+    },
+    "terms": {
+      "h2": "Şərtlər və Xidmətlər",
+      "p": "MIT Lisenziyası. 2025 © Əhməd Hüseynli, Sahil Quluzaad, Günel Əliyeva, Türqay Fərhadlı. Bu proqram təminatının və əlaqədar sənədlərin kopyasını əldə edən hər kəsə proqram təminatını istənilən məqsədlə, kopyalamaq, dəyişdirmək, birləşdirmək, dərc etmək, yaymaq, alt lisenziya vermək və ya satmaq hüququ verilir. Yuxarıdakı müəllif hüquqları bildirişi və bu icazə bildirişi proqram təminatının bütün kopyalarına daxil edilməlidir. PROQRAM TƏMINATI “ELƏ Kİ OLMADIĞI KİMİ” VERİLİR, HƏR HANSI BİR ZƏMANƏT OLMADAN."
+    },
+    "footer": {
+      "p1": "&copy; 2025 Meşə Yanğınları Peyk Görüntüləri.",
+      "p2": "ADA Universiteti, Bakı, Azərbaycan."
     }
   }
-  
+}

@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/21.6.14/i18next.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/i18next-browser-languagedetector/6.1.4/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-xhr-backend/3.2.2/i18nextXHRBackend.min.js"></script>
+
 </head>
 
 <body>
@@ -155,197 +160,203 @@
         </p>
     </section>
 
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>
-                For inquiries or collaborations, feel free to contact us:
-                <style>
-                    .contact-list {
-                        list-style: none;
-                        padding: 0;
-                    }
-                
-                    .contact-list li {
-                        display: flex;
-                        align-items: center;
-                        gap: 10px;
-                        margin-bottom: 8px;
-                        font-weight: bold;
-                    }
-                
-                    .contact-list a {
-                        text-decoration: none;
-                        color: #0077B5; /* LinkedIn blue */
-                    }
-                
-                    .icon {
-                        width: 20px;
-                        height: 20px;
-                    }
-                
-                    .copy-btn {
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        font-size: 14px;
-                        color: #0077B5;
-                        padding: 0;
-                    }
-                </style>
-                
-                <ul class="contact-list">
-                    <li>
-                        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" class="icon" alt="Email">
-                        Email: 
-                        <a href="mailto:sdpproject2025@gmail.com" id="email">sdpproject2025@gmail.com</a>
-                        <button class="copy-btn" onclick="copyToClipboard('email')">📋</button>
-                    </li>
-                    <li>
-                        <img src="https://cdn-icons-png.flaticon.com/512/159/159832.png" class="icon" alt="Phone">
-                        Phone: 
-                        <span id="phone">+994 55 930 94 64</span>
-                        <button class="copy-btn" onclick="copyToClipboard('phone')">📋</button>
-                    </li>
-                    <li>
-                        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" class="icon" alt="Location">
-                        Address: ADA University, Baku, Azerbaijan
-                    </li>
-                </ul>
-                
-                <script>
-                    function copyToClipboard(id) {
-                        const text = document.getElementById(id).innerText || document.getElementById(id).textContent;
-                        navigator.clipboard.writeText(text).then(() => {
-                            alert("Copied: " + text);
-                        }).catch(err => {
-                            console.error("Failed to copy: ", err);
-                        });
-                    }
-                </script>
-                
-                <a style="color: #ff6600; text-decoration: none; font-weight: bold;" 
-                   href="https://github.com/gunelaliyevaa/wildfire-detection-using-satellite-imagery.git" 
-                   target="_blank">
-                    <i class="fa-brands fa-github"></i> 
-                    GitHub repository of the project
-                </a>
-            </p>
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>
+            For inquiries or collaborations, feel free to contact us:
             <style>
-                .linkedin-list {
+                .contact-list {
                     list-style: none;
                     padding: 0;
                 }
-            
-                .linkedin-list li {
+
+                .contact-list li {
                     display: flex;
                     align-items: center;
+                    gap: 10px;
                     margin-bottom: 8px;
-                }
-            
-                .linkedin-list a {
-                    text-decoration: none;
-                    color: #0077B5; /* LinkedIn blue */
                     font-weight: bold;
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
                 }
-            
-                .linkedin-icon {
+
+                .contact-list a {
+                    text-decoration: none;
+                    color: #0077B5;
+                    /* LinkedIn blue */
+                }
+
+                .icon {
                     width: 20px;
                     height: 20px;
                 }
+
+                .copy-btn {
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 14px;
+                    color: #0077B5;
+                    padding: 0;
+                }
             </style>
-            
-            <p>LinkedIn:</p>
-            <ul class="linkedin-list">
-                <li>
-                    <a href="https://az.linkedin.com/in/ahmad-huseynli" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" class="linkedin-icon" alt="LinkedIn"> 
-                        Ahmad Huseynli
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/in/gunel-aliyevaa" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" class="linkedin-icon" alt="LinkedIn"> 
-                        Gunel Aliyeva
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/in/sahil-qulizad%C9%99" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" class="linkedin-icon" alt="LinkedIn"> 
-                        Sahil Qulizade
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/in/turqay-f%C9%99rhadl%C4%B1-ba420830b/" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" class="linkedin-icon" alt="LinkedIn"> 
-                        Turgay Farhadli
-                    </a>
-                </li>
-            </ul>
 
-    <!-- Terms and Services Section -->
-    <section id="terms">
-        <h2>Terms and Services</h2>
-        <p>
-            MIT License
-            <br></br>
-            Copyright (c) 2025
-            Ahmad Huseynli, Sahil Gulizada, Gunel Aliyeva, Turgay Farhadli
-        <br></br>
-            Permission is hereby granted, free of charge, to any person obtaining a copy
-            of this software and associated documentation files (the "Software"), to deal
-            in the Software without restriction, including without limitation the rights
-            to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-            copies of the Software, and to permit persons to whom the Software is
-            furnished to do so, subject to the following conditions:
-            <br></br>
+        <ul class="contact-list">
+            <li>
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" class="icon" alt="Email">
+                Email:
+                <a href="mailto:sdpproject2025@gmail.com" id="email">sdpproject2025@gmail.com</a>
+                <button class="copy-btn" onclick="copyToClipboard('email')">📋</button>
+            </li>
+            <li>
+                <img src="https://cdn-icons-png.flaticon.com/512/159/159832.png" class="icon" alt="Phone">
+                Phone:
+                <span id="phone">+994 55 930 94 64</span>
+                <button class="copy-btn" onclick="copyToClipboard('phone')">📋</button>
+            </li>
+            <li>
+                <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" class="icon" alt="Location">
+                Address: ADA University, Baku, Azerbaijan
+            </li>
+        </ul>
 
-            The above copyright notice and this permission notice shall be included
-            in all copies or substantial portions of the Software.
-            <br></br>
+        <script>
+            function copyToClipboard(id) {
+                const text = document.getElementById(id).innerText || document.getElementById(id).textContent;
+                navigator.clipboard.writeText(text).then(() => {
+                    alert("Copied: " + text);
+                }).catch(err => {
+                    console.error("Failed to copy: ", err);
+                });
+            }
+        </script>
 
-            THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-            OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-            FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-            AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-            LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-            OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-            THE SOFTWARE.
-
+        <a style="color: #ff6600; text-decoration: none; font-weight: bold;"
+            href="https://github.com/gunelaliyevaa/wildfire-detection-using-satellite-imagery.git" target="_blank">
+            <i class="fa-brands fa-github"></i>
+            GitHub repository of the project
+        </a>
         </p>
-    </section>
+        <style>
+            .linkedin-list {
+                list-style: none;
+                padding: 0;
+            }
 
-    <button id="scrollToTopBtn" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></button>
+            .linkedin-list li {
+                display: flex;
+                align-items: center;
+                margin-bottom: 8px;
+            }
+
+            .linkedin-list a {
+                text-decoration: none;
+                color: #0077B5;
+                /* LinkedIn blue */
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .linkedin-icon {
+                width: 20px;
+                height: 20px;
+            }
+        </style>
+
+        <p>LinkedIn:</p>
+        <ul class="linkedin-list">
+            <li>
+                <a href="https://az.linkedin.com/in/ahmad-huseynli" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                        class="linkedin-icon" alt="LinkedIn">
+                    Ahmad Huseynli
+                </a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/gunel-aliyevaa" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                        class="linkedin-icon" alt="LinkedIn">
+                    Gunel Aliyeva
+                </a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/sahil-qulizad%C9%99" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                        class="linkedin-icon" alt="LinkedIn">
+                    Sahil Qulizade
+                </a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/turqay-f%C9%99rhadl%C4%B1-ba420830b/" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                        class="linkedin-icon" alt="LinkedIn">
+                    Turgay Farhadli
+                </a>
+            </li>
+        </ul>
+
+        <!-- Terms and Services Section -->
+        <section id="terms">
+            <h2>Terms and Services</h2>
+            <p>
+                MIT License
+                <br></br>
+                Copyright (c) 2025
+                Ahmad Huseynli, Sahil Gulizada, Gunel Aliyeva, Turgay Farhadli
+                <br></br>
+                Permission is hereby granted, free of charge, to any person obtaining a copy
+                of this software and associated documentation files (the "Software"), to deal
+                in the Software without restriction, including without limitation the rights
+                to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                copies of the Software, and to permit persons to whom the Software is
+                furnished to do so, subject to the following conditions:
+                <br></br>
+
+                The above copyright notice and this permission notice shall be included
+                in all copies or substantial portions of the Software.
+                <br></br>
+
+                THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+                OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+                THE SOFTWARE.
+
+            </p>
+        </section>
+
+        <button id="scrollToTopBtn" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></button>
 
 
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2025 Wildfire Satellite Image Viewer.</p>
-        <p>ADA University, Baku, Azerbaijan.</p>
-    </footer>
 
 
-    <!-- Download Confirmation Modal -->
-    <div id="downloadModal" class="modal">
-        <div class="modal-content">
-            <h2>Download Dataset</h2>
-            <p>Do you agree with the <a id="termsLink" class="aForDownload" href="#terms">Terms and Conditions</a>?</p>
-            <label>
-                <input type="checkbox" id="agreeCheckbox"> I agree to the terms and conditions.
-            </label>
-            <br>
-            <button id="confirmDownload" class="aForDownload" disabled>Confirm & Download</button>
-            <button id="closeModal" class="aForDownload">Cancel</button>
+        <!-- Download Confirmation Modal -->
+        <div id="downloadModal" class="modal">
+            <div class="modal-content">
+                <h2>Download Dataset</h2>
+                <p>Do you agree with the <a id="termsLink" class="aForDownload" href="#terms">Terms and Conditions</a>?
+                </p>
+                <label>
+                    <input type="checkbox" id="agreeCheckbox"> I agree to the terms and conditions.
+                </label>
+                <br>
+                <button id="confirmDownload" class="aForDownload" disabled>Confirm & Download</button>
+                <button id="closeModal" class="aForDownload">Cancel</button>
+            </div>
         </div>
-    </div>
 
 
 
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2025 Wildfire Satellite Image Viewer.</p>
+            <p>ADA University, Baku, Azerbaijan.</p>
+        </footer>
 
-    <script src="about.js"></script>
+        <script src="about.js"></script>
 
 </body>
 
