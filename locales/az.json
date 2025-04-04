@@ -97,24 +97,27 @@
     },
     "dataset": {
       "h2": "Məlumat Dəsti",
-      "p": "Məlumat dəsti peykdən toplanmış meşə yanğınları şəkillərini və onlara aid metadataları (alınma tarixi, bölgə, peyk adı, istifadə olunan alət və s.) ehtiva edir. Bu dəst meşə yanğınlarının təhlili və Azərbaycanda araşdırma üçün vacibdir. Belə bir layihənin Azərbaycanda əvvəldən həyata keçirilmədiyini nəzərə alaraq, məlumat bazasını sıfırdan yaratmaq çətin oldu. Məlumat dəsti .zip formatında yüklənə bilər və bu faylda şəkillərin olduğu qovluq ilə yanaşı, toplanmış şəkillərin geniş metadatalarını ehtiva edən CSV faylı mövcuddur."
+      "p": "Məlumat dəsti peykdən toplanmış meşə yanğınları şəkillərini və onlara aid metadataları (alınma tarixi, bölgə, peyk adı, istifadə olunan alət və s.) ehtiva edir. Bu dəst meşə yanğınlarının təhlili və Azərbaycanda araşdırma üçün vacibdir. Belə bir layihənin Azərbaycanda əvvəldən həyata keçirilmədiyini nəzərə alaraq, məlumat bazasını sıfırdan yaratmaq çətin oldu. Məlumat dəsti, şəkillərin olduğu bir qovluq və toplanmış şəkillərə aid geniş metadataları ehtiva edən CSV faylını özündə birləşdirən .zip formatında yüklənə bilər.",
+      "exampleImages": "Məlumat dəstindən nümunə şəkillər.",
+      "downloadInfo": "Məlumat dəsti, şəkillərin olduğu bir qovluq və toplanmış şəkillərə aid geniş metadataları ehtiva edən CSV faylını özündə birləşdirən .zip formatında yüklənə bilər."
     },
     "team": {
       "h2": "Komanda",
-      "p1": "Bu layihə ADA Universitetinin tələbələri – Əhməd Hüseynli, Türqay Fərhadlı, Günel Əliyeva və Sahil Quluzaad tərəfindən hazırlanmışdır. Onların əməkdaşlığı və səyləri meşə yanğınlarının vizuallaşdırılması və araşdırılması üçün bu innovativ platformanın yaradılmasını təmin etdi.",
+      "p1": "Bu layihə ADA Universitetinin tələbələri – Əhməd Hüseynli, Turqay Fərhadlı, Günel Əliyeva və Sahil Quluzadə tərəfindən hazırlanmışdır. Onların əməkdaşlığı və səyləri meşə yanğınlarının vizuallaşdırılması və araşdırılması üçün bu innovativ platformanın yaradılmasını təmin etdi.",
       "p2": "Komanda proqram təminatı, məlumat vizuallaşdırılması və layihə idarəçiliyi sahəsində ixtisaslaşmışdır. Əhməd vizuallaşdırma üzərində, Günel məlumatların işlənməsi üzərində, Sahil sintetik meşə yanğını şəkillərinin yaradılması və veb dizayn üzərində, Türqay isə peyk görüntülərindən meşə yanğını aşkarlanması üçün modelin yaradılmasında iştirak edib."
     },
     "project": {
       "h2": "Layihə",
-      "p": "Meşə Yanğınları Peyk Görüntüləri platforması Azərbaycanda meşə yanğınlarının vizuallaşdırılması üçün vasitələrin çatışmazlığını aradan qaldırmağı hədəfləyir. İstifadəçilər bu platforma vasitəsilə meşə yanğını şəkillərini bölgə, zaman, peyk növü və digər meyarlarla süzgəcdən keçirə bilərlər. İnteraktiv xəritə və istifadəsi rahat interfeys platformanı tədqiqatçılar, ətraf mühit mütəxəssisləri və qərar qəbuletmə orqanları üçün dəyərli bir vasitəyə çevirir."
+      "p": "Meşə Yanğınları Peyk Görüntüləri platforması Azərbaycanda meşə yanğınlarının vizuallaşdırılması üçün vasitələrin çatışmazlığını aradan qaldırmağı hədəfləyir. İstifadəçilər bu platforma vasitəsilə meşə yanğını şəkillərini bölgə, zaman, peyk növü və digər meyarlarla süzgəcdən keçirə bilərlər. İnteraktiv xəritə və istifadəsi rahat interfeys platformanı tədqiqatçılar, ətraf mühit mütəxəssisləri və qərar qəbuletmə orqanları üçün dəyərli bir vasitəyə çevirir.",
+      "projectInfo": "Layihə, peyk məlumatlarının təhlili, müasir veb inkişaf texnikaları və istifadəyə uyğunluğa diqqət yetirərək, meşə yanğınlarının monitorinqi və məlumatlara çıxışı üçün geniş həll təqdim edir."
     },
     "contact": {
       "h2": "Əlaqə",
       "p": "Müraciətlər və əməkdaşlıq üçün bizimlə əlaqə saxlayın."
     },
     "terms": {
-      "h2": "Şərtlər və Xidmətlər",
-      "p": "MIT Lisenziyası. 2025 © Əhməd Hüseynli, Sahil Quluzaad, Günel Əliyeva, Türqay Fərhadlı. Bu proqram təminatının və əlaqədar sənədlərin kopyasını əldə edən hər kəsə proqram təminatını istənilən məqsədlə, kopyalamaq, dəyişdirmək, birləşdirmək, dərc etmək, yaymaq, alt lisenziya vermək və ya satmaq hüququ verilir. Yuxarıdakı müəllif hüquqları bildirişi və bu icazə bildirişi proqram təminatının bütün kopyalarına daxil edilməlidir. PROQRAM TƏMINATI “ELƏ Kİ OLMADIĞI KİMİ” VERİLİR, HƏR HANSI BİR ZƏMANƏT OLMADAN."
+      "h2": "Terms and Services",
+      "p": "MIT License. Copyright (c) 2025 Ahmad Huseynli, Sahil Guluzada, Gunel Aliyeva, Turgay Farhadli. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
     },
     "footer": {
       "p1": "&copy; 2025 Meşə Yanğınları Peyk Görüntüləri.",

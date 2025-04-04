@@ -76,9 +76,7 @@
         </div>
 
         <!-- Text below the images -->
-        <div class="image-text">
-            <p>Example images from dataset.</p>
-        </div>
+
 
         <p>
             The dataset can be downloaded as a .zip file that includes one folder with images and a CSV file containing
@@ -87,7 +85,7 @@
         <div class="divForDownload">
             <a class="aForDownload"
                 href="https://github.com/wildfireaze/wildfireaze.github.io/raw/refs/heads/main/WildfireDataset.zip?download=">
-                Download Dataset
+                Kaggle
             </a>
         </div>
     </section>
@@ -165,76 +163,49 @@
         <h2>Contact</h2>
         <p>
             For inquiries or collaborations, feel free to contact us:
-            <style>
-                .contact-list {
-                    list-style: none;
-                    padding: 0;
-                }
 
-                .contact-list li {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    margin-bottom: 8px;
-                    font-weight: bold;
-                }
+                <div style="display:flex; flex-direction: column;">
+                    <div>
 
-                .contact-list a {
-                    text-decoration: none;
-                    color: #0077B5;
-                    /* LinkedIn blue */
-                }
+                        <a style="color: #ff6600; text-decoration: none; font-weight: bold;">
+                            <i class="fa-solid fa-location-dot"></i>
+                            Address: <a>ADA University, Baku, Azerbaijan </a>
+                    </div>
 
-                .icon {
-                    width: 20px;
-                    height: 20px;
-                }
+                    <div>
 
-                .copy-btn {
-                    background: none;
-                    border: none;
-                    cursor: pointer;
-                    font-size: 14px;
-                    color: #0077B5;
-                    padding: 0;
-                }
-            </style>
+                        <a style="color: #ff6600; text-decoration: none; font-weight: bold;">
+                            <i class="fa-solid fa-envelope"></i> Email:
 
-        <ul class="contact-list">
-            <li>
-                <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" class="icon" alt="Email">
-                Email:
-                <a href="mailto:sdpproject2025@gmail.com" id="email">sdpproject2025@gmail.com</a>
-                <button class="copy-btn" onclick="copyToClipboard('email')">📋</button>
-            </li>
-            <li>
-                <img src="https://cdn-icons-png.flaticon.com/512/159/159832.png" class="icon" alt="Phone">
-                Phone:
-                <span id="phone">+994 55 930 94 64</span>
-                <button class="copy-btn" onclick="copyToClipboard('phone')">📋</button>
-            </li>
-            <li>
-                <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" class="icon" alt="Location">
-                Address: ADA University, Baku, Azerbaijan
-            </li>
-        </ul>
 
-        <script>
-            function copyToClipboard(id) {
-                const text = document.getElementById(id).innerText || document.getElementById(id).textContent;
-                navigator.clipboard.writeText(text).then(() => {
-                    alert("Copied: " + text);
-                }).catch(err => {
-                    console.error("Failed to copy: ", err);
-                });
-            }
-        </script>
+                            <a href="mailto:sdpproject2025@gmail.com" style="text-decoration: none; color: black;"
+                                id="email">sdpproject2025@gmail.com</a>
+                            <button class="copy-btn" onclick="copyToClipboard('email')">📋</button>
+                        </div>
+                        <div>
+                            <a style="color: #ff6600; text-decoration: none; font-weight: bold;"
+                                href="https://github.com/gunelaliyevaa/wildfire-detection-using-satellite-imagery.git"
+                                target="_blank">
+                                <i class="fa-brands fa-github"></i>
+                                GitHub repository of the project
+                            </a>
+                        </div>
+                            
+                    </div>
 
-        <a style="color: #ff6600; text-decoration: none; font-weight: bold;"
-            href="https://github.com/gunelaliyevaa/wildfire-detection-using-satellite-imagery.git" target="_blank">
-            <i class="fa-brands fa-github"></i>
-            GitHub repository of the project
-        </a>
+
+
+                <script>
+                    function copyToClipboard(id) {
+                        const text = document.getElementById(id).innerText || document.getElementById(id).textContent;
+                        navigator.clipboard.writeText(text).then(() => {
+                            alert("Copied: " + text);
+                        }).catch(err => {
+                            console.error("Failed to copy: ", err);
+                        });
+                    }
+                </script>
+
         </p>
         <style>
             .linkedin-list {
@@ -295,7 +266,7 @@
                 </a>
             </li>
         </ul>
-
+        </section>
         <!-- Terms and Services Section -->
         <section id="terms">
             <h2>Terms and Services</h2>
@@ -351,10 +322,11 @@
 
 
         <!-- Footer Section -->
-        <footer>
-            <p>&copy; 2025 Wildfire Satellite Image Viewer.</p>
-            <p>ADA University, Baku, Azerbaijan.</p>
-        </footer>
+
+             <footer>
+                 <p>&copy; 2025 Wildfire Satellite Image Viewer. ADA University, Baku, Azerbaijan.</p>
+              </footer>
+    
 
         <script src="about.js"></script>
 
