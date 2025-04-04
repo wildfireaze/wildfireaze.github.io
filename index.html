@@ -31,7 +31,7 @@
     <!-- TERMS CONDITIONS AGREE CHECKBOX IS MISSING -->
 
     
-    <a class="aboutUs" href=".//about.html">About</a>
+    <a class="aboutUs" href="./about.html">About</a>
   </header>
 
   <div class="container">
@@ -100,23 +100,26 @@
     <p>&copy; 2025 Wildfire Satellite Image Viewer. ADA University, Baku, Azerbaijan.</p>
   </footer>
 
-  <!-- Download Confirmation Modal -->
-  <div id="modal-download-conf" class="modal-conf">
-    <div class="modal-content-conf">
-      <h2>Download Dataset</h2>
-      <p>
-        Do you agree with the
-        <a id="termsLink" class="aForDownload" href="./about.html#terms">Terms and Conditions</a>?
-      </p>
-      <label>
-        <input type="checkbox" id="agreeCheckbox"> I agree to the terms and conditions.
-      </label>
-      <br>
-      <button id="confirmDownload" class="aForDownload" disabled>Confirm & Download</button>
-      <button id="closeDownloadModal" class="aForDownload">Cancel</button>
-    </div>
+<!-- Download Confirmation Modal -->
+<div id="modal-download-conf" class="modal-conf">
+  <div class="modal-content-conf">
+    <h2>Download Dataset</h2>
+    <p>
+      Do you agree with the
+      <a id="termsLink" class="aForDownload" href="./about.html#terms">Terms and Conditions</a>?
+    </p>
+    <label>
+      <input type="checkbox" id="agreeCheckbox">
+      <span id="agreeCheckboxText">I agree to the terms and conditions.</span>
+    </label>
+    <br>
+    <button id="confirmDownload" class="aForDownload" disabled>Confirm & Download</button>
+    <button id="closeDownloadModal" class="aForDownload">Cancel</button>
   </div>
+</div>
 
-  <script src="index.js"></script>
+
+
+  <script src="./index.js"></script>
 </body>
 </html>

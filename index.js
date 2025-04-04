@@ -307,7 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const downloadBothBtn = document.getElementById("downloadBothBtn");
   const downloadFilteredBtn = document.getElementById("downloadFilteredBtn");
   const confirmDownloadButton = document.getElementById("confirmDownload");
-  const agreeCheckbox = document.getElementById("agreeCheckbox");
+  const agreeCheckboxText = document.getElementById("agreeCheckboxText");
   const closeModalButton = document.getElementById("closeDownloadModal");
   const termsLink = document.getElementById("termsLink");
 
@@ -316,7 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
   downloadBothBtn.addEventListener("click", function (event) {
     event.preventDefault();
     currentDownloadType = "both";
-    agreeCheckbox.checked = false;
+    agreeCheckboxText.checked = false;
     confirmDownloadButton.disabled = true;
     downloadModal.style.display = "block";
   });
@@ -324,12 +324,12 @@ document.addEventListener("DOMContentLoaded", function () {
   downloadFilteredBtn.addEventListener("click", function (event) {
     event.preventDefault();
     currentDownloadType = "filtered";
-    agreeCheckbox.checked = false;
+    agreeCheckboxText.checked = false;
     confirmDownloadButton.disabled = true;
     downloadModal.style.display = "block";
   });
 
-  agreeCheckbox.addEventListener("change", function () {
+  agreeCheckboxText.addEventListener("change", function () {
     confirmDownloadButton.disabled = !this.checked;
   });
 
@@ -406,7 +406,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Modal Translations (Dataset Download)
     document.querySelector("#modal-download-conf h2").textContent = i18next.t("modal.download.title");
     document.querySelector("#modal-download-conf p").textContent = i18next.t("modal.download.text");
-    document.querySelector("#modal-download-conf label").textContent = i18next.t("modal.download.agreeCheckbox");
+    document.querySelector("#modal-download-conf label").textContent = i18next.t("modal.download.agreeCheckboxText");
     document.getElementById("confirmDownload").textContent = i18next.t("modal.download.confirmButton");
     document.getElementById("closeDownloadModal").textContent = i18next.t("modal.download.cancelButton");
 

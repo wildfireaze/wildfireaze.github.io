@@ -12,7 +12,7 @@
   "loadMore": "Daha Çox Yüklə",
   "downloadDataset": "Məlumat Dəstini Yüklə",
   "agreeTerms": "Şərtlərlə razısınız?",
-  "agreeCheckbox": "Mən şərtlərlə razıyam.",
+  "agreeCheckboxText": "Mən şərtlərlə razıyam.",
   "confirmDownload": "Təsdiqlə və Yüklə",
   "cancel": "İmtina et",
   "ascending": "Artan",
@@ -47,7 +47,7 @@
     "download": {
       "title": "Məlumat Dəstini Yüklə",
       "text": "Şərtlərlə razısınız?",
-      "agreeCheckbox": "Mən şərtlərlə razıyam.",
+      "agreeCheckboxText": "Mən şərtlərlə razıyam.",
       "confirmButton": "Təsdiqlə və Yüklə",
       "cancelButton": "İmtina et"
     },

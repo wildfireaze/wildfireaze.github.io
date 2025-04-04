@@ -12,7 +12,7 @@
   "loadMore": "Load More",
   "downloadDataset": "Download Dataset",
   "agreeTerms": "Do you agree with the Terms and Conditions?",
-  "agreeCheckbox": "I agree to the terms and conditions.",
+  "agreeCheckboxText": "I agree to the terms and conditions.",
   "confirmDownload": "Confirm & Download",
   "cancel": "Cancel",
   "ascending": "Ascending",
@@ -47,7 +47,7 @@
     "download": {
       "title": "Download Dataset",
       "text": "Do you agree with the Terms and Conditions?",
-      "agreeCheckbox": "I agree to the terms and conditions.",
+      "agreeCheckboxText": "I agree to the terms and conditions.",
       "confirmButton": "Confirm & Download",
       "cancelButton": "Cancel"
     },
