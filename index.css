@@ -18,7 +18,6 @@ header {
   font-weight: bold;
 }
 
-
 /* Styling for the language select dropdown */
 #language-select {
   font-family: Arial, sans-serif;
@@ -32,7 +31,6 @@ header {
   transition: all 0.3s ease-in-out;
   outline: none;
 }
-
 
 /* Styling for dropdown options */
 #language-select option {
@@ -49,7 +47,6 @@ label[for="language-select"] {
   margin-right: 8px;
   color: #333;
 }
-
 
 /* About Us Button */
 .aboutUs {
@@ -192,25 +189,22 @@ label[for="language-select"] {
 
 .modal-content {
   position: fixed;
-  /* or absolute, but fixed keeps it in place on scroll */
   z-index: 1500;
   background: white;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* Moves the element left 50% and up 50% */
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   animation: fadeIn 0.3s ease-in-out;
-  /* Optional: set a max width/height so it doesn’t overflow the screen */
   max-width: 90vw;
   max-height: 90vh;
   overflow-y: auto;
   overflow-x: hidden;
-  /* or auto, if needed */
 }
 
+/* Modal Top Section */
 .modal-top {
   display: flex;
   flex-wrap: wrap;
@@ -274,22 +268,18 @@ label[for="language-select"] {
 }
 
 /* Modal Map */
-/* Modal Map Container */
 .modal-map-container {
   flex: 1;
-  /* Take equal space in the flex container */
   padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: auto;
-  /* Set a fixed height for the container */
 }
 
 .modal-map-container iframe {
   width: 100%;
   height: 100%;
-  /* Fill the container */
   border-radius: 8px;
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -298,7 +288,7 @@ label[for="language-select"] {
 /* Modal Details */
 .modal-details {
   padding: 20px;
-  padding-top: 0px;
+  padding-top: 0;
   font-size: 1rem;
   color: #444;
   line-height: 1;
@@ -341,7 +331,6 @@ label[for="language-select"] {
   color: white;
   border: none;
   border-radius: 50%;
-  font-size: 24px;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: opacity 0.3s, visibility 0.3s;
@@ -359,17 +348,17 @@ label[for="language-select"] {
 @media (max-width: 768px) {
 
   header {
-    position: relative; /* Allows absolute positioning of child elements */
-    padding-top: 3rem;  /* Adds space for the .az-index element above the header text */
+    position: relative;
+    padding-top: 3rem;
   }
   
   .az-index {
     position: absolute;
-    top: 5%;            /* Align to the very top of the header */
-    left: 50%;         /* Move to the horizontal center */
-    transform: translateX(-50%); /* Center exactly by offsetting half its width */
-    margin: 0;         /* Remove any margins */
-    border:#ff6600;      /* Remove border if desired on mobile */
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    border: #ff6600;
     height: 2rem;
     width: 2rem;
     border-style: solid;
@@ -427,30 +416,28 @@ footer p {
     opacity: 0;
     transform: scale(0.9);
   }
-
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
 
-
 /* Modal Styling */
 .modal-conf {
-  display: none; 
-  position: fixed; 
-  z-index: 1000; 
-  left: 0; 
-  top: 0; 
-  width: 100%; 
-  height: 100%; 
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Modal Content Styling */
 .modal-content-conf {
   background-color: #fff;
-  margin: 10% auto; /* Adjusted margin for better centering */
+  margin: 10% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
@@ -461,7 +448,12 @@ footer p {
 
 /* Checkbox Styling */
 input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #333;
   margin-right: 10px;
+  -webkit-appearance: checkbox;
+  appearance: checkbox;
 }
 
 /* Disabled Button Styling */
@@ -497,7 +489,7 @@ button:disabled {
 
 /* Styling for the Terms and Conditions link inside the modal */
 .modal-content-conf a.aForDownload {
-  font-size: 16px; /* Smaller text size */
+  font-size: 16px;
   padding: 4px 7px;
   width: auto;
   text-align: center;

@@ -37,7 +37,7 @@ function toggleLoadMoreButton() {
   }
 }
 
-window.onscroll = function() {
+window.onscroll = function () {
   if (document.documentElement.scrollTop > 300) {
     scrollToTopBtn.style.display = "block";
   } else {
@@ -99,7 +99,7 @@ function openModal(imageSrc, mapSrc, details) {
   document.getElementById("image-modal").style.display = "flex";
 }
 
-modal.addEventListener("click", function(event) {
+modal.addEventListener("click", function (event) {
   if (event.target === modal) {
     modal.style.display = "none"; // Hide modal when clicking outside its content
   }
@@ -307,7 +307,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const downloadBothBtn = document.getElementById("downloadBothBtn");
   const downloadFilteredBtn = document.getElementById("downloadFilteredBtn");
   const confirmDownloadButton = document.getElementById("confirmDownload");
-  const agreeCheckboxText = document.getElementById("agreeCheckboxText");
+  // Use the actual checkbox element instead of its label
+  const agreeCheckbox = document.getElementById("agreeCheckbox");
   const closeModalButton = document.getElementById("closeDownloadModal");
   const termsLink = document.getElementById("termsLink");
 
@@ -316,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function () {
   downloadBothBtn.addEventListener("click", function (event) {
     event.preventDefault();
     currentDownloadType = "both";
-    agreeCheckboxText.checked = false;
+    agreeCheckbox.checked = false;
     confirmDownloadButton.disabled = true;
     downloadModal.style.display = "block";
   });
@@ -324,12 +325,12 @@ document.addEventListener("DOMContentLoaded", function () {
   downloadFilteredBtn.addEventListener("click", function (event) {
     event.preventDefault();
     currentDownloadType = "filtered";
-    agreeCheckboxText.checked = false;
+    agreeCheckbox.checked = false;
     confirmDownloadButton.disabled = true;
     downloadModal.style.display = "block";
   });
 
-  agreeCheckboxText.addEventListener("change", function () {
+  agreeCheckbox.addEventListener("change", function () {
     confirmDownloadButton.disabled = !this.checked;
   });
 
@@ -406,7 +407,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Modal Translations (Dataset Download)
     document.querySelector("#modal-download-conf h2").textContent = i18next.t("modal.download.title");
     document.querySelector("#modal-download-conf p").textContent = i18next.t("modal.download.text");
-    document.querySelector("#modal-download-conf label").textContent = i18next.t("modal.download.agreeCheckboxText");
+    document.getElementById("agreeCheckboxText").textContent = i18next.t("modal.download.agreeCheckboxText");
     document.getElementById("confirmDownload").textContent = i18next.t("modal.download.confirmButton");
     document.getElementById("closeDownloadModal").textContent = i18next.t("modal.download.cancelButton");
 
@@ -452,10 +453,10 @@ document.addEventListener("DOMContentLoaded", function () {
 function populateRegionsFromImages(images) {
   const regionSet = new Set(images.map(image => image.city).filter(Boolean));
   const regions = Array.from(regionSet).sort();
-  
+
   const regionFilter = document.getElementById('filter-region');
   regionFilter.innerHTML = '<option value="all">All</option>';
-  
+
   regions.forEach(region => {
     const option = document.createElement('option');
     option.value = region;
@@ -605,7 +606,7 @@ function updateCityDistrict(images, regionData) {
 function populateRegions(regionData) {
   const citySet = new Set(regionData.map(region => region.City).filter(Boolean));
   const regionFilter = document.getElementById('filter-region');
-  
+
   regionFilter.innerHTML = '<option value="all">All</option>';
   citySet.forEach(city => {
     const option = document.createElement('option');
@@ -624,7 +625,6 @@ function loadImageData(regionData) {
         latitude: parseFloat(row.LATITUDE),
         longitude: parseFloat(row.LONGITUDE),
         src: row.PHOTO_URL ? row.PHOTO_URL.trim() : placeholderImage,
-        // Remove static description calculation; we'll compute it on the fly
         brightness: row.brightness,
         scan: row.scan,
         track: row.track,
@@ -653,7 +653,7 @@ function loadImageData(regionData) {
 
       const dateRangeStartInput = document.getElementById('date-range-start');
       const dateRangeEndInput = document.getElementById('date-range-end');
-      
+
       dateRangeStartInput.min = minDate;
       dateRangeStartInput.max = maxDate;
       dateRangeEndInput.min = minDate;

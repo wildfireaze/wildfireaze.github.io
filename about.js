@@ -105,13 +105,13 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Navigation Bar
     const navLinks = document.querySelectorAll("nav.navbar ul li a");
-    if (navLinks.length >= 5) {
+    if (navLinks.length >= 4) {
       navLinks[0].textContent = i18next.t("aboutPage.nav.dataset");
       navLinks[1].textContent = i18next.t("aboutPage.nav.team");
       navLinks[2].textContent = i18next.t("aboutPage.nav.project");
       navLinks[3].textContent = i18next.t("aboutPage.nav.contact");
-      navLinks[4].textContent = i18next.t("aboutPage.nav.terms");
     }
+    
     
     // Dataset Section
     const datasetSection = document.getElementById("about-dataset");

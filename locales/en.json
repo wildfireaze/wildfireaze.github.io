@@ -93,8 +93,7 @@
         "dataset": "Dataset",
         "team": "Team",
         "project": "Project",
-        "contact": "Contact",
-        "terms": "Terms and Services"
+        "contact": "Contact"
       },
       "dataset": {
         "h2": "Dataset",
