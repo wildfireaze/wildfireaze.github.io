@@ -85,6 +85,7 @@
     "successDownload": "Məlumat dəsti uğurla yükləndi.",
     "agreeToTerms": "Yükləmədən əvvəl şərtlərlə razılaşmalısınız."
   },
+  "pictureCount": "{{total}} şəkildən {{visible}} göstərilir",
   "aboutPage": {
     "header": "Meşə Yanğınları Peyk Görüntüləri haqqında",
     "homeLink": "Ana Səhifə",

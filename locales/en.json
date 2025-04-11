@@ -85,7 +85,7 @@
     "successDownload": "Dataset download started successfully.",
     "agreeToTerms": "You must agree to the terms and conditions before downloading."
   },
-  
+  "pictureCount": "Showing {{visible}} of {{total}} images",
     "aboutPage": {
       "header": "About Wildfire Satellite Image Viewer",
       "homeLink": "Home",

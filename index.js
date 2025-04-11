@@ -174,6 +174,7 @@ function applyFiltersAndSorting(images) {
   currentFilteredImages = filteredImages;
   displayImages(currentFilteredImages.slice(0, currentPage * pageSize));
   toggleLoadMoreButton();
+  updatePictureCount(); // Update the picture count after filtering changes
 }
 
 document.getElementById('sort-direction').addEventListener('change', (e) => {
@@ -210,7 +211,7 @@ document.getElementById('filter-instrument').addEventListener('change', (e) => {
    DOWNLOAD FUNCTIONS
 ---------------------------------------- */
 async function handleDownloadBoth() {
-  let regionName = currentModalImageData && currentModalImageData.details.city ? currentModalImageData.details.city : "Unknown";
+  let regionName = (currentModalImageData && currentModalImageData.details.city) ? currentModalImageData.details.city : "Unknown";
   let imageFilename = `imageFrom${regionName}.jpg`;
   let infoFilename = `infoFrom${regionName}.txt`;
 
@@ -362,13 +363,20 @@ document.addEventListener("DOMContentLoaded", function () {
    i18next INITIALIZATION AND LANGUAGE SWITCHING
 ---------------------------------------- */
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize i18next with browser language detector and XHR backend
+  const languageSelect = document.getElementById("language-select");
+
+  // Initialize i18next with browser language detector, localStorage priority, and XHR backend
   i18next
     .use(i18nextBrowserLanguageDetector)
     .use(i18nextXHRBackend)
     .init({
       fallbackLng: "en",
       debug: true,
+      detection: {
+        // Look for language setting in localStorage first, then in the browser navigator settings.
+        order: ['localStorage', 'navigator'],
+        lookupLocalStorage: 'language'
+      },
       backend: {
         loadPath: "./locales/{{lng}}.json"
       }
@@ -377,14 +385,13 @@ document.addEventListener("DOMContentLoaded", function () {
       updateContent();
     });
 
-  const languageSelect = document.getElementById("language-select");
-
-  // Function to update all translatable texts
+  // Function to update all translatable texts on the page
   function updateContent() {
+    // Update header and other texts
     document.querySelector("h1").textContent = i18next.t("title");
     document.querySelector(".aboutUs").textContent = i18next.t("about");
-
-    // Filters Section
+  
+    // Update filters
     document.querySelector("label[for='sort-direction']").textContent = i18next.t("filters.sortByDate");
     document.querySelector("label[for='filter-region']").textContent = i18next.t("filters.selectRegion");
     document.querySelector("label[for='date-range']").textContent = i18next.t("filters.selectDateRange");
@@ -392,47 +399,47 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("label[for='filter-instrument']").textContent = i18next.t("filters.selectInstrument");
     document.getElementById("downloadFilteredBtn").textContent = i18next.t("filters.downloadFilteredData");
     document.getElementById("reset-filters").textContent = i18next.t("filters.resetFilters");
-    document.getElementById("loadMore").textContent = i18next.t("buttons.loadMore");
-
-    // Select Option Translations
+    document.getElementById("loadMore").textContent = i18next.t("loadMore");
+  
+    // Update select options
     document.querySelector("#sort-direction option[value='ascending']").textContent = i18next.t("ascending");
     document.querySelector("#sort-direction option[value='descending']").textContent = i18next.t("descending");
     document.querySelector("#filter-region option[value='all']").textContent = i18next.t("all");
     document.querySelector("#filter-satellite option[value='all']").textContent = i18next.t("all");
     document.querySelector("#filter-instrument option[value='all']").textContent = i18next.t("all");
-
-    // Footer
+  
+    // Update footer
     document.querySelector("footer p").innerHTML = i18next.t("footer");
-
-    // Modal Translations (Dataset Download)
+  
+    // Update modal texts
     document.querySelector("#modal-download-conf h2").textContent = i18next.t("modal.download.title");
     document.querySelector("#modal-download-conf p").textContent = i18next.t("modal.download.text");
+    // Update only the checkbox label span (to avoid removing the checkbox)
     document.getElementById("agreeCheckboxText").textContent = i18next.t("modal.download.agreeCheckboxText");
     document.getElementById("confirmDownload").textContent = i18next.t("modal.download.confirmButton");
     document.getElementById("closeDownloadModal").textContent = i18next.t("modal.download.cancelButton");
-
-    // Update Modal Translations for Image Details if modal is open
+  
+    // Update the picture count to reflect the new language settings
+    updatePictureCount();
+  
+    // Update modal image details if the modal is open
     updateModalTranslation();
   }
-
-  // Listen for language change
+  
+  // Listen for language change event
   languageSelect.addEventListener("change", function () {
     const selectedLang = languageSelect.value;
-    i18next.changeLanguage(selectedLang, function () {
-      updateContent();
-      // If modal is open, update it
-      if (document.getElementById("image-modal").style.display === "flex") {
-        openModal(
-          currentModalImageData.imageSrc,
-          currentModalImageData.mapSrc,
-          currentModalImageData.details
-        );
-      }
-    });
     localStorage.setItem("language", selectedLang);
+    i18next.changeLanguage(selectedLang, function (err, t) {
+      if (err) {
+        console.error("Error changing language:", err);
+      }
+      window.location.reload();
+    });
   });
-
-  // On page load, set language from localStorage or default
+  
+  
+  // On page load, use language from localStorage or default to "en"
   const savedLanguage = localStorage.getItem("language") || "en";
   languageSelect.value = savedLanguage;
   i18next.changeLanguage(savedLanguage, function () {
@@ -491,7 +498,7 @@ function populateSatelliteAndInstrument(images) {
 }
 
 /* ---------------------------------------
-   DISPLAY IMAGES
+   DISPLAY IMAGES & UPDATE COUNT
 ---------------------------------------- */
 function displayImages(imageList) {
   const gallery = document.getElementById('image-gallery');
@@ -499,38 +506,53 @@ function displayImages(imageList) {
 
   if (!imageList.length) {
     gallery.innerHTML = '<p>No images available to display.</p>';
-    return;
+  } else {
+    imageList.forEach(image => {
+      const imageItem = document.createElement('div');
+      imageItem.className = 'image-item';
+
+      const img = document.createElement('img');
+      img.src = image.src || placeholderImage;
+      // Compute description dynamically for alt text using current language
+      img.alt = i18next.t("imageFromCoordinates", { lat: image.latitude, lon: image.longitude });
+      img.onerror = () => {
+        img.src = placeholderImage;
+        console.warn(`Image failed to load: ${image.src}`);
+      };
+      // When clicked, show image details
+      img.onclick = () => showImageDetails(image);
+
+      const info = document.createElement('div');
+      info.className = 'info';
+      const desc = i18next.t("imageFromCoordinates", { lat: image.latitude, lon: image.longitude });
+      info.textContent = `${desc} - ${image.city} (${image.district})`;
+
+      imageItem.appendChild(img);
+      imageItem.appendChild(info);
+      gallery.appendChild(imageItem);
+    });
   }
-
-  imageList.forEach(image => {
-    const imageItem = document.createElement('div');
-    imageItem.className = 'image-item';
-
-    const img = document.createElement('img');
-    img.src = image.src || placeholderImage;
-    // Compute description dynamically for alt text
-    img.alt = i18next.t("imageFromCoordinates", { lat: image.latitude, lon: image.longitude });
-    img.onerror = () => {
-      img.src = placeholderImage;
-      console.warn(`Image failed to load: ${image.src}`);
-    };
-    // When clicked, show details via showImageDetails
-    img.onclick = () => showImageDetails(image);
-
-    const info = document.createElement('div');
-    info.className = 'info';
-    // Compute description dynamically so it uses the current language
-    const desc = i18next.t("imageFromCoordinates", { lat: image.latitude, lon: image.longitude });
-    info.textContent = `${desc} - ${image.city} (${image.district})`;
-
-    imageItem.appendChild(img);
-    imageItem.appendChild(info);
-    gallery.appendChild(imageItem);
-  });
+  // Update the picture count display
+  updatePictureCount();
 }
 
+/* ---------------------------------------
+   NEW FUNCTIONALITY: Update Picture Count Display
+---------------------------------------- */
+function updatePictureCount() {
+  const countElement = document.getElementById('pictureCount');
+  if (countElement) {
+    countElement.innerText = i18next.t("pictureCount", {
+      visible: currentFilteredImages.length,
+      total: originalImages.length
+    });
+  }
+}
+
+/* ---------------------------------------
+   SHOW IMAGE DETAILS
+---------------------------------------- */
 function showImageDetails(image) {
-  // Build a details object with dynamic description
   const details = {
     description: i18next.t("imageFromCoordinates", { lat: image.latitude, lon: image.longitude }),
     coordinates: `${image.latitude}, ${image.longitude}`,
@@ -551,7 +573,6 @@ function showImageDetails(image) {
   };
 
   const mapUrl = `https://www.google.com/maps?q=${image.latitude},${image.longitude}&t=k&z=8&output=embed`;
-  // Open modal with dynamically generated details
   openModal(image.src, mapUrl, details);
 }
 
@@ -573,7 +594,7 @@ function loadRegionData(callback) {
     },
     error: function (error) {
       console.error("Error loading regions CSV:", error);
-    },
+    }
   });
 }
 
@@ -666,10 +687,11 @@ function loadImageData(regionData) {
 
       displayImages(images.slice(0, currentPage * pageSize));
       toggleLoadMoreButton();
+      updatePictureCount(); // Update count after initial load
     },
     error: function (error) {
       console.error("Error loading images CSV:", error);
-    },
+    }
   });
 }
 

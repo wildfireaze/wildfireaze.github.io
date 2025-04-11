@@ -337,13 +337,9 @@ label[for="language-select"] {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
-#scrollToTopBtn i {
-  display: block;
-  text-align: center;
-  line-height: 50px; /* matches the height of the button */
-}
 
 
 #scrollToTopBtn:hover {
@@ -444,7 +440,7 @@ footer p {
 /* Modal Content Styling */
 .modal-content-conf {
   background-color: #fff;
-  margin: 10% auto;
+  margin: 5% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;

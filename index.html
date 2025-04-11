@@ -35,6 +35,8 @@
 
 
     <a class="aboutUs" href="./about.html">About</a>
+    <div id="pictureCount" style="text-align: center; margin: 10px 0;"></div>
+
   </header>
 
   <div class="container">
@@ -66,6 +68,7 @@
       </select>
       <a id="downloadFilteredBtn" class="modal-download-btn">Filtered Data <i class="fa-solid fa-circle-down"></i></a>
       <a id="reset-filters" href="./index.html">Reset</a>
+
     </div>
 
     <!-- Main Content -->
@@ -106,15 +109,33 @@
   <!-- Download Confirmation Modal -->
   <div id="modal-download-conf" class="modal-conf">
     <div class="modal-content-conf">
-      <h2>Download Dataset</h2>
       <p>
-        Do you agree with the
-        <a id="termsLink" class="aForDownload" href="./about.html#terms">Terms and Conditions</a>?
-      </p>
-      <label>
-        <input type="checkbox" id="agreeCheckbox">
-        <span id="agreeCheckboxText">I agree to the terms and conditions.</span>
-      </label>
+        <b>MIT License</b>
+        <br></br>
+        Copyright (c) 2025
+        Ahmad Huseynli, Sahil Gulizada, Gunel Aliyeva, Turgay Farhadli
+        <br></br>
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        <br></br>
+        The above copyright notice and this permission notice shall be included
+        in all copies or substantial portions of the Software.
+        <br></br>
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+        OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+        THE SOFTWARE.   
+    </p>
+    <label style="display: flex; align-items: center; text-align: center; justify-content: center;">
+        <input type="checkbox" id="agreeCheckbox"> I have read the licence.
+    </label>
       <br>
       <button id="confirmDownload" class="aForDownload" disabled>Confirm &amp; Download</button>
       <button id="closeDownloadModal" class="aForDownload">Cancel</button>

@@ -228,7 +228,7 @@ footer {
   /* Modal Content Styling */
   .modal-content {
     background-color: #fff;
-    margin: 10% auto; /* Centering the modal */
+    margin: 5% auto; /* Centering the modal */
     padding: 20px;
     width: 50%;
     text-align: center;
