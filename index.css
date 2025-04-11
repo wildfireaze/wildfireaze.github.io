@@ -339,6 +339,13 @@ label[for="language-select"] {
   align-items: center;
 }
 
+#scrollToTopBtn i {
+  display: block;
+  text-align: center;
+  line-height: 50px; /* matches the height of the button */
+}
+
+
 #scrollToTopBtn:hover {
   background-color: #e55a00;
   transform: scale(1.05);
