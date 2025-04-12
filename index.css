@@ -320,32 +320,31 @@ label[for="language-select"] {
 
 /* Scroll to Top Button */
 #scrollToTopBtn {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  font-size: 24px;
-  background-color: #ff6600;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: opacity 0.3s, visibility 0.3s;
+  display: none;               /* Hidden by default */
+  position: fixed;             /* Fixed position relative to viewport */
+  bottom: 20px;                /* 20px from bottom */
+  right: 20px;               /* 20px from right */
+  width: 50px;                 /* Button width */
+  height: 50px;                /* Button height */
+  font-size: 24px;             /* Icon/font size */
+  background-color: #ff6600;   /* Background color */
+  color: white;                /* Text/icon color */
+  border: none;                /* No border */
+  border-radius: 50%;          /* Fully rounded */
+  cursor: pointer;             /* Pointer on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  transition: opacity 0.3s, visibility 0.3s, transform 0.2s ease;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
-
-
 #scrollToTopBtn:hover {
-  background-color: #e55a00;
-  transform: scale(1.05);
+  background-color: #e55a00;  /* Darker color on hover */
+  transform: scale(1.05);     /* Slightly larger on hover */
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
