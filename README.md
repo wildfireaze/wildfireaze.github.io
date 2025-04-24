@@ -52,8 +52,9 @@ Built so **anyone**—from researchers to the curious public—can explore, filt
 
 ---
 
-## 📸 Screenshots & GIFs
+## 📸 Screenshots
 
 | Main Gallery | Detail Modal |
 |--------------|--------------|
 | ![Main page](screenshots/mainpage-en.png) | ![Modal](screenshots/infomodal-en.png) |
+| ![Main page in Azerbaijani](screenshots/mainpage-az.png) | ![Modal in Azerbaijani](screenshots/infomodal-az.png) |
