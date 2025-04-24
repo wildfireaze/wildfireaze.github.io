@@ -58,3 +58,11 @@ Built so **anyone**—from researchers to the curious public—can explore, filt
 |--------------|--------------|
 | ![Main page](screenshots/mainpage-en.png) | ![Modal](screenshots/infomodal-en.png) |
 | ![Main page in Azerbaijani](screenshots/mainpage-az.png) | ![Modal in Azerbaijani](screenshots/infomodal-az.png) |
+
+---
+
+## 📥 Downloaded File Example
+
+| .zip File's Content | Image | Detail |
+|--------------|--------------|--------------|
+| ![Contents](screenshots/zipFileContent.png) | ![Image](screenshots/imageFile.png) | ![Detail](screenshots/fileDetail.png) |
