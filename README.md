@@ -4,7 +4,7 @@ An open-access, lightweight web app that turns raw NASA FIRMS wildfire data into
 Built so **anyone**—from researchers to the curious public—can explore, filter, and download satellite snapshots of fires across Azerbaijan in just a few clicks.
 
 <p align="center">
-  <img src="assets/screenshots/example_wildfire.jpg" alt="Example wildfire satellite image" width="650">
+  <img src="PhotoFile4Wildfire/41.2148_48.8116_93.png" alt="Example wildfire satellite image" width="650">
 </p>
 
 ---
@@ -54,9 +54,6 @@ Built so **anyone**—from researchers to the curious public—can explore, filt
 
 ## 📸 Screenshots & GIFs
 
-> _Replace the dummy paths below with your own files_  
-> *(Tip: short GIF loops of filtering & the modal popup make the README pop!)*
-
 | Main Gallery | Detail Modal |
 |--------------|--------------|
-| ![Main page](assets/screenshots/gallery.png) | ![Modal](assets/screenshots/modal.png) |
+| ![Main page](screenshots/mainpage-en.png) | ![Modal](screenshots/infomodal-en.png) |
