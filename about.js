@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.onscroll = function () {
     if (document.documentElement.scrollTop > 300) {
-      scrollToTopBtn.style.display = "block";
+      scrollToTopBtn.style.display = "flex";
     } else {
       scrollToTopBtn.style.display = "none";
     }
