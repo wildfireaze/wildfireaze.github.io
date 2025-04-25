@@ -227,11 +227,14 @@ footer {
   
   /* Modal Content Styling */
   .modal-content {
+    max-height: 80vh;
     background-color: #fff;
-    margin: 5% auto; /* Centering the modal */
+    margin: 5% auto;
     padding: 20px;
+    border: 1px solid #888;
     width: 50%;
     text-align: center;
+    overflow-y: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }

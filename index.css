@@ -320,19 +320,32 @@ label[for="language-select"] {
 
 /* Scroll to Top Button */
 #scrollToTopBtn {
-  display: none;               /* Hidden by default */
-  position: fixed;             /* Fixed position relative to viewport */
-  bottom: 20px;                /* 20px from bottom */
-  right: 20px;               /* 20px from right */
-  width: 50px;                 /* Button width */
-  height: 50px;                /* Button height */
-  font-size: 24px;             /* Icon/font size */
-  background-color: #ff6600;   /* Background color */
-  color: white;                /* Text/icon color */
-  border: none;                /* No border */
-  border-radius: 50%;          /* Fully rounded */
-  cursor: pointer;             /* Pointer on hover */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Fixed position relative to viewport */
+  bottom: 20px;
+  /* 20px from bottom */
+  right: 20px;
+  /* 20px from right */
+  width: 50px;
+  /* Button width */
+  height: 50px;
+  /* Button height */
+  font-size: 24px;
+  /* Icon/font size */
+  background-color: #ff6600;
+  /* Background color */
+  color: white;
+  /* Text/icon color */
+  border: none;
+  /* No border */
+  border-radius: 50%;
+  /* Fully rounded */
+  cursor: pointer;
+  /* Pointer on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Soft shadow */
   transition: opacity 0.3s, visibility 0.3s, transform 0.2s ease;
   display: flex;
   justify-content: center;
@@ -341,8 +354,10 @@ label[for="language-select"] {
 }
 
 #scrollToTopBtn:hover {
-  background-color: #e55a00;  /* Darker color on hover */
-  transform: scale(1.05);     /* Slightly larger on hover */
+  background-color: #e55a00;
+  /* Darker color on hover */
+  transform: scale(1.05);
+  /* Slightly larger on hover */
 }
 
 
@@ -353,7 +368,7 @@ label[for="language-select"] {
     position: relative;
     padding-top: 3rem;
   }
-  
+
   .az-index {
     position: absolute;
     top: 5%;
@@ -368,17 +383,40 @@ label[for="language-select"] {
     border-radius: 5px;
   }
 
+  /* Enlarge both modals on mobile */
+  .modal-content,
+  .modal-content-conf {
+    width: 90vw;
+    max-width: none;
+    height: 80vh;
+    overflow-y: auto;
+    margin: 5vh auto;
+  }
+
+  /* Stack the modal’s top section */
   .modal-top {
     flex-direction: column;
     align-items: center;
   }
 
-  .modal-image-container img {
-    max-width: 100%;
+  /* Make image & map containers full width */
+  .modal-image-container,
+  .modal-map-container {
+    width: 95%;
+    padding: 10px;
+    aspect-ratio: 1 / 1;
   }
 
+
+
+  /* Ensure the image and map fill their containers */
+  .modal-image-container img,
   .modal-map-container iframe {
     width: 100%;
+    height: auto;
+    max-height: 60vh;
+    display: block;
+    aspect-ratio: 1 / 1;
   }
 
   .filters {
@@ -397,6 +435,7 @@ label[for="language-select"] {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
 }
+
 
 footer {
   text-align: center;
@@ -418,6 +457,7 @@ footer p {
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -438,12 +478,14 @@ footer p {
 
 /* Modal Content Styling */
 .modal-content-conf {
+  max-height: 80vh;
   background-color: #fff;
   margin: 5% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
   text-align: center;
+  overflow-y: auto;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -465,7 +507,8 @@ button:disabled {
 }
 
 /* Centered Buttons (using updated ID for close button) */
-#confirmDownload, #closeDownloadModal {
+#confirmDownload,
+#closeDownloadModal {
   margin: 10px;
   padding: 10px 20px;
   border: none;

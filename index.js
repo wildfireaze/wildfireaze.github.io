@@ -39,7 +39,7 @@ function toggleLoadMoreButton() {
 
 window.onscroll = function () {
   if (document.documentElement.scrollTop > 300) {
-    scrollToTopBtn.style.display = "block";
+    scrollToTopBtn.style.display = "flex"; // TEST
   } else {
     scrollToTopBtn.style.display = "none";
   }
@@ -92,7 +92,13 @@ function updateModalTranslation() {
 
 // Open modal with translated content; store current modal data for later updates.
 function openModal(imageSrc, mapSrc, details) {
-  document.getElementById("modal-image").src = imageSrc;
+  // document.getElementById("modal-image").src = imageSrc;
+  const modalImg = document.getElementById("modal-image");
+  modalImg.src = imageSrc;
+  modalImg.style.cursor = 'pointer';    // show that it’s clickable
+  // when clicked, open the full-size image in a new tab
+  modalImg.onclick = () => window.open(imageSrc, '_blank');
+
   document.getElementById("map-frame").src = mapSrc;
   currentModalImageData = { imageSrc, mapSrc, details };
   updateModalTranslation();
@@ -390,7 +396,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Update header and other texts
     document.querySelector("h1").textContent = i18next.t("title");
     document.querySelector(".aboutUs").textContent = i18next.t("about");
-  
+
     // Update filters
     document.querySelector("label[for='sort-direction']").textContent = i18next.t("filters.sortByDate");
     document.querySelector("label[for='filter-region']").textContent = i18next.t("filters.selectRegion");
@@ -400,17 +406,17 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("downloadFilteredBtn").textContent = i18next.t("filters.downloadFilteredData");
     document.getElementById("reset-filters").textContent = i18next.t("filters.resetFilters");
     document.getElementById("loadMore").textContent = i18next.t("loadMore");
-  
+
     // Update select options
     document.querySelector("#sort-direction option[value='ascending']").textContent = i18next.t("ascending");
     document.querySelector("#sort-direction option[value='descending']").textContent = i18next.t("descending");
     document.querySelector("#filter-region option[value='all']").textContent = i18next.t("all");
     document.querySelector("#filter-satellite option[value='all']").textContent = i18next.t("all");
     document.querySelector("#filter-instrument option[value='all']").textContent = i18next.t("all");
-  
+
     // Update footer
     document.querySelector("footer p").innerHTML = i18next.t("footer");
-  
+
     // Update modal texts
     document.querySelector("#modal-download-conf h2").textContent = i18next.t("modal.download.title");
     document.querySelector("#modal-download-conf p").textContent = i18next.t("modal.download.text");
@@ -418,14 +424,14 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("agreeCheckboxText").textContent = i18next.t("modal.download.agreeCheckboxText");
     document.getElementById("confirmDownload").textContent = i18next.t("modal.download.confirmButton");
     document.getElementById("closeDownloadModal").textContent = i18next.t("modal.download.cancelButton");
-  
+
     // Update the picture count to reflect the new language settings
     updatePictureCount();
-  
+
     // Update modal image details if the modal is open
     updateModalTranslation();
   }
-  
+
   // Listen for language change event
   languageSelect.addEventListener("change", function () {
     const selectedLang = languageSelect.value;
@@ -437,8 +443,8 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.reload();
     });
   });
-  
-  
+
+
   // On page load, use language from localStorage or default to "en"
   const savedLanguage = localStorage.getItem("language") || "en";
   languageSelect.value = savedLanguage;
@@ -462,8 +468,7 @@ function populateRegionsFromImages(images) {
   const regions = Array.from(regionSet).sort();
 
   const regionFilter = document.getElementById('filter-region');
-  regionFilter.innerHTML = '<option value="all">All</option>';
-
+  regionFilter.innerHTML = `<option value="all">${i18next.t("all")}</option>`;
   regions.forEach(region => {
     const option = document.createElement('option');
     option.value = region;
@@ -479,8 +484,8 @@ function populateSatelliteAndInstrument(images) {
   const satelliteFilter = document.getElementById('filter-satellite');
   const instrumentFilter = document.getElementById('filter-instrument');
 
-  satelliteFilter.innerHTML = '<option value="all">All</option>';
-  instrumentFilter.innerHTML = '<option value="all">All</option>';
+  satelliteFilter.innerHTML = `<option value="all">${i18next.t("all")}</option>`;
+  instrumentFilter.innerHTML = `<option value="all">${i18next.t("all")}</option>`;
 
   satelliteSet.forEach(satellite => {
     const option = document.createElement('option');
