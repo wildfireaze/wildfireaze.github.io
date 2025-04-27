@@ -9,24 +9,44 @@ body {
 }
 
 /* Header Styles */
+/* 1) Make header a positioned container */
 header {
+    position: relative;      /* allow ::before to be positioned inside */
+    overflow: hidden;        /* clip any blurred edges, if you add blur later */
     text-align: center;
-    background-color: #333;
+    /* remove the old background shorthand */
+    /* background: url("screenshots/TitleBackground.jpg"); */
     color: white;
     padding: 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-header h1 {
-    font-size: 2rem;
-    margin: 0;
-}
+  }
+  
+  /* 2) Pull the image into ::before and dim it */
+  header::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("screenshots/TitleBackground.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.5);      /* ← 50% brightness */
+    z-index: 0;                    /* behind your header content */
+  }
+  
+  /* 3) Ensure your header’s real content floats above it */
+  header > div,
+  header h1,
+  header .aForDownload {
+    position: relative;
+    z-index: 1;
+  }
+  
 
 .aForDownload {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.7rem 1.5rem;
-    background-color: #ff6600;
+    background-color: #5a7d9a; /* #ff6600 */
     color: white;
     font-size: 1rem;
     font-weight: 600;
@@ -37,7 +57,7 @@ header h1 {
 }
 
 .aForDownload:hover {
-    background-color: #e55a00;
+    background-color: #9a9a9a; /* #e55a00 */
     transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
@@ -73,7 +93,7 @@ header h1 {
 }
 
 .navbar a:hover {
-    color: #ff6600;
+    color: #5a7d9a;
     transform: translateY(-2px); /* Subtle upward movement */
 }
 
@@ -91,7 +111,7 @@ section h2 {
     color: #444;
     font-size: 2rem;
     margin-bottom: 1rem;
-    border-bottom: 2px solid #ff6600; /* Decorative underline */
+    border-bottom: 2px solid #5a7d9a; /* Decorative underline */
     display: inline-block;
 }
 
@@ -151,7 +171,7 @@ footer {
     height: 50px;
     width: 50px;
     font-size: 24px;
-    background-color: #ff6600;
+    background-color: #5a7d9a;
     color: white;
     border: none;
     border-radius: 50%;
@@ -164,7 +184,7 @@ footer {
 }
 
 #scrollToTopBtn:hover {
-    background-color: #e55a00;
+    background-color: #9a9a9a;
     transform: scale(1.05);
 }
 
@@ -253,7 +273,7 @@ footer {
   /* Button Styling for Confirm & Close Buttons */
   #confirmDownload, #closeDownloadModal {
     margin: 10px;
-    background-color: #ff6600 !important;
+    background-color: #5a7d9a !important;
     color: #fff;
     border-radius: 4px;
     font-weight: 400 !important;
@@ -275,7 +295,7 @@ footer {
 /* Hover Effects for Active Buttons */
 #confirmDownload:hover:not(:disabled),
 #closeDownloadModal:hover:not(:disabled) {
-    background-color: #e55a00;
+    background-color: #9a9a9a;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -288,7 +308,7 @@ footer {
     font-size: 16px;
     font-weight: 400 !important;
     background-color: transparent;
-    color: #ff6600;
+    color: #5a7d9a;
     border-style: none !important;
 }
 

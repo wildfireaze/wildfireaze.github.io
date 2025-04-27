@@ -9,14 +9,49 @@ body {
 }
 
 /* Header */
-header {
+/* header {
   text-align: center;
-  background-color: #333;
+  background-image: url("screenshots/TitleBackground.jpg");
   color: white;
   padding: 1.5rem;
   font-size: 1.5rem;
   font-weight: bold;
+} */
+
+
+header {
+  position: relative;           /* establish stacking context */
+  overflow: hidden;             /* clip any overflowing blur */
+  color: white;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
 }
+
+/* pull the background into ::before */
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("screenshots/TitleBackground.jpg");
+  background-size: cover;
+  background-position: center;
+  
+  /* 👉 apply whatever filter you like here: */
+  filter: brightness(0.5) contrast(1.2);
+  
+  z-index: 0;                   /* sit behind header content */
+}
+
+/* make sure your real header content sits above it */
+header > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+
 
 /* Styling for the language select dropdown */
 #language-select {
@@ -25,7 +60,7 @@ header {
   padding: 8px 12px;
   border: 2px;
   border-radius: 6px;
-  background-color: #ff6600;
+  background-color: #5a7d9a;
   color: #fff;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -53,7 +88,7 @@ label[for="language-select"] {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.7rem 1.5rem;
-  background-color: #ff6600;
+  background-color: #5a7d9a; /* #ff6600 */
   color: white;
   font-size: 1.1rem;
   font-weight: 600;
@@ -68,7 +103,7 @@ label[for="language-select"] {
   align-items: center;
   height: 2rem;
   width: 2rem;
-  border: #e55a00;
+  border: #9a9a9a;
   border-style: solid;
   border-width: 2px;
   border-radius: 5px;
@@ -80,7 +115,7 @@ label[for="language-select"] {
 }
 
 .aboutUs:hover {
-  background-color: #e55a00;
+  background-color: #9a9a9a; /* #e55a00 */
   transform: scale(1.05);
 }
 
@@ -124,7 +159,7 @@ label[for="language-select"] {
 #reset-filters {
   display: inline-block;
   padding: 0.7rem 1.5rem;
-  background-color: #ff6600;
+  background-color: #5a7d9a;
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -136,7 +171,7 @@ label[for="language-select"] {
 }
 
 #reset-filters:hover {
-  background-color: #e55a00;
+  background-color: #9a9a9a;
   transform: scale(1.05);
 }
 
@@ -211,7 +246,7 @@ label[for="language-select"] {
   justify-content: space-between;
   padding: 15px;
   background: #f8f8f8;
-  border-bottom: 2px solid #ff6600;
+  border-bottom: 2px solid #5a7d9a;
 }
 
 /* Modal Image */
@@ -237,7 +272,7 @@ label[for="language-select"] {
 .modal-download-btn {
   display: inline-block;
   padding: 0.7rem 1.5rem;
-  background-color: #ff6600;
+  background-color: #5a7d9a;
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -251,7 +286,7 @@ label[for="language-select"] {
 .modal-download-both-btn {
   display: inline-block;
   padding: 0.7rem 1.5rem;
-  background-color: #ff6600;
+  background-color: #5a7d9a;
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -263,7 +298,7 @@ label[for="language-select"] {
 }
 
 .modal-download-btn:hover {
-  background-color: #e55a00;
+  background-color: #9a9a9a;
   transform: scale(1.05);
 }
 
@@ -303,7 +338,7 @@ label[for="language-select"] {
 
 #loadMore {
   padding: 0.7rem 1.5rem;
-  background-color: #ff6600;
+  background-color: #5a7d9a;
   color: white;
   font-size: 1.1rem;
   font-weight: 600;
@@ -314,7 +349,7 @@ label[for="language-select"] {
 }
 
 #loadMore:hover {
-  background-color: #e55a00;
+  background-color: #9a9a9a;
   transform: scale(1.05);
 }
 
@@ -334,7 +369,7 @@ label[for="language-select"] {
   /* Button height */
   font-size: 24px;
   /* Icon/font size */
-  background-color: #ff6600;
+  background-color: #5a7d9a;
   /* Background color */
   color: white;
   /* Text/icon color */
@@ -354,7 +389,7 @@ label[for="language-select"] {
 }
 
 #scrollToTopBtn:hover {
-  background-color: #e55a00;
+  background-color: #9a9a9a;
   /* Darker color on hover */
   transform: scale(1.05);
   /* Slightly larger on hover */
@@ -375,7 +410,7 @@ label[for="language-select"] {
     left: 50%;
     transform: translateX(-50%);
     margin: 0;
-    border: #ff6600;
+    border: #5a7d9a;
     height: 2rem;
     width: 2rem;
     border-style: solid;
@@ -512,7 +547,7 @@ button:disabled {
   margin: 10px;
   padding: 10px 20px;
   border: none;
-  background-color: #ff6600;
+  background-color: #5a7d9a;
   color: white;
   border-radius: 5px;
   cursor: pointer;
@@ -527,7 +562,7 @@ button:disabled {
 /* Hover effects for active buttons */
 #confirmDownload:hover:not(:disabled),
 #closeDownloadModal:hover:not(:disabled) {
-  background-color: #e55a00;
+  background-color: #9a9a9a;
   transform: scale(1.05);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -540,7 +575,7 @@ button:disabled {
   text-align: center;
   border-radius: 3px;
   text-decoration: none;
-  color: #ff6600;
+  color: #5a7d9a;
 }
 
 .modal-content-conf a.aForDownload:hover {
