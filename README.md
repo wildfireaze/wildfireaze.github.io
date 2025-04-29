@@ -52,12 +52,20 @@ Built so **anyone**—from researchers to the curious public—can explore, filt
 
 ---
 
-## 📸 Screenshots
+## 📸 Screenshots of Website
 
 | Main Gallery | Detail Modal |
 |--------------|--------------|
-| ![Main page](screenshots/mainpage-en.png) | ![Modal](screenshots/infomodal-en.png) |
-| ![Main page in Azerbaijani](screenshots/mainpage-az.png) | ![Modal in Azerbaijani](screenshots/infomodal-az.png) |
+| ![Main page](screenshots/mainpage-eng.png) | ![Modal](screenshots/infomodal-eng.png) |
+| ![Main page in Azerbaijani](screenshots/mainpage-aze.png) | ![Modal in Azerbaijani](screenshots/infomodal-aze.png) |
+
+---
+
+## ⚖️ License Modal
+
+| MIT License Confirmation Modal |
+|--------------|
+| ![MIT License](screenshots/mitLicense.png) |
 
 ---
 
@@ -65,4 +73,4 @@ Built so **anyone**—from researchers to the curious public—can explore, filt
 
 | .zip File's Content | Image | Detail |
 |--------------|--------------|--------------|
-| ![Contents](screenshots/zipFileContent.png) | ![Image](screenshots/imageFile.png) | ![Detail](screenshots/fileDetail.png) |
+| ![Contents](screenshots/downloaded-folder.png) | ![Image](screenshots/image-file.png) | ![Detail](screenshots/image-detail.png) |
