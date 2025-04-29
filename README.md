@@ -54,9 +54,12 @@ Built so **anyone**—from researchers to the curious public—can explore, filt
 
 ## 📸 Screenshots of Website
 
+| English |
 | Main Gallery | Detail Modal |
 |--------------|--------------|
 | ![Main page](screenshots/mainpage-eng.png) | ![Modal](screenshots/infomodal-eng.png) |
+| Azerbaijani |
+|--------------|--------------|
 | ![Main page in Azerbaijani](screenshots/mainpage-aze.png) | ![Modal in Azerbaijani](screenshots/infomodal-aze.png) |
 
 ---
