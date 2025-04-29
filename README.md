@@ -58,7 +58,6 @@ Built so **anyone**—from researchers to the curious public—can explore, filt
 |--------------|--------------|
 | ![Main page](screenshots/mainpage-eng.png) | ![Modal](screenshots/infomodal-eng.png) |
 | Main Gallery in Azerbaijani | Detail Modal in Azerbaijani |
-|--------------|--------------|
 | ![Main page in Azerbaijani](screenshots/mainpage-aze.png) | ![Modal in Azerbaijani](screenshots/infomodal-aze.png) |
 
 ---
